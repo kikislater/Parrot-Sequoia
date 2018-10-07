@@ -1,0 +1,22 @@
+# Warning all value are little endian (ie read from left to right)
+# 07 = Airborne < 2G, 08 = Airbone < 4G
+06 24 FFFF 08 02 00000000 10270000 05 00 FA00 FA00 6400 2C01 00 3C 00 1C 0000 C800 00 0000000000
+06 23 0000 0800 00000000 0302 03 14 1C 00 00 0100 00 DC06 000000000101 0000 0064 6400 00011000 000000 00
+# C800 = 200 ms = 5Hz
+06 08 C800 0100 0100
+# Configure NMEA (disable considered mode & enable all incorrect info)
+06 17 2F 40 00 00
+# Configure NMEA output
+06 01 F0 00 00
+06 01 F0 01 00
+06 01 F0 02 00
+06 01 F0 03 00
+06 01 F0 04 00
+06 01 F0 05 00
+06 01 F0 07 00
+06 01 F0 0D 00
+# Configure UBX output
+06 01 01 07 01
+$tty=/dev/ttyDIB0
+$time_auto=1
+$date_auto=1

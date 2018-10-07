@@ -1,0 +1,10 @@
+# Epic link managed through udev rules
+service sicilia_epic /usr/bin/sicilia_epic
+    disabled
+
+on property:init.svc.sicilia_epic=running
+    write /sys/devices/platform/user_gpio/EN_CAM_SYNC/value 1
+
+on property:init.svc.sicilia_epic=stopped
+    write /sys/devices/platform/user_gpio/EN_CAM_SYNC/value 0
+

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Parrot Sequoia</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css?version=1.5">
+    <link rel="shortcut icon" href="myico.ico" type="image/x-icon" />
+    <meta content="text/html, text/plain" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="logo-container" href="indexfr.html" style="float:left"><img id="logo" src="img/LOGO_SEQUOIA.png" /></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="indexfr.html"> Accueil <span class="sr-only">(current)</span></a></li>
+                    <li><a href="view/statusfr.html"> Statut </a></li>
+                    <li><a href="view/galleryfr.html"> Galerie </a></li>
+                    <li><a target="_blank" href="help/indexfr.html"> Aide </a></li>
+                    <li><a href="view/settingsfr.html"> Paramètres </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button id="unmount" style="display: none" class="btn btn-primary navbar-btn" href="index.html">Ejecter carte SD&nbsp;&nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span></button>
+                    </li>
+                    <li>
+                        <button id="powerOfffr" class="btn btn-primary navbar-btn" href="index.html">Eteindre&nbsp;&nbsp;<span class="glyphicon glyphicon-off" aria-hidden="true"></span></button>
+                    </li>
+                    <li class="dropdown" id="dropL">
+                        <a href="#" onclick="return false;" id="selectLanguage" class="dropdown-toggle noselect" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded=false> FR&nbsp;&nbsp;<img src="img/traduction/france.svg" class="flag"/> <span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="language" href="index.html"> EN&nbsp;&nbsp;<img src="img/traduction/usa.svg" class="flag"/> </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div>
+        <form class="form-horizontal">
+
+            <div class="panel-group">
+                <div class="col-xs-12 col-sm-7 col-md-6 col-lg-5 col-lg-offset-1 panel-group">
+
+                    <!--<div id="nogpsfix" class="alert alert-warning" style="display:none;text-align:center;">
+						<img style="height:30px" src="img/instruments/nogpsfix.png" /><span>&nbsp;&nbsp;<strong>NO GPS SIGNAL</strong></span>
+					</div>-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Capture</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                    Mode de capture
+                                </label>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <img id="single0" class="cm" src="img/capture_mode/single0.png" height="40px" width="40px" style="display:none;" data-toggle="tooltip" title="Mode single" />
+                                    <img id="single1" class="cm" src="img/capture_mode/single1.png" height="40px" width="40px" data-toggle="tooltip" title="Mode single" />
+                                    <img id="time0" class="cm" src="img/capture_mode/timelapse0.png" height="40px" width="40px" data-toggle="tooltip" title="Mode timelapse" />
+                                    <img id="time1" class="cm" src="img/capture_mode/timelapse1.png" height="40px" width="40px" style="display:none;" data-toggle="tooltip" title="Mode timelapse" />
+                                    <img id="gps0" class="cm" src="img/capture_mode/gps0.png" height="40px" width="40px" data-toggle="tooltip" title="Mode GPS" />
+                                    <img id="gps1" class="cm" src="img/capture_mode/gps1.png" height="40px" width="40px" style="display:none;" data-toggle="tooltip" title="Mode GPS" />
+                                    <img id="auto0" class="cm" src="img/capture_mode/auto0.png" height="40px" width="40px" data-toggle="tooltip" title="Mode auto" />
+                                    <img id="auto1" class="cm" src="img/capture_mode/auto1.png" height="40px" width="40px" style="display:none;" data-toggle="tooltip" title="Mode auto" />
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="timelapse" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                    Intervalle de timelapse
+                                </label>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <input type="text" id="timelapse" name="timelapse" placeholder="timelapse" class="numeric_only" disabled /> s
+                                    <span class=" pointer-cursor" data-toggle="modal" data-target=".timelapse-modal"><img data-toggle="tooltip" title="Calcul du timelapse" src="img/capture_mode/calc-icon.png" style="width:17px;"> </span>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" id="precisetl" role="alert" style="display:none"> L'intervalle de timelapse doit être supérieur ou égal à <span id="tlmin">1</span> </div>
+                            <div class="form-group">
+                                <label for="gps" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                    Intervalle de distance GPS
+                                </label>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <input type="text" id="gps" name="gps" placeholder="gps" class="numeric_only" disabled /> m
+                                    <span class=" pointer-cursor" data-toggle="modal" data-target=".gps-modal"><img data-toggle="tooltip" title="Calcul de la distance GPS" src="img/capture_mode/calc-icon.png" style="width:17px;"> </span>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" id="precisegps" role="alert" style="display:none"> GPS distance interval should be greater or equal to 5 </div>
+                            <div class="form-group">
+                                <label for="overlap" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                    Overlap
+                                </label>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <input type="text" id="overlap" name="overlap" placeholder="overlap" class="numeric_only" disabled /> %
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <span class="col-xs-12 col-sm-6 col-md-5 col-lg-5" style="padding-top:8px">
+                                    <strong>Calibration radiométrique</strong>
+								</span>
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                    <span id="radiometric-calibration" class="btn btn-primary">Lancer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Caméras mono</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                    Résolution
+                                </label>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <label class="radio-inline" id="reso03mono">
+                                        <input type="radio" name="resolutionmono" class="reso" id="03mpixmono" value="3mpix"> 0.3 MPix
+                                    </label>
+                                    <label class="radio-inline" id="reso12mono">
+                                        <input type="radio" name="resolutionmono" class="reso" id="12mpixmono" value="12mpix" checked> 1.2 MPix
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                    Profondeurs de couleur
+                                </label>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <label class="radio-inline" id="bitd08">
+                                        <input type="radio" name="bitdepth" class="bitd" id="8bit" value="8bit"> 8 bits
+                                    </label>
+                                    <label class="radio-inline" id="bitd10">
+                                        <input type="radio" name="bitdepth" class="bitd" id="10bit" value="10bit" checked> 10 bits
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Caméra principale</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                    Résolution
+                                </label>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <label class="radio-inline" id="reso12main">
+                                        <input type="radio" name="resolutionmain" class="reso" id="12mpixmain" value="12mpix"> 12 MPix
+                                    </label>
+                                    <label class="radio-inline" id="reso16main">
+                                        <input type="radio" name="resolutionmain" class="reso" id="16mpixmain" value="16mpix" checked> 16 MPix
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="lastpanel" class="col-xs-12 col-sm-7 col-md-6 col-lg-5 col-xl-4 panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Enregistrement des photos</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-xs-6 col-md-6 col-sm-6 col-lg-6 col-xs-offset-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6" id="toggle-autoselect" style="text-align:center">
+                                <div id="auto-select-text" style="display:inline-block; position:relative;top:-5px;padding-right: 5px;padding-left:5px">
+                                    <strong >Auto-selection</strong>
+                                </div>
+                                <div style="display:inline-block;height:22px;position: relative;padding-right: 5px;padding-left:5px">
+                                    <div class="toggle-button" id="autoselect">
+                                    <button type="button" disabled></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mem active" id="im" style="text-align:center;">
+                                <a id="intmem" class="noselect" href="#">
+                                    <img src="../img/memory/internal.png" width="90px" height="90px" />
+                                    <br>
+                                    <div id="mem"> MEMOIRE INTERNE </div>
+                                    <div>Utilisée : <span id="int_used"></span> Go</div>
+                                    <div>Disponible : <span id="int_avail"></span> Go</div>
+                                    <div class="progress">
+                                        <div id="jaugeIM" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="10" aria-valuemax="100" style="width: 0%;min-width: 10%;">
+                                            0%
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mem" id="sm" style="text-align:center;">
+                                <a id="sdmem" class="noselect" href="#">
+                                    <img id="imgsd" src="../img/memory/sd.png" width="90px" height="90px" style="display:none" />
+                                    <img id="imgnosd" src="../img/memory/nosd.png" width="90px" height="90px" />
+                                    <br>
+                                    <div id="sd"> PAS DE CARTE SD </div>
+                                    <div id="sd_info" style="display:none">
+                                        <div>Utilisée : <span id="sd_used"></span> Go</div>
+                                        <div>Disponible : <span id="sd_avail"></span> Go</div>
+                                        <div class="progress" id="progressSD">
+                                            <div id="jaugeSM" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="10" aria-valuemax="100" style="width: 0%;min-width: 10%;">
+                                                0%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Mon Sequoia</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div id="calibinfo" class="row" style="display:none">
+                                <div id="calibalert" class="alert alert-danger col-xs-12 col-md-12 col-lg-12 col-sm-12" role="alert">
+                                    <span style="display:inline-block; vertical-align:middle; padding-top:1.7%">
+											<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;&nbsp;CALIBRATION REQUISE !
+                                    </span>
+                                    <button id="calibbtn" type='button' class="btn btn-primary pull-right">Lancer la calibration</button>
+                                </div>
+                            </div>
+                            <div class="row" id="sequoia-msg">
+                                <p id="action-sequoia"></p>
+                            </div>
+                            <hr>
+                            <div id="sequoia-container">
+                                <div id="sequoia">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <img id="g0" src="img/cameras/g0.png" style="display:none;" />
+                                                <img id="g1" src="img/cameras/g1.png" />
+                                            </td>
+                                            <td>
+                                                <img id="re0" src="img/cameras/re0.png" style="display:none;" />
+                                                <img id="re1" src="img/cameras/re1.png" />
+                                            </td>
+                                            <td rowspan="2">
+                                                <img id="rgb0" src="img/cameras/rgb0.png" style="display:none;" />
+                                                <img id="rgb1" src="img/cameras/rgb1.png" />
+                                            </td>
+                                            <td id="green" rowspan="2">
+                                                <img id="captureP" class="btn-capture" src="img/cameras/capture.png" style="display:none;" data-toggle="tooltip" title="Arrêter la capture" />
+                                                <img id="onP" class="btn-capture" src="img/cameras/on.png" data-toggle="tooltip" title="Lancer la capture" />
+                                                <img id="offP" data-toggle="tooltip" title="CALIBRATION REQUISE" class="btn-capture" src="img/cameras/off.png" style="display:none;" />
+                                                <img id="calibrationP" data-toggle="tooltip" title="CALIBRATION REQUISE" class="btn-capture" src="img/cameras/calibration.png" style="display:none;" />
+                                                <img id="snapshotP" class="btn-capture" src="img/cameras/snapshot.png" style="display:none;" data-toggle="tooltip" title="Arrêter la capture" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img id="r0" src="img/cameras/r0.png" style="display:none;" />
+                                                <img id="r1" src="img/cameras/r1.png" />
+                                            </td>
+                                            <td>
+                                                <img id="nir0" src="img/cameras/nir0.png" style="display:none;" />
+                                                <img id="nir1" src="img/cameras/nir1.png" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div id="sound">
+                                        <img src="img/capture_mode/sound.png" id="sound-ico" data-toggle="tooltip" title="Mute" style="width:100%;height:100%" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="calibModal" tabindex="-1" data-target="#calibModal" role="dialog" aria-labelledby="calibModalLabel">
+                <div class="modal-dialog " id="calibDialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="calibModalLabel">Calibration</h4>
+                        </div>
+                        <div class="modal-body" id="calibration">
+                            <div class="row">
+                                <div id="calibrate" class="row" style="text-align: center;color: #AB0916; border: 1px solid #ddd; border-radius: 4px; margin-left: 25px; margin-bottom: 20px; padding-top: 15px; padding-bottom: 15px;">
+                                    <span id="titleModalCalibrate">Veuillez calibrer votre Sequoia</span>
+                                    <br>
+                                    <div id="yaw">
+                                        <span class="yaw">YAW</span>
+                                        <br>
+                                        <img class="yaw" src="img/calibration/yaw.png" width="95%">
+                                        <br>
+                                        <br>
+                                    </div>
+                                    <div id="pitch">
+                                        <span class="pitch">PITCH</span>
+                                        <br>
+                                        <img class="pitch" src="img/calibration/pitch.png" width="95%">
+                                        <br>
+                                        <br>
+                                    </div>
+                                    <div id="roll">
+                                        <span class="roll">ROLL</span>
+                                        <br>
+                                        <img class="roll" src="img/calibration/roll.png" width="95%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btnstopcalibration" class="btn btn-danger" data-dismiss="modal">Arrêter la calibration</button>
+                            <button type="button" style="display: none" id="btnclosecalibration" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade timelapse-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Calcul automatique d'intervalle de timelapse</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" id="tCalcul">
+                                <div class="form-group">
+                                    <label for="speedT" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                        Vitesse (m/s)
+                                    </label>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <input type="text" id="speedT" name="speedT" placeholder="vitesse (m/s)" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="heightT" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                        Altitude (m)
+                                    </label>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <input type="text" id="heightT" name="heightT" placeholder="altitude (m)" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="overlapT" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                        Taux de recouvrement voulu (recommandé 80%)
+                                    </label>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <input type="text" id="overlapT" name="overlapT" placeholder="taux de recouvrement (%)" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="alert alert-success" style="display:none" id="resultTimelapseok" role="alert">
+                                        <p>L'intervalle de timelapse est de <strong><span id="tlcalculated" class="resultT"></span>s</strong></p>
+                                        <p>L'écartement des lignes de vol est de <strong><span id="trackSpacingT"></span>m</strong></p>
+                                        <p>Cette configuration utilisera <strong><span id="dataVolumeT"></span>MB de data par hectare</strong></p>
+                                    </div>
+                                    <div class="alert alert-danger" style="display:none" id="resultTimelapseko" role="alert">
+                                        L'intervalle de timelapse est de <strong><span class="resultT"></span>s</strong> l'intervalle doit être supérieur ou égal à <span id="mintl">1</span> !
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="applyT" style="display: none" class="btn btn-primary">Apply</button>
+                            <button type="button" id="calculTimelapse" class="btn btn-danger">Calcul</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <div class="modal fade gps-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Calcul automatique d'intervalle de distance</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" id="gCalcul">
+                                <div class="form-group">
+                                    <label for="heightG" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                        Altitude (m)
+                                    </label>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <input type="text" id="heightG" name="heightG" placeholder="altitude (m)" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="overlapG" class="col-xs-12 col-sm-4 col-md-4 col-lg-4 control-label">
+                                        Taux de recouvrement voulu (recommandé 80%)
+                                    </label>
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <input type="text" id="overlapG" name="overlapG" placeholder="taux de recouvrement (%)" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="alert alert-success" style="display:none" id="resultGpsok" role="alert">
+                                        <p>La distance entre chaque capture est de <strong><span id="gpscalculated" class="resultG"></span>m</strong></p>
+                                        <p>L'écartement des lignes de vol est de <strong><span id="trackSpacingG"></span>m</strong></p>
+                                        <p>Cette configuration utilisera <strong><span id="dataVolumeG"></span>MB de data par hectare</strong></p>
+                                    </div>
+                                    <div class="alert alert-danger" style="display:none" id="resultGpsko" role="alert">
+                                        <p>La distance entre chaque capture est de <strong><span class="resultG"></span>m</strong> la distance doit être supérieure ou égale à 5 !</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="applyG" style="display: none" class="btn btn-primary">Apply</button>
+                            <button type="button" id="calculGps" class="btn btn-danger">Calcul</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+            <div class="modal fade" id="bugmodal" tabindex="-1" data-target="#bugmodal" role="dialog">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Crash report !</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Quelque chose à crashé dans votre Sequoia !</p>
+                            <p>Voulez-vous télécharger le rapport de crash '<strong id="bugfilename"></strong>' afin de l'envoyer au support technique Parrot ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="dlbugreport" name="" data-dismiss="modal">Télécharger</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="radiometric-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Calibration radiométrique</h4>
+                        </div>
+                        <div class="modal-body" id="radiometric-body">
+                            <div id="radiometric-prez">
+                                <p>Pour obtenir des données de réflection précises, les images de la mire de réflectance doivent être prises en étant positionné au dessus de la mire de réflectance, juste avant et juste après chaque vol.</p>
+                                <p>Pour la calibration radiométrique, positionnez la mire de réflectance à plat sur le sol et assurez vous qu'il n'y ai aucune ombre projetée sur elle, qu'elle reçoive directement la lumière du soleil ou du ciel, et que l'angle de vue de la caméra sur la mire de reflectance soit le plus perpendiculaire possible (sans ombre). Evitez également qu'un reflet du soleil ne touche la mire de réflectance. Le mieux étant de positionner son ombre juste à droite ou à gauche de la mire (Voir image ci-dessous).</p>
+                                <div style="text-align:center"><img src="../img/calibration/camera_placement.jpg" style="margin-left:auto;margin-right:auto" /></div>
+                                <br/>
+                                <p>Une fois que vous êtes prêt, vous pouvez commencer en appuyant sur le bouton <strong>Commencer</strong>. Vous aurez alors 10 secondes pour vous positionner avant le début de la calibration.</p>
+                                <p>Les images de la calibration radiométrique seront disponibles sur la page Galerie, dans le dernier dossier créé.</p>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div id="radiometric-starting" style="float:left;padding-top:7px">
+                                <strong>La calibration radiométrique commence dans <span id="calibsec">10</span>s</strong>
+                            </div>
+                            <div id="radiometric-running" style="float:left;padding-top:7px">
+                                <strong>Calibration radiométrique en cours</strong>
+                            </div>
+                            <div id="radiometric-done" style="float:left;padding-top:7px;color:#008040">
+                                <strong>Calibration radiométrique terminée !</strong> <a id="urlgallery" href="#">Vérifier les images</a>
+                            </div>
+                            <button type="button" class="btn btn-primary" id="launch-radiometric" name="">Commencer</button>
+                            <button type="button" class="btn btn-danger" id="cancel-radiometric" data-dismiss="modal">Annuler</button>
+                            <button type="button" class="btn btn-default" id="close-radiometric" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <div class="footer navbar-fixed-bottom">
+            <div class="row no-padding">
+                <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                    Version: <span id="version">0.0.0</span>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                    S/N: <span id="serialnumber"> </span>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                    <a target="_blank" href="license.html" id="termsofuse">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Latest compiled and minified JQuery -->
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery.WebSocket.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sd.js?version=1.5"></script>
+    <script src="js/config.js?version=1.5"></script>
+
+</body>
+
+</html>

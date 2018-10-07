@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Parrot Sequoia</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/style.css?version=1.5">
+    <link rel="shortcut icon" href="../myico.ico" type="image/x-icon" />
+    <meta content="text/html, text/plain" charset="x-user-defined">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="logo-container" href="../index.html" style="float:left"><img id="logo" src="../img/LOGO_SEQUOIA.png" /></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="../index.html"> Home </a></li>
+                    <li><a href="status.html"> Status </a></li>
+                    <li class="active"><a href="gallery.html"> Gallery <span class="sr-only">(current)</span> </a></li>
+                    <li><a target="_blank" href="../help/index.html"> Help </a></li>
+                    <li><a href="settings.html"> Settings </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button id="unmount" style="display: none" class="btn btn-primary navbar-btn" href="index.html">Eject SD card&nbsp;&nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span></button>
+                    </li>
+                    <li>
+                        <button id="powerOff" class="btn btn-primary navbar-btn" href="index.html">Power Off&nbsp;&nbsp;<span class="glyphicon glyphicon-off" aria-hidden="true"></span></button>
+                    </li>
+                    <li class="dropdown" id="dropL">
+                        <a href="#" onclick="return false;" id="selectLanguage" class="dropdown-toggle noselect" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded=false> EN&nbsp;&nbsp;<img src="../img/traduction/usa.svg" class="flag"/> <span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="language" href="galleryfr.html"> FR&nbsp;&nbsp;<img src="../img/traduction/france.svg" class="flag"/> </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!--<div id="nogpsfix" class="alert alert-warning col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xs-offset-0 col-sm-offset-2 col-md-offset-3 col-lg-offset-4" style="display:none;text-align:center;">
+        <img style="height:30px" src="../img/instruments/nogpsfix.png" /><span>&nbsp;&nbsp;<strong>NO GPS SIGNAL</strong></span>
+    </div>-->
+    <div class="row" style="margin-right:2px!important;margin-left:2px!important">
+        <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 mem gmem active" id="im" style="text-align:center">
+            <a id="intmem">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding-right:0px;padding-left:0px">
+                    <img src="../img/memory/internal.png" width="80px" height="80px" />
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="padding-right:0px;padding-left:0px">
+                    <div id="mem"> INTERNAL MEMORY </div>
+                    <div>Used: <span id="int_used"></span> GB</div>
+                    <div>Available: <span id="int_avail"></span> GB</div>
+                    <div class="progress">
+                        <div id="jaugeIM" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="10" aria-valuemax="100" style="width: 10%;min-width: 10%;">
+                            0%
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 mem gmem" id="sm" style="text-align:center;">
+            <a id="sdmem">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding-right:0px;padding-left:0px">
+                    <img class="imgsd" src="../img/memory/sd.png" width="80px" height="80px" style="display:none" />
+                    <img class="imgnosd" src="../img/memory/nosd.png" width="80px" height="80px" />
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="padding-right:0px;padding-left:0px">
+                    <div id="sd"> NO SD CARD </div>
+                    <div id="sd_info" style="display:none">
+                        <div>Used: <span id="sd_used"></span> GB</div>
+                        <div>Available: <span id="sd_avail"></span> GB</div>
+                        <div class="progress" id="progressSD">
+                            <div id="jaugeSM" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="10" aria-valuemax="100" style="width: 0%;min-width: 10%;">
+                                0%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-2 col-sm-2 pointer-cursor" style="padding-right:0px;padding-left:0px;text-align:center" id="im-mini">
+            <img src="../img/memory/interne-mini.png" width="50px" height="50px" />
+        </div>
+        <div class="col-xs-2 col-sm-2 showi pointer-cursor" style="padding-right:0px;padding-left:0px;text-align:center" id="sm-mini">
+            <img src="../img/memory/sd-mini.png" class="imgsd" width="50px" height="50px" />
+            <img src="../img/memory/nosd-mini.png" class="imgnosd" style="display:none" width="50px" height="50px" />
+        </div>
+    </div>
+    <div class="row" style="padding-top:0px;background-color:lightgrey;margin-top:0px;margin-right:2px!important;margin-left:2px!important">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-right:0px;padding-left:0px;text-align:center" id="folderChoice">
+
+            <div class="col-xs-12">
+                <div style="margin-right:10px;float:left;padding-top:15px"><strong>Folder</strong></div>
+                <div class="btn-group" style="float:left;padding-top:8px">
+                    <button type="button" class="btn btn-default" id="firstFolder">empty</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu scrollable-menu" id="list">
+                    </ul>
+                </div>
+                <div style="float:left;padding-top:15px;margin-left:10px"><span id="nbPic"></span><span>&nbsp;pictures</span></div>
+                <div style="float:left;padding-top:8px;margin-left:15px"><img id="" element="" source="" folder="" class="xdownload pointer-cursor" data-toggle="tooltip" title="Download folder" src="../img/gallery/download.png"></div>
+                <div style="float:left;padding-top:8px;margin-left:15px"><img id="" element="" source="" folder="" class="xdelete pointer-cursor" data-toggle="tooltip" title="Delete folder" src="../img/gallery/delete.png"></div>
+                <div style="float:right;padding-top:8px">
+                    <button id="deleteallbtn" type='button' class="btn btn-primary pull-right" title="Delete all pictures and folders">Delete all...</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="filters" style="padding-right:0px;padding-left:0px;text-align:center;display:inline-blocks">
+            <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 col-xs-offset-0 col-md-offset-0 col-sm-offset-0 col-lg-offset-0 item" style="padding-right:0px;padding-left:0px">
+                <a id="all" style="text-decoration: none" class="noselect active pointer-cursor filter">All</a>
+            </div>
+            <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 col-xs-offset-0 col-md-offset-0 col-sm-offset-0 col-lg-offset-0 item" style="padding-right:0px;padding-left:0px">
+                <a id="rgb" style="text-decoration: none" class="noselect pointer-cursor filter">RGB</a>
+            </div>
+            <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 col-xs-offset-0 col-md-offset-0 col-sm-offset-0 col-lg-offset-0 item" style="padding-right:0px;padding-left:0px">
+                <a id="red" style="text-decoration: none" class="noselect pointer-cursor filter">Red</a>
+            </div>
+            <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 col-xs-offset-0 col-md-offset-0 col-sm-offset-0 col-lg-offset-0 item" style="padding-right:0px;padding-left:0px">
+                <a id="gre" style="text-decoration: none" class="noselect pointer-cursor filter">Green</a>
+            </div>
+            <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 col-xs-offset-0 col-md-offset-0 col-sm-offset-0 col-lg-offset-0 item" style="padding-right:0px;padding-left:0px">
+                <a id="reg" style="text-decoration: none" class="noselect pointer-cursor filter">Red-edge</a>
+            </div>
+            <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2 col-xs-offset-0 col-md-offset-0 col-sm-offset-0 col-lg-offset-0 item" style="padding-right:0px;padding-left:0px">
+                <a id="nir" style="text-decoration: none" class="noselect pointer-cursor filter">Near infra-red</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background-color: darkgrey;text-align:center;color:white;height: 40px;padding-top:10px;margin-right:2px!important;margin-left:2px!important">Pictures</div>
+    <div class="row" id="dispPic" style="margin-right:2px!important;margin-left:2px!important">
+
+    </div>
+    <div class="row" id="pp" style="margin-right:2px!important;margin-left:2px!important">
+        <ul class="pages"></ul>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-photo" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="photoTitle">Picture</h4>
+                </div>
+                <div class="modal-body row" id="pmb">
+                    <div class="row" id="modal-container">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 navig_container"><img class="img-responsive navig center-block" id="previous" src="../img/gallery/empty.png" /></div>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" id="photoZoom" dl="' + url + '">
+                            <div id="loading"><img style="width:100px;height:100px;margin:auto" src="/img/gallery/loading.gif" alt></div>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 navig_container"><img class="img-responsive navig center-block" id="next" src="../img/gallery/empty.png" /></div>
+                    </div>
+                    <div class="row" style="text-align:center; padding-top:5px"><i></i></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="dlpic" class="btn btn-primary">Download <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
+                    <button type="button" id="delPic" data-dismiss="modal" class="btn btn-danger">Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-xs" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Picture</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" id="textDeleteModal">Do you confirm you want to delete it</div>
+                    <br>
+                    <div class="row">
+                        <button type="button" id="cancelDelete" class="btn btn-warning" data-dismiss="modal" aria-label="Cancel">Cancel</button>
+                        <button type="button" folder="" source="" element="" idPic="" id="confirmDelete" class="btn btn-danger" data-dismiss="modal" aria-label="Delete">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="bugmodal" tabindex="-1" data-target="#bugmodal" role="dialog">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Crash report !</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Something crashed on your Sequoia !</p>
+                    <p>Would you like to download the crash report '<strong id="bugfilename"></strong>' in order to send it to Parrot technical support ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="dlbugreport" name="" data-dismiss="modal">Download</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="DeleteAllModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-target="#deleteallmodal">
+        <div class="modal-dialog modal-xs" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Delete all pictures and folders</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" id="textDeleteAllModal">Do you confirm you want to delete all pictures and folders?</div>
+                    <br>
+                    <div class="row">
+                        <button type="button" id="cancelDeleteAll" class="btn btn-warning" data-dismiss="modal" aria-label="Cancel">Candel</button>
+                        <button type="button" source="" id="confirmDeleteAll" class="btn btn-danger" data-dismiss="modal" aria-label="Delete">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer navbar-fixed-bottom">
+        <div class="row no-padding">
+            <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                Version: <span id="version">0.0.0</span>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                S/N: <span id="serialnumber"> </span>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                <a target="_blank" href="../license.html" id="termsofuse">Terms of use</a>
+            </div>
+        </div>
+    </div>
+    <!-- Latest compiled and minified JQuery -->
+    <script src="../js/jquery-1.12.0.min.js"></script>
+    <script src="../js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../js/jquery.WebSocket.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/tiff.min.js"></script>
+    <script src="../js/sd.js?version=1.5"></script>
+    <script src="../js/exif.js"></script>
+    <script src="../js/bootstrap-paginator.min.js"></script>
+    <script src="../js/gallery.js?version=1.5"></script>
+</body>
+
+</html>

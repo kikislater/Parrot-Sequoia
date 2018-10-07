@@ -1,0 +1,10 @@
+N boxinit     (init)                           : process 'ulog_clear', pid 2593 exited
+I PLRM_imaging(palermo/Img_FSM)                : ULOGCAT_PERSIST_FLUSH:
+I PLRM_imaging(palermo/MainLoop)               : ulogcat pomp client disconnected
+I PLRM_server (palermo/Img_FSM)                : New status: 0x00000000
+N boxinit     (init)                           : service 'ulog_session' pid 230 is being killed
+N boxinit     (init)                           : process 'ulog_session', pid 230 exited
+N boxinit     (init)                           : process 'ulog_session' killing any children in process group
+N boxinit     (init)                           : service 'palermo' pid 208 is being killed
+N boxinit     (init)                           : process 'palermo', pid 208 exited
+N boxinit     (init)                           : process 'palermo' killing any children in process group

@@ -1,0 +1,15 @@
+
+7[r[999;999H[6n8root@siciliaboard:/ # iw wlan0 link
+
+Connected to 08:62:66:98:2b:50 (on wlan0)
+	SSID: ASUS
+	freq: 2437
+	RX: 47855558 bytes (33726 packets)
+	TX: 78021530 bytes (54984 packets)
+	signal: -17 dBm
+	tx bitrate: 72.2 MBit/s MCS 7 short GI
+
+	bss flags:	short-preamble short-slot-time
+	dtim period:	3
+	beacon int:	100
+7[r[999;999H[6n8root@siciliaboard:/ # 

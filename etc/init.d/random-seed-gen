@@ -1,0 +1,19 @@
+#!/bin/sh
+random_seed=/data/random-seed
+
+# get pool size
+poolfile=/proc/sys/kernel/random/poolsize
+bytes=512
+if [ -r "${poolfile}" ]; then
+    bytes=$(cat "${poolfile}")
+fi
+
+# Carry a random seed from start-up to start-up
+# Load and then save the whole entropy pool
+if [ -s "${random_seed}" ]; then
+    cat "${random_seed}" >/dev/urandom
+fi
+touch ${random_seed}
+chmod 600 ${random_seed}
+dd if=/dev/urandom of=${random_seed} count=1 bs=${bytes}
+

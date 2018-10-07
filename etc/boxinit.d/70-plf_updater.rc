@@ -1,0 +1,5 @@
+
+service plf_updater /usr/bin/plf_updater
+    oneshot
+    disabled
+

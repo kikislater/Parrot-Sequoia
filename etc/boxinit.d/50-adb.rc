@@ -1,0 +1,9 @@
+# load adb server
+
+# It is launched through the usb gadget configuration
+service adbd /usr/bin/adbd
+    class main
+    user root
+    oneshot
+    disabled
+

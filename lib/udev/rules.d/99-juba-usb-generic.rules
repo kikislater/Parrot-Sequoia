@@ -1,0 +1,12 @@
+# This file contains the rules for generic USB devices -*- mode:sh -*-
+# skip rules on already handled devices
+ENV{JUBA_STR_DEV_TYPE}=="usb-generic", GOTO="juba_usb_generic_start"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="juba_usb_generic_end"
+
+LABEL="juba_usb_generic_start"
+
+# catch all usb devices (ignore usb hub) not already catched.
+ACTION=="add|change", ENV{DEVTYPE}=="usb_device", ATTR{removable}!="fixed", ATTR{bDeviceClass}!="09", ENV{JUBA_STR_DEV_TYPE}="usb-generic", TAG+="JUBA", IMPORT{program}="juba_usb"
+
+LABEL="juba_usb_generic_end"
+

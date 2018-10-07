@@ -1,0 +1,11 @@
+
+service random_seed_gen /bin/sh /etc/init.d/random-seed-gen
+    oneshot
+    disabled
+
+on boot
+    start random_seed_gen
+
+on property:init.svc.shutdown=running
+    start random_seed_gen
+

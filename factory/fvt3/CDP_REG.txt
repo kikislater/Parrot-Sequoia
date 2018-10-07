@@ -1,0 +1,10 @@
+#total : 1
+#total clusters: 0
+#DARK: 0
+#VERY DARK: 0
+#BRIGHT: 0
+#VERY BRIGHT: 1
+#-----------------------------
+#col   row  code type
+   28   610 0 VERY_BRIGHT
+#-----------------------------

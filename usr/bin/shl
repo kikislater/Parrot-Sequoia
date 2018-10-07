@@ -1,0 +1,4 @@
+#!/bin/sh
+# Launch a login shell (used for telnetd as we cannot pass options)
+/bin/sh -l $*
+#END

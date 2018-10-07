@@ -1,0 +1,17 @@
+on post-fs-data
+	# create temp dnsmaq directory
+	mkdir /var/run/dnsmasq/ 0777
+	# create misc directory where dnsmasq put its leases
+	mkdir /var/lib/misc 0777
+
+service dnsmasq_wlan0 /usr/bin/dnsmasq_wrapper.sh wlan0
+	class main
+	user root
+	group inet
+	disabled
+
+service dnsmasq_rndis0 /usr/bin/dnsmasq_wrapper.sh rndis0 noleasefile
+	class main
+	user root
+	group inet
+	disabled

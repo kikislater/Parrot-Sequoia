@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#create groups of priorities
+mkdir /dev/cpuctl
+mount -t cgroup -ocpu none /dev/cpuctl
+#mkdir /dev/cpuctl/video
+# reserve most cpu for video tasks
+#touch /dev/cpuctl/video/cpu.shares
+#echo "2048" > /dev/cpuctl/video/cpu.shares
+# group others
+mkdir /dev/cpuctl/others
+touch /dev/cpuctl/others/cpu.shares
+echo "10000" >/dev/cpuctl/others/cpu.shares
+touch /dev/cpuctl/others/tasks
+for task in $(cat /dev/cpuctl/tasks)
+do
+echo $task > /dev/cpuctl/others/tasks
+done
+

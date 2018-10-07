@@ -1,0 +1,69 @@
+# Parrot Real-time Optimizer Ultimate Tool -*- mode:sh -*-
+#
+# This file is a table mapping thread names to priorities
+#
+# Each line should be formatted as follows:
+# <thread_name>,<prio>,<group>
+#
+# <thread_name> : thread name
+# <priority>    : -(1+prio) (SCHED_RR) or 20+niceness (SCHED_OTHER)
+# <group>       : cgroup name or an empty string
+
+# Parrot main process [original priority = rt 33]
+
+dragon-prog,0,
+Thread ms5607,-14,
+thread_us,-14,
+hal_colibry,-30,
+
+v4l2:/dev/video*,-19,
+h264_venc,-19,
+libgps_thread,-1,
+thread_dxo,-4,
+thread_videoWindowSetter,-18,
+thread_video_live,-4,
+Vision,-10,
+VideoMain,-4,
+
+ParrotAL_UART*,-20,
+
+PAL_TIMER,5,
+ParrotAL_TIMER_*,10,
+ParrotAL_TIMER,10,
+Ntwk inbox,10,
+Cmds msgbox,10,
+Behaviour,10,
+ARNtwkSend,10,
+ARNtwkRecv,10,
+CmdsSend,10,
+CmdsRecv,10,
+ARStreamVidSend,10,
+ARStreamVidRecv,10,
+Ntwk msgbox,10,
+
+CKCM SERVER,25,
+CKCM FORWARDER,25,
+ckcmd,25,
+NtwkDiscPublish,25,
+NtwkDiscConnect,25,
+video_fix,30,
+RoadPlan,25,
+NetworkMonitor,25,
+Blackbox,28,
+MassStorage,28,
+photo_jpsumo,29,
+video_rec,15,
+Juba monitor,25,
+sup log,28,
+Thread leds,28,
+NetworkMonitor,25,
+Temperature,25,
+Photo Capture,29,
+Photo Record,29,
+Photo Record DNG,29,
+Mario,30,
+Mavlink*,28,
+Behaviour Mavli*,28,
+dragonprog_vision_start,25,
+jbd_run,25,
+reset_settings,30,

@@ -1,0 +1,554 @@
+pcba_tester.sh v1.0
+[32m[OK] p7 temperature[0m
+[32m[OK] p7mu temperature[0m
+[32m[OK] ddr temperature[0m
+[32m[OK] wifi temperature[0m
+[32m[OK] IMU body accelerometer[0m
+[32m[OK] IMU body gyrometer[0m
+[32m[OK] IMU body temperature[0m
+[32m[OK] IMU body heater[0m
+[32m[OK] eMMC capacity[0m
+[32m[OK] camera green[0m
+[32m[OK] camera red[0m
+[32m[OK] camera red-edge[0m
+[32m[OK] camera near-infrared[0m
+[31m[NG] magneto body is missing[0m
+[32m[OK] magneto body2[0m
+[32m[OK] TC358746A[0m
+[32m[OK] WIFI[0m
+[    0.000000] Booting Linux on physical CPU 0
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Linux version 3.4.11-02453-g109acba (yalmehio@FR-P-221-00) (gcc version 4.6.3 (Sourcery CodeBench Lite 2012.03-57) ) #1 SMP PREEMPT Fri Jul 29 11:19:50 CEST 2016
+[    0.000000] CPU: ARMv7 Processor [412fc097] revision 7 (ARMv7), cr=10c53c7d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: Sicilia board
+[    0.000000] P7 per device DMA memory regions:
+[    0.000000] 	bff00000:bfffffff: ramoops.0
+[    0.000000] 	00000000:0b63ffff: avicam.0
+[    0.000000] 	00000000:0bbfffff: hx280-venc.0
+[    0.000000] 	bfe00000:bfefffff: ci_hdrc.0
+[    0.000000] 	bfd00000:bfdfffff: ci_hdrc.1
+[    0.000000] Memory policy: ECC disabled, Data cache writealloc
+[    0.000000] On node 0 totalpages: 166400
+[    0.000000] free_area_init_node: node 0, pgdat 808f4d80, node_mem_map 80eaf000
+[    0.000000]   Normal zone: 2048 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 164352 pages, LIFO batch:31
+[    0.000000] PERCPU: Embedded 8 pages/cpu @816bd000 s12160 r8192 d12416 u32768
+[    0.000000] pcpu-alloc: s12160 r8192 d12416 u32768 alloc=8*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 164352
+[    0.000000] Kernel command line:  boxinit.serialno=P742P44U11000021D2D0  calib=0x001C003C console=ttyPA0,115200 loglevel=8 root=/dev/mmcblk0p4 rootfstype=ext4 rootwait parrot_force_usbd boxinit.debuggable=1 boxinit.application=PA_SICILIA boxinit.plateform=PTA_P7 androidboot.bootloader=ecos-bootloader-p7-start-344-g5f4bbf8 
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 650MB = 650MB total
+[    0.000000] Memory: 641404k/641404k available, 407172k reserved, 0K highmem
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     vmalloc : 0xc0800000 - 0xff000000   (1000 MB)
+[    0.000000]     lowmem  : 0x80000000 - 0xc0000000   (1024 MB)
+[    0.000000]     modules : 0x7f000000 - 0x80000000   (  16 MB)
+[    0.000000]       .text : 0x80008000 - 0x80842220   (8425 kB)
+[    0.000000]       .init : 0x80843000 - 0x8087bf80   ( 228 kB)
+[    0.000000]       .data : 0x8087c000 - 0x808f7260   ( 493 kB)
+[    0.000000]        .bss : 0x808f7284 - 0x80eae548   (5853 kB)
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] 	Additional per-CPU info printed with stalls.
+[    0.000000] NR_IRQS:202
+[    0.000000] p7: IRQ setup
+[    0.000000] p7: found Parrot7 chip v3 [0x50373032]
+[    0.000000] p7: tick setup
+[    0.000000] sched_clock: 32 bits at 97MHz, resolution 10ns, wraps every 44050ms
+[    0.000000] Console: colour dummy device 80x30
+[    0.000000] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.000000] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.000000] ... MAX_LOCK_DEPTH:          48
+[    0.000000] ... MAX_LOCKDEP_KEYS:        8191
+[    0.000000] ... CLASSHASH_SIZE:          4096
+[    0.000000] ... MAX_LOCKDEP_ENTRIES:     16384
+[    0.000000] ... MAX_LOCKDEP_CHAINS:      32768
+[    0.000000] ... CHAINHASH_SIZE:          16384
+[    0.000000]  memory used by lock dependency info: 3679 kB
+[    0.000000]  per task-struct memory footprint: 1152 bytes
+[    0.150251] Calibrating delay using timer specific routine.. 1564.15 BogoMIPS (lpj=7820758)
+[    0.150316] pid_max: default: 32768 minimum: 301
+[    0.152278] Mount-cache hash table entries: 512
+[    0.157906] Initializing cgroup subsys debug
+[    0.157964] Initializing cgroup subsys cpuacct
+[    0.157990] Initializing cgroup subsys freezer
+[    0.158467] CPU: Testing write buffer coherency: ok
+[    0.160446] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.160797] hw perfevents: enabled with ARMv7 Cortex-A9 PMU driver, 7 counters available
+[    0.161067] Setting up static identity map for 0x805ea688 - 0x805ea6e0
+[    0.161098] p7: powering built-in self test off
+[    0.161151] p7: setting L2C latencies to tag=00000020 data=00000020.
+[    0.161344] L310 cache controller enabled
+[    0.161370] l2x0: 16 ways, CACHE_ID 0x410004c5, AUX_CTRL 0x72450801, Cache size: 524288 B
+[    0.261863] CPU1: Booted secondary processor
+[    0.410683] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.411054] Brought up 2 CPUs
+[    0.411072] SMP: Total of 2 processors activated (3124.20 BogoMIPS).
+[    0.413298] devtmpfs: initialized
+[    0.440403] pinctrl core: initialized pinctrl subsystem
+[    0.442146] dummy: 
+[    0.443283] NET: Registered protocol family 16
+[    0.446047] i2c-core: driver [p7mu] using legacy suspend method
+[    0.446062] i2c-core: driver [p7mu] using legacy resume method
+[    0.446698] Ram Oops registered with memory from bff00000-bfffffff
+[    0.446710] p7: machine setup
+[    0.446720] p7: registering p7-ion.0...
+[    0.447273] p7: registering p7-pinctrl.0...
+[    0.448253] p7-pinctrl p7-pinctrl.0: loaded
+[    0.448335] p7: registering user_gpio.-1...
+[    0.448544] p7: registering pl330-dma.0...
+[    0.448852] amba pl330-dma.0: mapped microcode memory region [00100000:00101fff]
+[    0.449684] p7: registering p7-gpio.0...
+[    0.450319] gpiochip_add: registered GPIOs 0 to 219 on device: p7-gpio
+[    0.450397] p7-gpio p7-gpio.0: GPIO driver initialized
+[    0.450461] p7: config pin 71 (SPI_09b__GPIO_071__PWM_15)
+[    0.450536] p7: config pin 72 (SPI_10b__GPIO_072)
+[    0.450577] p7: config pin 73 (SPI_11b__GPIO_073__I2C_SECURE_CLKa)
+[    0.450616] p7: config pin 74 (SPI_12b__GPIO_074)
+[    0.450644] sicilia rev 4
+[    0.450656] p7: registering px-uart.0...
+[    0.450947] p7: registering px-uart.0 I/O pins...
+[    0.450961] p7:	install UART_0_RX I/O pin function
+[    0.450971] p7:	install UART_0_RX__GPIO_055 I/O pin settings
+[    0.450981] p7:	install UART_0_TX I/O pin function
+[    0.450990] p7:	install UART_0_TX__GPIO_056 I/O pin settings
+[    0.451012] hw_info : uart 0 rts/cts 0
+[    0.451848] p7: registering p7-i2cm.0 I/O pins...
+[    0.451862] p7:	install I2C_0_CLK I/O pin function
+[    0.451873] p7:	install I2C_0_CLK__GPIO_064__I2C_0_SL_CLK I/O pin settings
+[    0.451884] p7:	install I2C_0_DAT I/O pin function
+[    0.451894] p7:	install I2C_0_DAT__GPIO_063__I2C_0_SL_DAT I/O pin settings
+[    0.451936] p7: registering p7-i2cm.0...
+[    0.452785] p7-i2cm p7-i2cm.0: controller probe successfully
+[    0.453034] p7-i2cm.0 debugfs interface registered
+[    0.453088] p7: registering p7-i2cm.1 I/O pins...
+[    0.453100] p7:	install I2C_1_CLK I/O pin function
+[    0.453111] p7:	install I2C_1_CLK__GPIO_062__I2C_1_SL_CLK I/O pin settings
+[    0.453121] p7:	install I2C_1_DAT I/O pin function
+[    0.453130] p7:	install I2C_1_DAT__GPIO_061__I2C_1_SL_DAT I/O pin settings
+[    0.453152] p7: registering p7-i2cm.1...
+[    0.453837] p7-i2cm p7-i2cm.1: controller probe successfully
+[    0.454015] p7-i2cm.1 debugfs interface registered
+[    0.454058] p7: registering p7-i2cm.2 I/O pins...
+[    0.454069] p7:	install I2C_2_CLK I/O pin function
+[    0.454079] p7:	install I2C_2_CLK__GPIO_060__I2C_2_SL_CLK I/O pin settings
+[    0.454089] p7:	install I2C_2_DAT I/O pin function
+[    0.454098] p7:	install I2C_2_DAT__GPIO_059__I2C_2_SL_DAT I/O pin settings
+[    0.454119] p7: registering p7-i2cm.2...
+[    0.454788] p7-i2cm p7-i2cm.2: controller probe successfully
+[    0.454965] p7-i2cm.2 debugfs interface registered
+[    0.455145] p7: registering p7mu 0-0031...
+[    0.455169] p7: registering 0-0031 I/O pins...
+[    0.455181] p7:	install REBOOT_P7MU I/O pin function
+[    0.456374] p7mu 0-0031: 32 Mhz clock do not match wanted int got ext
+[    0.456586] p7mu 0-0031: boot reason: first boot
+[    0.456794] p7mu 0-0031: p7mu event before reboot : 
+[    0.458501] p7mu 0-0031: p7mu irq 160 182
+[    0.459698] gpiochip_add: registered GPIOs 220 to 224 on device: p7mu-gpio
+[    0.460397] p7mu 0-0031: attached device v2 to I2C bus p7-i2cm.0
+[    0.460776] p7: config pin 49 (GPIO_049)
+[    0.460815] p7: config pin 50 (GPIO_050)
+[    0.461361] p7: registering switch-voltage.3...
+[    0.461559] p7: registering acs3-sdhci.0...
+[    0.461781] p7: registering acs3-sdhci.0 I/O pins...
+[    0.461794] p7:	install SD_0_CLK I/O pin function
+[    0.461804] p7:	install SD_0_CLK__GPIO_021 I/O pin settings
+[    0.461814] p7:	install SD_0_CMD I/O pin function
+[    0.461823] p7:	install SD_0_CMD__GPIO_022 I/O pin settings
+[    0.461832] p7:	install SD_0_DAT00 I/O pin function
+[    0.461842] p7:	install SD_0_DAT00__GPIO_023 I/O pin settings
+[    0.461851] p7:	install SD_0_DAT01 I/O pin function
+[    0.461860] p7:	install SD_0_DAT01__GPIO_024 I/O pin settings
+[    0.461869] p7:	install SD_0_DAT02 I/O pin function
+[    0.461878] p7:	install SD_0_DAT02__GPIO_025 I/O pin settings
+[    0.461887] p7:	install SD_0_DAT03 I/O pin function
+[    0.461896] p7:	install SD_0_DAT03__GPIO_026 I/O pin settings
+[    0.461960] p7: registering p7_pwm.0 I/O pins...
+[    0.461972] p7:	install PWM_00 I/O pin function
+[    0.461983] p7:	install AAI_00__GPIO_119__PWM_00 I/O pin settings
+[    0.461992] p7:	install PWM_01 I/O pin function
+[    0.462001] p7:	install AAI_01__GPIO_120__PWM_01 I/O pin settings
+[    0.462011] p7:	install PWM_05 I/O pin function
+[    0.462019] p7:	install PWM_06 I/O pin function
+[    0.462028] p7:	install PWM_07 I/O pin function
+[    0.462037] p7:	install AAI_07__GPIO_126__PWM_07 I/O pin settings
+[    0.462046] p7:	install PWM_08 I/O pin function
+[    0.462055] p7:	install AAI_08__GPIO_127__PWM_08 I/O pin settings
+[    0.462064] p7:	install PWM_09 I/O pin function
+[    0.462073] p7:	install AAI_09__GPIO_128__PWM_09 I/O pin settings
+[    0.462095] p7: registering p7_pwm.0...
+[    0.463711] p7: registering avi.0...
+[    0.463912] p7: registering avicam.0...
+[    0.464102] p7: registering avicam.0 I/O pins...
+[    0.464115] p7:	install CAM_0_CLK I/O pin function
+[    0.464126] p7:	install CAM_0_HS I/O pin function
+[    0.464135] p7:	install CAM_0_VS I/O pin function
+[    0.464145] p7:	install CAM_0_DATA08 I/O pin function
+[    0.464155] p7:	install CAM_0_DATA09 I/O pin function
+[    0.464164] p7:	install CAM_0_DATA10 I/O pin function
+[    0.464173] p7:	install CAM_0_DATA11 I/O pin function
+[    0.464182] p7:	install CAM_0_DATA12 I/O pin function
+[    0.464191] p7:	install CAM_0_DATA13 I/O pin function
+[    0.464200] p7:	install CAM_0_DATA14 I/O pin function
+[    0.464209] p7:	install CAM_0_DATA15 I/O pin function
+[    0.464218] p7:	install CAM_0_DATA16 I/O pin function
+[    0.464227] p7:	install CAM_0_DATA17 I/O pin function
+[    0.501235] 	00000000:0095ffff: avicam.2
+[    0.501249] p7: registering avicam.2...
+[    0.501464] p7: registering avicam.2 I/O pins...
+[    0.501478] p7:	install CAM_2_CLK I/O pin function
+[    0.501488] p7:	install CAM_2_HS I/O pin function
+[    0.501497] p7:	install CAM_2_VS I/O pin function
+[    0.501506] p7:	install CAM_2_DATA00 I/O pin function
+[    0.501516] p7:	install CAM_2_DATA01 I/O pin function
+[    0.501525] p7:	install CAM_2_DATA02 I/O pin function
+[    0.501534] p7:	install CAM_2_DATA03 I/O pin function
+[    0.501544] p7:	install CAM_2_DATA04 I/O pin function
+[    0.501553] p7:	install CAM_2_DATA05 I/O pin function
+[    0.501563] p7:	install CAM_2_DATA06 I/O pin function
+[    0.501572] p7:	install CAM_2_DATA07 I/O pin function
+[    0.501582] p7:	install CAM_2_DATA08 I/O pin function
+[    0.501591] p7:	install CAM_2_DATA09 I/O pin function
+[    0.521209] 	00000000:0095ffff: avicam.3
+[    0.521222] p7: registering avicam.3...
+[    0.521422] p7: registering avicam.3 I/O pins...
+[    0.521434] p7:	install CAM_3_CLK I/O pin function
+[    0.521444] p7:	install CAM_3_HS I/O pin function
+[    0.521454] p7:	install CAM_3_VS I/O pin function
+[    0.521463] p7:	install CAM_3_DATA00 I/O pin function
+[    0.521473] p7:	install CAM_3_DATA01 I/O pin function
+[    0.521482] p7:	install CAM_3_DATA02 I/O pin function
+[    0.521491] p7:	install CAM_3_DATA03 I/O pin function
+[    0.521501] p7:	install CAM_3_DATA04 I/O pin function
+[    0.521510] p7:	install CAM_3_DATA05 I/O pin function
+[    0.521519] p7:	install CAM_3_DATA06 I/O pin function
+[    0.521529] p7:	install CAM_3_DATA07 I/O pin function
+[    0.521538] p7:	install CAM_3_DATA08a I/O pin function
+[    0.521548] p7:	install CAM_3_DATA09a I/O pin function
+[    0.541209] 	00000000:0095ffff: avicam.4
+[    0.541222] p7: registering avicam.4...
+[    0.541425] p7: registering avicam.4 I/O pins...
+[    0.541438] p7:	install CAM_4_CLK I/O pin function
+[    0.541450] p7:	install CAM_4_HS I/O pin function
+[    0.541459] p7:	install CAM_4_VS I/O pin function
+[    0.541469] p7:	install CAM_4_DATA00 I/O pin function
+[    0.541478] p7:	install CAM_4_DATA01 I/O pin function
+[    0.541487] p7:	install CAM_4_DATA02 I/O pin function
+[    0.541496] p7:	install CAM_4_DATA03 I/O pin function
+[    0.541505] p7:	install CAM_4_DATA04 I/O pin function
+[    0.541514] p7:	install CAM_4_DATA05 I/O pin function
+[    0.541523] p7:	install CAM_4_DATA06 I/O pin function
+[    0.541532] p7:	install CAM_4_DATA07 I/O pin function
+[    0.541541] p7:	install CAM_4_DATA08 I/O pin function
+[    0.541550] p7:	install CAM_4_DATA09 I/O pin function
+[    0.561210] 	00000000:0095ffff: avicam.5
+[    0.561222] p7: registering avicam.5...
+[    0.561448] p7: registering avicam.5 I/O pins...
+[    0.561460] p7:	install CAM_5_CLK I/O pin function
+[    0.561470] p7:	install CAM_5_HS I/O pin function
+[    0.561480] p7:	install CAM_5_VS I/O pin function
+[    0.561489] p7:	install CAM_5_DATA00 I/O pin function
+[    0.561498] p7:	install CAM_5_DATA01 I/O pin function
+[    0.561507] p7:	install CAM_5_DATA02 I/O pin function
+[    0.561516] p7:	install CAM_5_DATA03 I/O pin function
+[    0.561524] p7:	install CAM_5_DATA04 I/O pin function
+[    0.561533] p7:	install CAM_5_DATA05 I/O pin function
+[    0.561542] p7:	install CAM_5_DATA06 I/O pin function
+[    0.561551] p7:	install CAM_5_DATA07 I/O pin function
+[    0.561560] p7:	install CAM_5_DATA08 I/O pin function
+[    0.561569] p7:	install CAM_5_DATA09 I/O pin function
+[    0.561608] p7: registering ci_hdrc.0...
+[    0.561806] p7: registering ci_hdrc.0 I/O pins...
+[    0.561818] p7:	install ULPI_0_DATA00 I/O pin function
+[    0.561829] p7:	install ULPI_0_DATA00__GPIO_095 I/O pin settings
+[    0.561840] p7:	install ULPI_0_DATA01 I/O pin function
+[    0.561849] p7:	install ULPI_0_DATA01__GPIO_096 I/O pin settings
+[    0.561859] p7:	install ULPI_0_DATA02 I/O pin function
+[    0.561868] p7:	install ULPI_0_DATA02__GPIO_097 I/O pin settings
+[    0.561878] p7:	install ULPI_0_DATA03 I/O pin function
+[    0.561887] p7:	install ULPI_0_DATA03__GPIO_098 I/O pin settings
+[    0.561896] p7:	install ULPI_0_DATA04 I/O pin function
+[    0.561905] p7:	install ULPI_0_DATA04__GPIO_099 I/O pin settings
+[    0.561914] p7:	install ULPI_0_DATA05 I/O pin function
+[    0.561923] p7:	install ULPI_0_DATA05__GPIO_100 I/O pin settings
+[    0.561933] p7:	install ULPI_0_DATA06 I/O pin function
+[    0.561941] p7:	install ULPI_0_DATA06__GPIO_101 I/O pin settings
+[    0.561951] p7:	install ULPI_0_DATA07 I/O pin function
+[    0.561960] p7:	install ULPI_0_DATA07__GPIO_102 I/O pin settings
+[    0.561969] p7:	install ULPI_0_NXT I/O pin function
+[    0.561978] p7:	install ULPI_0_NXT__GPIO_103 I/O pin settings
+[    0.561987] p7:	install ULPI_0_STP I/O pin function
+[    0.561997] p7:	install ULPI_0_STP__GPIO_117 I/O pin settings
+[    0.562006] p7:	install ULPI_0_DIR I/O pin function
+[    0.562015] p7:	install ULPI_0_DIR__GPIO_104 I/O pin settings
+[    0.562024] p7:	install ULPI_0_CLK I/O pin function
+[    0.562033] p7:	install ULPI_0_CLK__GPIO_105 I/O pin settings
+[    0.562125] p7: registering ci_hdrc.1...
+[    0.562318] p7: registering ci_hdrc.1 I/O pins...
+[    0.562330] p7:	install ULPI_1_DATA00 I/O pin function
+[    0.562341] p7:	install ULPI_1_DATA00__GPIO_106__I2C_2_CLKa I/O pin settings
+[    0.562352] p7:	install ULPI_1_DATA01 I/O pin function
+[    0.562361] p7:	install ULPI_1_DATA01__GPIO_107__I2C_2_DATa I/O pin settings
+[    0.562371] p7:	install ULPI_1_DATA02 I/O pin function
+[    0.562381] p7:	install ULPI_1_DATA02__GPIO_108__I2C_2_CLKb I/O pin settings
+[    0.562391] p7:	install ULPI_1_DATA03 I/O pin function
+[    0.562400] p7:	install ULPI_1_DATA03__GPIO_109__I2C_2_DATb I/O pin settings
+[    0.562410] p7:	install ULPI_1_DATA04 I/O pin function
+[    0.562419] p7:	install ULPI_1_DATA04__GPIO_110__I2C_2_CLKc I/O pin settings
+[    0.562429] p7:	install ULPI_1_DATA05 I/O pin function
+[    0.562438] p7:	install ULPI_1_DATA05__GPIO_111__I2C_2_DATc I/O pin settings
+[    0.562448] p7:	install ULPI_1_DATA06 I/O pin function
+[    0.562457] p7:	install ULPI_1_DATA06__GPIO_112__I2C_2_CLKd I/O pin settings
+[    0.562467] p7:	install ULPI_1_DATA07 I/O pin function
+[    0.562476] p7:	install ULPI_1_DATA07__GPIO_113__I2C_2_DATd I/O pin settings
+[    0.562486] p7:	install ULPI_1_NXT I/O pin function
+[    0.562495] p7:	install ULPI_1_NXT__GPIO_114__I2C_2_CLKe I/O pin settings
+[    0.562505] p7:	install ULPI_1_STP I/O pin function
+[    0.562515] p7:	install ULPI_1_STP__GPIO_116__I2C_2_DATe I/O pin settings
+[    0.562524] p7:	install ULPI_1_DIR I/O pin function
+[    0.562533] p7:	install ULPI_1_DIR__GPIO_115 I/O pin settings
+[    0.562542] p7:	install ULPI_1_CLK I/O pin function
+[    0.562551] p7:	install ULPI_1_CLK__GPIO_118 I/O pin settings
+[    0.562627] p7: registering hx280-venc.0...
+[    0.562880] p7: registering avi_m2m.0...
+[    0.563099] p7: registering avi_m2m.1...
+[    0.563589] hw_info : i2c-1 device 0x68 : mpu6050 (IMU)
+[    0.564314] Export GPIO-76 as IMU irq
+[    0.566724] p7: registering reg-fixed-voltage.0...
+[    0.566941] p7: registering switch-voltage.4...
+[    0.567165] p7: registering acs3-sdhci.1...
+[    0.567366] p7: registering acs3-sdhci.1 I/O pins...
+[    0.567379] p7:	install SD_1_CLK I/O pin function
+[    0.567390] p7:	install SD_1_CLK__GPIO_015__UART_5_TX I/O pin settings
+[    0.567401] p7:	install SD_1_CMD I/O pin function
+[    0.567410] p7:	install SD_1_CMD__GPIO_016__UART_5_RX I/O pin settings
+[    0.567420] p7:	install SD_1_DAT00 I/O pin function
+[    0.567429] p7:	install SD_1_DAT00__GPIO_017__UART_6_TX I/O pin settings
+[    0.567439] p7:	install SD_1_DAT01 I/O pin function
+[    0.567449] p7:	install SD_1_DAT01__GPIO_019__UART_6_RX I/O pin settings
+[    0.567458] p7:	install SD_1_DAT02 I/O pin function
+[    0.567467] p7:	install SD_1_DAT02__GPIO_018__UART_7_TX I/O pin settings
+[    0.567477] p7:	install SD_1_DAT03 I/O pin function
+[    0.567486] p7:	install SD_1_DAT03__GPIO_020__UART_7_RX I/O pin settings
+[    0.567857] hw-breakpoint: found 5 (+1 reserved) breakpoint and 1 watchpoint registers.
+[    0.567873] hw-breakpoint: maximum watchpoint size is 4 bytes.
+[    0.597413] bio: create slab <bio-0> at 0
+[    0.598619] i2c-core: driver [pca953x] using legacy suspend method
+[    0.598634] i2c-core: driver [pca953x] using legacy resume method
+[    0.599245] vwl18xx: 1800 mV 
+[    0.601299] SCSI subsystem initialized
+[    0.602096] usbcore: registered new interface driver usbfs
+[    0.602332] usbcore: registered new interface driver hub
+[    0.602750] usbcore: registered new device driver usb
+[    0.603126] Linux media interface: v0.10
+[    0.603280] Linux video capture interface: v2.00
+[    0.603462] pps_core: LinuxPPS API ver. 1 registered
+[    0.603475] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.603571] PTP clock support registered
+[    0.604558] Advanced Linux Sound Architecture Driver Version 1.0.25.
+[    0.604701] i2c-core: driver [smsc82514] using legacy suspend method
+[    0.604714] i2c-core: driver [smsc82514] using legacy resume method
+[    0.604842] i2c-core: driver [lvds] using legacy suspend method
+[    0.604855] i2c-core: driver [lvds] using legacy resume method
+[    0.605237] sdhci0_bus_vdd: 3300 mV 
+[    0.605757] sdhci1_bus_vdd: 3300 mV 
+[    0.605809] switch-voltage switch-voltage.4: Failed to set supply vqmmc
+[    0.606534] switch-voltage switch-voltage.4: Failed to register regulator: -16
+[    0.606570] switch-voltage: probe of switch-voltage.4 failed with error -16
+[    0.608892] Switching to clocksource timer2
+[    0.800109] NET: Registered protocol family 2
+[    0.800945] IP route cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.803558] TCP established hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.806235] TCP bind hash table entries: 65536 (order: 9, 2621440 bytes)
+[    0.821247] TCP: Hash tables configured (established 131072 bind 65536)
+[    0.821529] TCP: reno registered
+[    0.821600] UDP hash table entries: 512 (order: 3, 49152 bytes)
+[    0.821924] UDP-Lite hash table entries: 512 (order: 3, 49152 bytes)
+[    0.823202] NET: Registered protocol family 1
+[    0.825471] RPC: Registered named UNIX socket transport module.
+[    0.825491] RPC: Registered udp transport module.
+[    0.825503] RPC: Registered tcp transport module.
+[    0.825513] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.835736] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.835934] NFS: Registering the id_resolver key type
+[    0.837726] NTFS driver 2.1.30 [Flags: R/O].
+[    0.838143] fuse init (API version 7.18)
+[    0.839176] msgmni has been set to 1252
+[    0.842721] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 247)
+[    0.842855] io scheduler noop registered
+[    0.842870] io scheduler deadline registered (default)
+[    0.842881] start plist test
+[    0.847378] end plist test
+[    0.850218] dma-pl330 pl330-dma.0: Loaded driver for PL330 DMAC-267056
+[    0.850240] dma-pl330 pl330-dma.0: 	DBUFF-64x8bytes Num_Chans-6 Num_Peri-7 Num_Events-6
+[    0.864342] loop: module loaded
+[    0.869216] tun: Universal TUN/TAP device driver, 1.6
+[    0.869233] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    0.869918] PPP generic driver version 2.4.2
+[    0.870577] PPP BSD Compression module registered
+[    0.870594] PPP Deflate Compression module registered
+[    0.873086] PPP MPPE Compression module registered
+[    0.873115] NET: Registered protocol family 24
+[    0.873140] Initializing USB Mass Storage driver...
+[    0.873403] usbcore: registered new interface driver usb-storage
+[    0.873417] USB Mass Storage support registered.
+[    0.873819] usbcore: registered new interface driver libusual
+[    0.874250] usbcore: registered new interface driver usbserial
+[    0.874264] usbserial: USB Serial Driver core
+[    0.878636] ci_hdrc ci_hdrc.1: ChipIdea HDRC EHCI
+[    0.879473] ci_hdrc ci_hdrc.1: new USB bus registered, assigned bus number 1
+[    0.929098] ci_hdrc ci_hdrc.1: USB 2.0 started, EHCI 1.00
+[    0.929673] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    0.929692] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.929706] usb usb1: Product: ChipIdea HDRC EHCI
+[    0.929717] usb usb1: Manufacturer: Linux 3.4.11-02453-g109acba ehci_hcd
+[    0.929728] usb usb1: SerialNumber: ci_hdrc.1
+[    0.931413] hub 1-0:1.0: USB hub found
+[    0.931468] hub 1-0:1.0: 1 port detected
+[    0.932688]  gadget: using random self ethernet address
+[    0.932720]  gadget: using random host ethernet address
+[    0.934017] usb0: MAC 56:bf:47:11:40:a1
+[    0.934034] usb0: HOST MAC aa:38:6f:9b:a9:3d
+[    0.934338]  gadget: controller 'ci_pdata' not recognized; trying CDC Ethernet (ECM)
+[    0.934435]  gadget: Ethernet Gadget, version: Memorial Day 2008
+[    0.934476]  gadget: g_ether ready
+[    0.935173] i2c /dev entries driver
+[    0.937258] i2c-core: driver [tw8834] using legacy suspend method
+[    0.937271] i2c-core: driver [tw8834] using legacy resume method
+[    0.937392] i2c-core: driver [tw9990] using legacy suspend method
+[    0.937405] i2c-core: driver [tw9990] using legacy resume method
+[    0.938975] device-mapper: uevent: version 1.0.3
+[    0.939974] device-mapper: ioctl: 4.22.0-ioctl (2011-10-19) initialised: dm-devel@redhat.com
+[    0.940359] sdhci: Secure Digital Host Controller Interface driver
+[    0.940372] sdhci: Copyright(c) Pierre Ossman
+[    0.940903] Registered led device: sicilia:green
+[    0.941144] Registered led device: sicilia:red
+[    0.941409] Registered led device: sicilia:blue
+[    0.942831] usbcore: registered new interface driver usbhid
+[    0.942845] usbhid: USB HID core driver
+[    0.944358] ashmem: initialized
+[    0.944731] logger: created 256K log 'log_main'
+[    0.945068] logger: created 256K log 'log_events'
+[    0.945393] logger: created 256K log 'log_radio'
+[    0.945758] logger: created 256K log 'log_system'
+[    0.946064] logger: created 64K log 'log_ckcm'
+[    0.946832] ulogger: created 256K log 'ulog_main'
+[    0.949445] Serial: Parrot5/5+ UART driver $Revision: 1.19 $
+[    0.950057] px-uart.0: ttyPA0 at MMIO 0x2100000 (irq = 91) is a PARROT5
+[    3.164708] console [ttyPA0] enabled
+[    3.169253] avi avi.0: Found AVI revision 3
+[    3.179974] avi avi.0: AVI core driver initialized
+[    3.186576] AVI DebugFS registered
+[    3.196665] Powering on maincam
+[    3.259521] Could not configure maincam VCM. You probably need a hardware patch
+[    3.266684] Powering off maincam
+[    3.269965] tc358746a 2-000e: Found tc358746a chip
+[    3.274685] tc358746a 2-000e: TC358746A MIPI bridge successfully probed
+[    3.282575] Powering on maincam
+[    3.339498] Could not configure maincam VCM. You probably need a hardware patch
+[    3.346546] ov16825 2-0036: I2C read failed [300a: -121]
+[    3.352006] Powering off maincam
+[    3.355222] ov16825: probe of 2-0036 failed with error -121
+[    3.361277] avicam avicam.0: video device successfuly registered as video0
+[    3.389835] mt9m021 2-0012: Found mt9m021 chip
+[    3.394534] avicam avicam.2: video device successfuly registered as video1
+[    3.419840] mt9m021 2-0013: Found mt9m021 chip
+[    3.424532] avicam avicam.3: video device successfuly registered as video2
+[    3.449834] mt9m021 2-0014: Found mt9m021 chip
+[    3.454523] avicam avicam.4: video device successfuly registered as video3
+[    3.479836] mt9m021 2-0015: Found mt9m021 chip
+[    3.484524] avicam avicam.5: video device successfuly registered as video4
+[    3.491438] registering avicam V4L2 subdevice nodes.
+[    3.498550] avi_r2r Initialized
+[    3.505141] avi avi.0: stats video device successfuly registered as video6
+[    3.511913] avi_m2m avi_m2m.0: video device successfuly registered as video5
+[    3.521984] avi_m2m avi_m2m.1: video device successfuly registered as video7
+[    3.529900] avi_v4l2_dev avi: successfully probed
+[    3.535029] hx280-venc hx280-venc.0: found hx280 video encoder (0x48313610).
+[    3.543100] Mali: Mali device driver loaded
+[    3.548880] mmc0: no vqmmc regulator found
+[    3.552893] mmc0: no vmmc regulator found
+[    3.557560] Registered led device: mmc0::
+[    3.639232] mmc0: SDHCI controller on acs3-sdhci [acs3-sdhci.0] using ADMA
+[    3.647636] Registered led device: mmc1::
+[    3.809110] mmc1: SDHCI controller on acs3-sdhci [acs3-sdhci.1] using ADMA
+[    3.818881] p7mu-rtc p7mu-rtc: rtc core: registered p7mu-rtc as rtc0
+[    3.826842] p7mu-adc p7mu-adc: No ADC channel pdata, disabling SPI
+[    3.833595] p7mu-adc p7mu-adc: P7MU ADC - ready
+[    3.842337] p7-temperature p7-temperature: temperature sensor and ADC registered.
+[    3.853385] fc7100-temperature fc7100-temperature: fc7100-temperature temperature sensor and ADC registered.
+[    3.865070] mmc0: new high speed DDR MMC card at address 0001
+[    3.871146] u32 classifier
+[    3.873895]     Actions configured
+[    3.873965] mmcblk0: mmc0:0001 064G70 58.2 GiB 
+[    3.882010] mmcblk0boot0: mmc0:0001 064G70 partition 1 4.00 MiB
+[    3.882022] Netfilter messages via NETLINK v0.30.
+[    3.882438] nf_conntrack version 0.5.0 (10021 buckets, 40084 max)
+[    3.899390] mmcblk0boot1: mmc0:0001 064G70 partition 2 4.00 MiB
+[    3.900082] ctnetlink v0.93: registering with nfnetlink.
+[    3.903754] NF_TPROXY: Transparent proxy support initialized, version 4.1.0
+[    3.903771] NF_TPROXY: Copyright (c) 2006-2007 BalaBit IT Ltd.
+[    3.924224] xt_time: kernel timezone is -0000
+[    3.931327] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    3.937301] arp_tables: (C) 2002 David S. Miller
+[    3.942449] TCP: cubic registered
+[    3.945745] Initializing XFRM netlink socket
+[    3.951197] NET: Registered protocol family 10
+[    3.955924]  mmcblk0: p1 p2 p3 p4 p5 p6 p7
+[    3.963288] Mobile IPv6
+[    3.965801] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    3.971564] IPv6 over IPv4 tunneling driver
+[    3.975812]  mmcblk0boot1: unknown partition table
+[    3.977775] NET: Registered protocol family 17
+[    3.977882] NET: Registered protocol family 15
+[    3.978235] 8021q: 802.1Q VLAN Support v1.8
+[    3.978387] Registering the dns_resolver key type
+[    3.998152] VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 2
+[    4.006198]  mmcblk0boot0: unknown partition table
+[    4.006310] ThumbEE CPU extension supported.
+[    4.017680] i2c-core: driver [siihdmi] using legacy suspend method
+[    4.023757] i2c-core: driver [siihdmi] using legacy resume method
+[    5.500051] p7mu-rtc p7mu-rtc: setting system clock to 1970-01-01 00:00:05 UTC (5)
+[    5.520703] ALSA device list:
+[    5.523517]   No soundcards found.
+[    5.540425] mmc1: card claims to support voltages below the defined range. These will be ignored.
+[    5.541691] EXT4-fs (mmcblk0p4): mounted filesystem with ordered data mode. Opts: (null)
+[    5.541853] VFS: Mounted root (ext4 filesystem) readonly on device 179:4.
+[    5.542269] Freeing init memory: 224K
+[    5.542283] Write protecting the kernel text section 80008000 - 8080e000
+[    5.624571] mmc1: queuing unknown CIS tuple 0x91 (3 bytes)
+[    5.635139] mmc1: new high speed SDIO card at address 0001
+[    5.692121] ulogger: created 128K log 'ulog_kmsgd'
+[    5.726084] ADDRCONF(NETDEV_UP): usb0: link is not ready
+[    5.752986] EXT4-fs (mmcblk0p6): barriers disabled
+[    5.775848] EXT4-fs (mmcblk0p6): mounted filesystem with writeback data mode. Opts: discard,data=writeback,nobarrier
+[    5.779538] EXT4-fs (mmcblk0p7): barriers disabled
+[    5.782122] EXT4-fs (mmcblk0p7): mounted filesystem with writeback data mode. Opts: discard,data=writeback,nobarrier
+[    5.784440] EXT4-fs (mmcblk0p5): barriers disabled
+[    5.786068] EXT4-fs (mmcblk0p5): mounted filesystem with writeback data mode. Opts: data=writeback,nobarrier
+[    6.178259] udev[85]: starting version 164
+[    6.327141] Loading modules backported from Linux version R8.5-0-gcb51164
+[    6.327168] Backport generated by backports.git R8.4-0-g0d46f43
+[    6.532925] tsl2591: module is from the staging directory, the quality is unknown, you have been warned.
+[    6.728589] cfg80211: Calling CRDA to update world regulatory domain
+[    6.811891] usbcore: registered new interface driver sicilia-irradiance
+[    7.359813] wlcore: wl18xx HW: 183x or 180x, PG 2.2 (ROM 0x11)
+[    7.410004] wlcore: loaded
+[    7.410109] wlcore: driver version: 
+[    7.410121] wlcore: compilation time: Fri Jul 29 11:27:04 2016
+[    8.486983]  gadget: high-speed config #2: RNDIS
+[    8.860512] wlcore: PHY firmware version: Rev 8.2.0.0.224
+[    8.969614] wlcore: firmware booted (Rev 8.9.0.0.31)
+[    9.003332] ADDRCONF(NETDEV_UP): wlan0: link is not ready
+[    9.004383] ADDRCONF(NETDEV_CHANGE): usb0: link becomes ready
+[   10.187298] wlcore: down
+[   10.222448] cfg80211: Calling CRDA to update world regulatory domain
+[   11.376045] ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
+[   19.587265] usb0: no IPv6 routers present
+[   22.207255] wlan0: no IPv6 routers present

@@ -1,0 +1,6 @@
+on post-fs-data
+    mkdir /data/www 0755 root root
+
+service civetweb /usr/bin/ulogwrapper /bin/civetweb /etc/civetweb.conf
+    disabled
+

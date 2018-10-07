@@ -1,0 +1,4 @@
+no-resolv
+no-hosts
+local=/@@@DNSMASQ_HOSTNAME@@@/
+address=/@@@DNSMASQ_HOSTNAME@@@/@@@DNSMASQ_ADDRESS@@@

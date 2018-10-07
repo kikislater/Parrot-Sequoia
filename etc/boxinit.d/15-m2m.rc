@@ -1,0 +1,5 @@
+# load m2m module
+service m2m /sbin/modprobe avi_m2m
+    class core
+    user root
+    oneshot

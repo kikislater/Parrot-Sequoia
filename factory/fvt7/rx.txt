@@ -1,0 +1,25 @@
+Accepted connection from 192.168.1.112, port 49370
+[  5] local 192.168.1.110 port 5201 connected to 192.168.1.112 port 54308
+iperf3: OUT OF ORDER - incoming packet = 7 and received packet = 7 AND SP = 5
+iperf3: OUT OF ORDER - incoming packet = 7 and received packet = 7 AND SP = 5
+iperf3: OUT OF ORDER - incoming packet = 8 and received packet = 8 AND SP = 5
+iperf3: OUT OF ORDER - incoming packet = 8 and received packet = 8 AND SP = 5
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  2.64 MBytes  22.1 Mbits/sec  34.718 ms  133/467 (28%)  
+[  5]   1.00-2.00   sec  4.02 MBytes  33.8 Mbits/sec  2.757 ms  1099/1614 (68%)  
+[  5]   2.00-3.00   sec  4.05 MBytes  33.9 Mbits/sec  2.184 ms  1016/1534 (66%)  
+[  5]   3.00-4.00   sec  3.97 MBytes  33.3 Mbits/sec  2.174 ms  1062/1570 (68%)  
+[  5]   4.00-5.00   sec  3.88 MBytes  32.6 Mbits/sec  2.637 ms  1111/1608 (69%)  
+[  5]   5.00-6.00   sec  3.99 MBytes  33.5 Mbits/sec  8.893 ms  1184/1695 (70%)  
+[  5]   6.00-7.00   sec  3.73 MBytes  31.3 Mbits/sec  2.765 ms  1116/1594 (70%)  
+[  5]   7.00-8.00   sec  3.94 MBytes  33.0 Mbits/sec  2.304 ms  989/1493 (66%)  
+[  5]   8.00-9.00   sec  4.02 MBytes  33.7 Mbits/sec  5.548 ms  1245/1759 (71%)  
+[  5]   9.00-10.00  sec  4.09 MBytes  34.3 Mbits/sec  4.027 ms  1082/1605 (67%)  
+[  5]  10.00-10.62  sec  2.43 MBytes  33.1 Mbits/sec  2.845 ms  620/931 (67%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  5]   0.00-10.62  sec   124 MBytes  98.0 Mbits/sec  2.845 ms  10657/15870 (67%)  
+[SUM]  0.0-10.6 sec  10657 datagrams received out-of-order
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------

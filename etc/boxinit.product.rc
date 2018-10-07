@@ -1,0 +1,28 @@
+# -*- mode:sh -*-
+# This file should contain commands valid on ALL standalone platforms
+# (i.e. Linux-only, no Android/PC host OS)
+
+on early-boot
+	# set factory serial number in property
+	setprop ro.factory.serial ${file:/factory/serial.txt:000000000000000000}
+	# set commercial product model
+	setprop ro.product.model "Sequoia"
+	setprop ro.product.usb.pid 5039
+	# set usb product name
+	setprop ro.product.usb.product "${ro.product.model} v${ro.parrot.build.version}"
+	# set hw revision as usb bcd device
+	setprop ro.product.usb.bcd ${file:/sys/kernel/hsis/pcbrev:00.00}
+	# set default prodcut name
+	setprop ro.product.name.default "${ro.product.model}-${ro.factory.serial[-20:]}"
+	# set produt name to default if empty
+	setprop -z persist.product.name ${ro.product.name.default}
+	# set produt ssid to a default if not set by user
+	setprop ro.product.ssid.default "${ro.product.model}_${ro.factory.serial[-4:]}"
+	# set product default wpa passphrase
+	setprop ro.product.passphrase.default ""
+
+# Done later due to wifi management
+on boot
+	setprop -z persist.product.ssid ${ro.product.ssid.default}
+	setprop -z persist.product.passphrase ${ro.product.passphrase.default}
+

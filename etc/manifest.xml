@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="ssh://gerrit.parrot.biz" name="gerrit" review="gerrit.parrot.biz"/>
+  
+  <default remote="gerrit" revision="master" sync-j="4"/>
+  
+  <project name="aftermarket/Mykonos3/Boost" path="packages/Boost" revision="10d86d6f400bda0eb950c4db67be2a4401a4af38"/>
+  <project name="aftermarket/Mykonos3/Tools" path="packages/tools" revision="9c0feeaa1d1709631976f505ab3de1b3f7ede3e3"/>
+  <project name="aftermarket/Mykonos3/libColibry" path="packages/libColibry" revision="bfb2d665330a514bff9a40edf43a8520416f3dac"/>
+  <project name="aftermarket/Mykonos3/libHAL" path="packages/libHAL" revision="1c57e88e6bcc226d143ea28e912951eb612cd4aa"/>
+  <project name="build/Alchemy" path="build/alchemy" revision="e1f7d8c28ebcf59711f167afa6e1bab16879e7fd"/>
+  <project name="commonsoft/Crypto.git" path="packages/Crypto" revision="bd785a9aaa4e9463e489b2e828e7d74923279c10"/>
+  <project name="commonsoft/libplf" path="packages/libplf" revision="e46e81d0c5a4f28a5f66d8c975b63167ea8f3e02"/>
+  <project name="commonsoft/tinyxml" path="packages/tinyxml" revision="a647fdd0908ff438341e97f9d8d451c6badc88dc"/>
+  <project name="drones/dragon_base" path="products/dragon_base" revision="32fe8d7f00f1d5ecdedd84e419d37798820c0f62"/>
+  <project name="drones/dragon_build" path="build/dragon_build" revision="208ebb2a90a0c35e183cad8d68d6c78b5547068a">
+    <linkfile dest="build.sh" src="root-build.sh"/>
+    <linkfile dest="track-branch.sh" src="root-track-branch.sh"/>
+  </project>
+  <project name="drones/dragon_buildext_firmware" path="build/buildext_firmware" revision="5604daafa78b650f0f8c392a23cc55e902f7ee5e"/>
+  <project name="drones/external/avahi" path="packages/avahi" revision="faae60a3ed54b0efc528ead270cb5b3ed815c71e"/>
+  <project name="drones/external/cairo" path="packages/test-bench/cairo" revision="11a7bdb98bb33b80afcfa3a4d2353db2f50ce1af"/>
+  <project name="drones/external/civetweb" path="packages/civetweb" revision="37db29e5e6d395e93244141da42b823c242fd304"/>
+  <project name="drones/external/eigen" path="packages/eigen" revision="206bba57588645b6f644f3e68f089cd93de17148"/>
+  <project name="drones/external/fontconfig" path="packages/test-bench/fontconfig" revision="934be75efd2c8536fbb56ceaa6137399ceb002d1"/>
+  <project name="drones/external/freetype" path="packages/test-bench/freetype" revision="c801094dc3a8ab4d4c0f3e8586c61a8ed20c0fd4"/>
+  <project name="drones/external/harfbuzz" path="packages/test-bench/harfbuzz" revision="a7f7de5478477ae8c6b3f22b5a721aa1eaf0750d"/>
+  <project name="drones/external/iio/libiio" path="packages/libiio" revision="fb9624e2ec37b3d6d7877566956b5ab324ef34f8"/>
+  <project name="drones/external/json.git" path="packages/json" revision="7deeaed665276c1fa10f4285100a7b37c8dc2bc9"/>
+  <project name="drones/external/libdaemon" path="packages/libdaemon" revision="1a2905d45daaa67927315b5a0b0d4a4eef92d397"/>
+  <project name="drones/external/libffi" path="packages/test-bench/libffi" revision="f292d7967ef20dc02dded1e3047588fad2ee84bc"/>
+  <project name="drones/external/libjpeg-turbo" path="packages/libjpeg-turbo" revision="1c890797c8b91fbf0aff67c414cca33e7368a3dc"/>
+  <project name="drones/external/libnss-mdns" path="packages/libnss-mdns" revision="cf0de1dcf575ef7873031e82aa3a466aa4e17b7c"/>
+  <project name="drones/external/libpng" path="packages/test-bench/libpng" revision="432dc7553bed3918fa6481fb64e312550a1bd9fa"/>
+  <project name="drones/external/libunwind" path="packages/libunwind" revision="9b1b2c5517c872de26c618be2c962a4996bc30a0"/>
+  <project name="drones/external/pango" path="packages/test-bench/pango" revision="a473a2c9c2bf3be9b8133460f975a87688bfc01f"/>
+  <project name="drones/external/pixman" path="packages/test-bench/pixman" revision="750abb53d7f625b47d8df5a47bb27ffb52c71178"/>
+  <project name="drones/external/protobuf" path="simulator/protobuf" revision="a1837303ff3c4f40c8bf42ecbde3f74bdacceba6"/>
+  <project name="drones/external/x264" path="simulator/x264" revision="36d1638fba0c3eae7fbf398ee49fcc0273cd4350"/>
+  <project name="drones/libdrone" path="simulator/libdrone" revision="b0e3ab3e65bac5fff078858684895e2dda697bd4"/>
+  <project name="drones/libfutils" path="packages/libfutils" revision="320b1b587df979f8930fab4b0fa6e8a81bd179bd"/>
+  <project name="drones/libiniparse" path="packages/libiniparse" revision="1589e6d64465e5871836514901643a655f007711"/>
+  <project name="drones/libshdata" path="packages/libshdata" revision="3ebe4d6ba05893634408604a261e16b02cb6f5ab"/>
+  <project name="drones/libshsettings" path="packages/libshsettings" revision="23bc7805966e66b3e94c1eab19148404dcfa0e62"/>
+  <project name="drones/plf_updater" path="packages/plf-updater" revision="ec8b05f200eb30db5487fa6f32f1e41129b20615"/>
+  <project name="drones/sicilia/calibration" path="packages/sicilia-calibration" revision="df4592b093841e5ec5a56739dd708a38dfbc1694"/>
+  <project name="drones/sicilia/civet-interface" path="packages/sicilia-civetitf" revision="5ded99f791e04ac50fc899c5f06bc0d533ff1e55"/>
+  <project name="drones/sicilia/epic" path="packages/sicilia-epic" revision="6dac0cb25dcd3f35ff6d1fe49d3cbd79e9ae186f"/>
+  <project name="drones/sicilia/imaging" path="packages/sicilia-imaging" revision="9501100b8c69a418bbbb35ddd2f0485c44e0afbc"/>
+  <project name="drones/sicilia/monochrome_focus" path="packages/monochrome-focus" revision="b785406f67835e23ca809af8c93531635a093265"/>
+  <project name="drones/sicilia/palermo" path="packages/palermo" revision="c1cbb9e4b24d29e0c639473e0659ba4153b3d6fd"/>
+  <project name="drones/sicilia/pinstrc" path="build/pinstrc" revision="cddfdbc2576b393a57527603c60c40ec6bf461b9"/>
+  <project name="drones/sicilia/products/sicilia" path="products/sicilia" revision="d860c112685bd6f8576152f65193fc75489c048f">
+    <linkfile dest="completion.bash" src="sicilia_completion.bash"/>
+  </project>
+  <project name="drones/sicilia/prototyping" path="packages/prototyping" revision="1845c5ca6f498cc76a227e63c26587a937ef21cc"/>
+  <project name="drones/sicilia/ptpip" path="packages/ptpip" revision="795bc523235d187883a2194ea28aec45dc9d4cd1"/>
+  <project name="drones/sicilia/sensors" path="packages/sicilia-sensors" revision="35761fe7ece20c94278f2ef5baf3c20b91506e0f"/>
+  <project name="drones/sicilia/siciliad" path="packages/siciliad" revision="a6f1c77fdfa9a3d20f069a165ab3db7c4bb32049"/>
+  <project name="drones/ssr" path="packages/ssr" revision="9bae738c46806ecc032732afd397fbd1545b2d97"/>
+  <project name="drones/telemetry" path="packages/telemetry" revision="b7a979e4eaa7c3cb52cc5535292831991238ea4e"/>
+  <project name="drones/version_tools" path="build/version_tools" revision="6aa73d3c8b72f73a936c5f61ef219cc1e8fcc088"/>
+  <project name="os/PAL" path="packages/os-PAL" revision="9ddfa788ebb076ee8aa83c6153d69e8a9aa75c3a"/>
+  <project name="os/kernel/linux" path="packages/kernel-p7" revision="966c687c5ad57ff0011c86d6e464034de08094ff" sync-c="true"/>
+  <project name="os/lucie_packages/drivers" path="packages/os-drivers" revision="de75f837f21953435171bf2867c11cb23acf375d"/>
+  <project name="os/lucie_packages/parrot_libs" path="packages/parrot-libs" revision="83acf3cc59a36b852a1dcdffa39878be0d3a8adc"/>
+  <project name="os/macgyver" path="packages/macgyver" revision="bc26454e0e88788be6deb7509acd14727bbc2e7f"/>
+  <project name="os/os_packages/debug" path="packages/os-debug" revision="23cef4576d571cffc99d3c82d03fb0f0c049233c"/>
+  <project name="os/os_packages/debug-parrot" path="packages/os-debug-parrot" revision="eb6a1a70a3f3b00c8561dc016f0adc559fd92291"/>
+  <project name="os/os_packages/external" path="packages/os-external" revision="2e6a829a19515876cf3207bd4fe3e19999eceaac"/>
+  <project name="os/os_packages/fsck_msdos" path="packages/fsck_msdos" revision="6ecf5b4b480767e2c02893313c1c710292d42644"/>
+  <project name="os/os_packages/fusion" path="simulator/libfusion" revision="b49ca57348299fdfbba8f1aaa882863dac63d5d4"/>
+  <project name="os/os_packages/libion" path="packages/test-bench/libion" revision="4d5c3e336411613ea4855e561b0054b2dbf0b950"/>
+  <project name="os/os_packages/libmtp_server" path="packages/libmtp-server" revision="76e9211eb8d952000c9e140c017e0e70c5590e3f"/>
+  <project name="os/os_packages/libnl" path="packages/os-libnl" revision="7e067ff08f56513fc8619b42e39eeeace78109e3"/>
+  <project name="os/os_packages/libpac" path="packages/libpac" revision="bbc7da64226ed87823631fc4bee7563111087b36"/>
+  <project name="os/os_packages/libvirt2phys" path="packages/test-bench/libvirt2phys" revision="7ec64850a305a62a1738c7decf9fa6a9a5fed20d"/>
+  <project name="os/os_packages/libxml2" path="packages/os-libxml2" revision="2d3a51fcaf0b53a85c2445f60d9e78501ac8afdf"/>
+  <project name="os/os_packages/media-ctl" path="packages/os-media-ctl" revision="a63de5ea2ecfb452c3562a2b0b4ac1ebb6208c52"/>
+  <project name="os/os_packages/plib" path="packages/plib" revision="f190bd5bf890d4e7a8110a0ca9865801259b9389"/>
+  <project name="os/os_packages/udev" path="packages/udev" revision="d81608add5f97d1888c44f9918d79899bb3a16af"/>
+  <project name="os/os_packages/ujuba" path="packages/ujuba" revision="2ac5f10aed6c597a8280e4bf97fc014112823a5e"/>
+  <project name="os/os_packages/userspace-rcu" path="packages/userspace-rcu" revision="6dc3fe0f5ee3a6056aa763e5b56a160f956093a8"/>
+  <project name="os/os_packages/yavta" path="packages/os-yavta" revision="6fa5f1b74672d77cf6196574bc543f1d1dedfe9a"/>
+  <project name="os/p7/libisp" path="packages/os-p7-libisp" revision="4fe6c3d60ca8fb39d7e557397d1c065b809d3ce2"/>
+  <project name="os/p7/mpeg_ts" path="packages/test-bench/packages/p7-mpeg_ts" revision="33c9cbbd64435cdf0fbc8d6779584929527c7609"/>
+  <project name="os/p7/validation" path="packages/os-p7-validation" revision="5775ac6eaed4472e8f3cb58fd1e387d9c032fd69"/>
+  <project name="os/p7/vdec" path="packages/test-bench/os-p7-vdec" revision="bdd398d5c9ce05633c88c0149d9a65394487084f"/>
+  <project name="os/p7/venc" path="packages/os-p7-venc" revision="934ff9711346aa8b4f25ca45bc117525ef406f25"/>
+  <project name="pulsar/adb" path="packages/adb" revision="c492bc045af4b3fddc93406de262b45813ab8879"/>
+  <project name="pulsar/boxinit" path="packages/boxinit" revision="bb8bb3e4dfa9bba2d0fde5c8fef9c1ea458b8675"/>
+  <project name="pulsar/crashdump" path="packages/crashdump" revision="b8cf9dca3d339f54c9b58a2695bdaf3eab2f8b72"/>
+  <project name="pulsar/glib" path="packages/test-bench/glib" revision="692c2c2d92643d565b6ace671741ea251b3fb3ca"/>
+  <project name="pulsar/gstparrot/gst-parrot-p7" path="packages/test-bench/gst-parrot-p7" revision="a098d6528b6948e5f206c517f0f8e9723581e4b4"/>
+  <project name="pulsar/gstreamer/gst-common" path="packages/test-bench/gst-common" revision="6b9927879903c662888d83f4a2040fbd6151289f"/>
+  <project name="pulsar/gstreamer/gst-libav" path="packages/test-bench/gst-libav" revision="42dad521e8ef7fd0fb3904f7eeb007b05be8f8be"/>
+  <project name="pulsar/gstreamer/gst-omx" path="packages/test-bench/gst-omx" revision="b1727a9ffb15e35bb47c51949a43e211a1c2fcaa"/>
+  <project name="pulsar/gstreamer/gst-plugins-bad" path="packages/test-bench/gst-plugins-bad" revision="7a6e7de2a6be54105bd54150f18c3e58282c88b9"/>
+  <project name="pulsar/gstreamer/gst-plugins-base" path="packages/test-bench/gst-plugins-base" revision="0ad362f822615ae29fa88c7f36423782c0328764"/>
+  <project name="pulsar/gstreamer/gst-plugins-good" path="packages/test-bench/gst-plugins-good" revision="6eaec01e57af066e25ef6b10d0d27083cb7399a2"/>
+  <project name="pulsar/gstreamer/gst-rtsp-server" path="packages/test-bench/gst-rtsp-server" revision="262381c64dfcbc644a19112bf343891f51ef9181"/>
+  <project name="pulsar/gstreamer/gstreamer" path="packages/test-bench/gstreamer" revision="70bb312c29ed25fb238e1ea6235bec2cdaf8616b"/>
+  <project name="pulsar/juba" path="packages/juba" revision="d51234ea3224ceb6fd2f2e4c68836bb40643db40"/>
+  <project name="pulsar/libav" path="packages/libav" revision="2d44e85bcefb4aa05c5f770e77354bb0f6371b8b"/>
+  <project name="pulsar/libpomp" path="packages/libpomp" revision="7e02f87e0ce8195702a0fbcd3f45b2ebae5523cc"/>
+  <project name="pulsar/libputils" path="packages/libputils" revision="da7509e33aece9331496674452583761699d3696"/>
+  <project name="pulsar/lttng" path="packages/lttng" revision="2fca88fb3bf0e30cc7347bf8e7ed710c82893660"/>
+  <project name="pulsar/ulog" path="packages/ulog" revision="d6b445cdb7dd61128a08f353321178e86dfae42e"/>
+  <project name="raptor/hardware/libhardware" path="packages/libhardware" revision="8f2b9ffe5a1e196a2fcb28ade718771623d138d1"/>
+  <project name="raptor/hardware/parrot/libgps" path="packages/libgps" revision="c1fbbb007301f32e15206f7c9cf810acf16c0a56"/>
+  <project name="sphinx/fakeHAL" path="simulator/fakeHAL" revision="cadcf912c827731308986e2a897fd48d9c160b44"/>
+  <project name="sphinx/libglhelper" path="simulator/libglhelper" revision="e2f356ae59d441513962f4552e215c981a0d7dab"/>
+  <project name="sphinx/libiio-simulator-plugin" path="simulator/libiio-simulator-plugin" revision="9ed7f2c518cb482d46066cbe54f1aeb446fc3bed"/>
+  <project name="sphinx/models/sicilia" path="simulator/models/sicilia" revision="9ed3ea333d737ea6bd9ce146990299e65857359e"/>
+  <project name="sphinx/sdformat" path="simulator/sdformat" revision="fd7fef95716c9cc284a94513d7d104b4e2f3b60a"/>
+  <project name="sphinx/stubs/libh1enc" path="simulator/libh1enc" revision="772a511136ecd3f1445b21b0fabad49afa445518"/>
+  <project name="sphinx/stubs/libion" path="simulator/libion" revision="1816e67e3e04af63983dc83fa34df557eb813203"/>
+  <project name="sphinx/stubs/libisp" path="simulator/libisp" revision="3cb92cd4f086296eb6db03f83cbe5a0af61d3278"/>
+  <project name="tds/image/Alpaga" path="packages/alpaga" revision="fcbc62bd5cb25e08f2907e3c78da6a4ecd168965"/>
+  <project name="tools/pinst_tools" path="build/pinst_tools" revision="ca35cb74a2253f5b39ff74d232216eb7a9dffe52"/>
+  <project name="tools/plf" path="packages/plf" revision="23fd70624d09f86bd5742b45340644fbb8f4a74f"/>
+  <project name="tools/police" path="build/police" revision="3cae40f8a4553bcd2c81213a23709ef00b474b64"/>
+</manifest>

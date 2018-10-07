@@ -1,0 +1,2 @@
+service civet_interface /usr/bin/ulogwrapper /usr/bin/civetitf
+    disabled

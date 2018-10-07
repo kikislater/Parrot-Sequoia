@@ -1,0 +1,2 @@
+#BLACK LEVEL: 76.000000
+#Percentage BLACK: 0.074291

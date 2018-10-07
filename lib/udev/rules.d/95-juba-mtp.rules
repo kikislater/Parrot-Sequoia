@@ -1,0 +1,131 @@
+# This file contains the rules needed to handle MTP devices. -*- mode:sh -*-
+
+# skip rules on already handled devices
+ENV{JUBA_STR_DEV_TYPE}=="mtp", GOTO="juba_mtp_start"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="juba_mtp_end"
+
+# generic rule relying on libmtp's mtp-probe heursistic
+# harmless if the binary is not present
+ATTR{bDeviceClass}=="00|02|06|ef|ff", PROGRAM="mtp-probe /sys$env{DEVPATH} $attr{busnum} $attr{devnum}", RESULT=="1", GOTO="juba_mtp_process"
+
+# only perform tests on usb devices with known MTP manufacturer
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="041e|04e8|045e|04f1|0471|0781|1006|1042|4102|413c|0930|0e79|10d6|18f6|04a9|0421|05c6|13d1|069b|04c5|1703|066f|0402|1e68|0aa6|0e21|19ff|043e|1004|054c|0fce|22b8|0b28|0db0|06d3|1302|04da|0546|08e4|1bdc|1e53|0aa6|0fca|0402|1e74|0b20|12d1|18d1", GOTO="juba_mtp_start"
+GOTO="juba_mtp_end"
+
+LABEL="juba_mtp_start"
+
+# Creative ZEN Vision, Creative Portable Media Center, CZ Xtra (MTP mode), Dell DJ (2nd generation), CZ Micro (MTP mode), CZ Touch (MTP mode), Dell Dell Pocket DJ (MTP mode), CZ MicroPhoto,
+# CZ Sleek (MTP mode), CZ MicroPhoto, CZ Sleek Photo, CZ Vision:M, CZ V, CZ Vision:M (DVP-HD0004), CZ V Plus, CZ Vision W, CZ, CZ V 2GB, CZ Mozaic, CZ X-Fi, ZiiLABS Zii EGG
+ATTR{idVendor}=="041e", ATTR{idProduct}=="411f|4123|4128|412f|4130|4131|4132|4133|4137|413c|413d|413e|4150|4151|4152|4153|4157|4158|4161|4162|6000", GOTO="juba_mtp_process"
+# Samsung YP-900,I550W Phone,Jet S8000,YH-920 (501d),YH-920 (5022),YH-925GS,YH-820,YH-925(-GS),YH-J70J,YP-Z5,YP-T7J,YP-U2J (YP-U2JXB/XAA),YP-F2J,YP-K5,YP-U3,YP-T9,YP-K3,YP-P2,YP-T10,YP-S5,YP-S3,YP-U4,YP-R1
+# YP-Q1,YP-M1,YP-P3,YP-Q2,YP-U5,YP-R0,YH-999 Portable Media Center/SGH-A707/SGH-L760V/SGH-U900/Verizon Intensity,M7600 Beat/GT-S8300T,X830 Mobile Phone,U600 Mobile Phone,F250 Mobile Phone,Juke (SCH-U470),
+# GT-B2700,SAMSUNG Trance,Galaxy S GT-I9000,Vibrant SGH-T959,GT-S5230,Galaxy S3,Galaxy Nexus
+ATTR{idVendor}=="04e8", ATTR{idProduct}=="0409|04a4|4f1f|501d|5022|5024|502e|502f|5033|503c|5047|5054|5057|505a|507d|507f|5081|5083|508a|508b|5091|5093|510f|5115|5118|511a|511d|5121|5125|5a0f|6642|6702|6709|6727|6734|6752|6763|6860|6877|68a9|e20c", GOTO="juba_mtp_process"
+# Intel Bandon Portable Media Center, Microsoft Windows MTP Simulator, Microsoft Zune HD, Microsoft Zune, Lumia 800
+ATTR{idVendor}=="045e", ATTR{idProduct}=="00c9|04ec|0622|063e|0710", GOTO="juba_mtp_process"
+# JVC Alneo XA-HD500
+ATTR{idVendor}=="04f1", ATTR{idProduct}=="6105", GOTO="juba_mtp_process"
+# Philips HDD6320/00 or HDD6330/17,HDD14XX,HDD1620 or HDD1630/17,HDD085/00 or HDD082/17,GoGear SA9200,SA1115/55,GoGear Audio,Shoqbox,PSA610,HDD6320,GoGear SA6014/SA6015/SA6024/SA6025/SA6044/SA6045,
+# GoGear SA5145,GoGear SA6125/SA6145/SA6185,GoGear SA3345,SA5285,GoGear ViBE SA1VBE04,GoGear Muse,GoGear ViBE SA1VBE04/08,GoGear Aria,GoGear SA1VBE08KX/78,PSA235
+ATTR{idVendor}=="0471", ATTR{idProduct}=="014b|014c|014d|014f|0164|0165|0172|0181|01eb|084e|0857|2002|2004|2022|2075|2077|207b|207c|208e|7e01", GOTO="juba_mtp_process"
+# SanDisk Sansa m230/m240,m200-tcc (MTP mode),c150,e200/e250/e260/e270/e280,e260/e280 v2,m240/m250,Clip,Clip v2,c240/c250,c250 v2,Express,Connect,View,Fuze,Fuze v2,Clip+
+ATTR{idVendor}=="0781", ATTR{idProduct}=="7400|7401|7410|7420|7422|7430|7432|7434|7450|7452|7460|7480|74b0|74c0|74c2|74d0", GOTO="juba_mtp_process"
+# iRiver H300 Series MTP,Portable Media Center,Portable Media Center
+ATTR{idVendor}=="1006", ATTR{idProduct}=="3004|4002|4003", GOTO="juba_mtp_process"
+# iRiver T7 Volcano
+ATTR{idVendor}=="1042", ATTR{idProduct}=="1143", GOTO="juba_mtp_process"
+# iRiver iFP-880,T10,T20 FM,T20,U10,T10a,T20,T30,T10 2GB,N12,Clix2,Clix,X20,T60,E100,E100 v2/Lplayer,Spinn,E50,E30,H10 20GB,H10 5GB,H10 5.6GB
+ATTR{idVendor}=="4102", ATTR{idProduct}=="2105|1008|1113|1114|1115|1116|1117|1118|1119|1120|1122|1126|112a|1132|1134|1141|1142|1147|1151|1167|2101|2102", GOTO="juba_mtp_process"
+# Dell, Inc DJ Itty
+ATTR{idVendor}=="413c", ATTR{idProduct}=="4500", GOTO="juba_mtp_process"
+# Toshiba Gigabeat MEGF-40,P20,S,P10,V30,U,MEU202,T,MEU201,MET401
+ATTR{idVendor}=="0930", ATTR{idProduct}=="0009|000c|000f|0010|0011|0014|0016|0018|0019|001a|001d", GOTO="juba_mtp_process"
+# Archos Gmini XS100,XS202 (MTP mode),104 (MTP mode),204 (MTP mode),404 (MTP mode),404CAM (MTP mode),504 (MTP mode),604 (MTP mode),604WIFI (MTP mode),704 mobile dvr,704TV (MTP mode),405 (MTP mode)
+# 605 (MTP mode),605F (MTP mode),705 (MTP mode),TV+ (MTP mode),105 (MTP mode),405HDD (MTP mode),5 (MTP mode),5 (MTP mode),7 (MTP mode),SPOD (MTP mode),5S IT (MTP mode),5H IT (MTP mode),
+ATTR{idVendor}=="0e79", ATTR{idProduct}=="1207|1208|120a|120c|1301|1303|1307|1309|130b|130d|130f|1311|1313|1315|1319|131b|131d|1321|1331|1333|1335|1341|1351|1357", GOTO="juba_mtp_process"
+# Dunlop MP3 player 1GB / EGOMAN MD223AFD, Memorex or iRiver MMP 8585/8586 or iRiver E200
+ATTR{idVendor}=="10d6", ATTR{idProduct}=="2200|2300", GOTO="juba_mtp_process"
+# Sirius Stiletto, Stiletto 2
+ATTR{idVendor}=="18f6", ATTR{idProduct}=="0102|0110", GOTO="juba_mtp_process"
+# Canon Ixus Digital 700 (PTP/MTP mode), Canon PowerShot A640 (PTP/MTP mode),Canon PowerShot SX20IS (PTP/MTP mode)
+ATTR{idVendor}=="04a9", ATTR{idProduct}=="30f2|3139|31e4", GOTO="juba_mtp_process"
+# Nokia N81 Mobile Phone,6120c Classic Mobile Phone,N96 Mobile Phone,6500c Classic Mobile Phone,3110c Mobile Phone,3109c Mobile Phone,5310 XpressMusic,N95 Mobile Phone 8GB,N82 Mobile Phone,N78 Mobile Phone
+# 6220 Classic,N85 Mobile Phone,6210 Navigator,E71,E66,5320 XpressMusic,5800 XpressMusic,5800 XpressMusic v2,E63,E71x,3710,N97-1,N97,5130 XpressMusic,E72,5530,N97 mini,6600i,5200,3250 Mobile Phone,
+# N93 Mobile Phone,5500 Sport Mobile Phone,N91 Mobile Phone,5700 XpressMusic Mobile Phone,5300 Mobile Phone,N73 Mobile Phone,N75 Mobile Phone,N93i Mobile Phone,N95 Mobile Phone,
+# N80 Internet Edition (Media Player), N8
+ATTR{idVendor}=="0421", ATTR{idProduct}=="000a|002e|0039|003c|005f|0065|006c|006e|0074|0079|008d|0092|0098|00e4|00e5|00ea|0154|0155|0179|01a1|01ee|01f4|01f5|0209|0221|0229|026b|0297|02fe|0421|0462|0478|047e|0485|04b4|04ba|04d1|04e1|04e5|04ef|04f1", GOTO="juba_mtp_process"
+# Nokia 5530 Xpressmusic,Nokia/Verizon 6205 Balboa/Verizon Music Phone
+ATTR{idVendor}=="05c6", ATTR{idProduct}=="0229|3196", GOTO="juba_mtp_process"
+# Logik LOG DAX MP3 and DAB Player,Technika MP-709
+ATTR{idVendor}=="13d1", ATTR{idProduct}=="7002|7017", GOTO="juba_mtp_process"
+# Thomson EM28 Series,Thomson / RCA Opal / Lyra MC4002,Lyra MC5104B (M51 Series),RCA H106,scenium E308, RCA Lyra HC308A
+ATTR{idVendor}=="069b", ATTR{idProduct}=="0774|0777|077c|301a|3028|3035", GOTO="juba_mtp_process"
+# FOMA F903iX HIGH-SPEED
+ATTR{idVendor}=="04c5", ATTR{idProduct}=="1140", GOTO="juba_mtp_process"
+# NormSoft, Inc. Pocket Tunes, Tunes 4
+ATTR{idVendor}=="1703", ATTR{idProduct}=="0001|0002", GOTO="juba_mtp_process"
+# TrekStor Vibez 8/12GB,Medion MD8333,Medion MD8333,Maxfield G-Flash NG 1GB,SigmaTel Inc. MTPMSCN Audio Player
+ATTR{idVendor}=="066f", ATTR{idProduct}=="842a|8550|8588|846c|a010", GOTO="juba_mtp_process"
+# TrekStor i.Beat Sweez FM,ALi Corp. MPMAN 2GB
+ATTR{idVendor}=="0402", ATTR{idProduct}=="0611|5668", GOTO="juba_mtp_process"
+# TrekStor i.Beat Organix 2.0 (disabled; handled with MS)
+#ATTR{idVendor}=="1e68", ATTR{idProduct}=="0002", GOTO="juba_mtp_process"
+# Disney MixMax,Tevion MD 81488,MyMusix PD-6070
+ATTR{idVendor}=="0aa6", ATTR{idProduct}=="6021|3011|9601", GOTO="juba_mtp_process"
+# Cowon iAudio U3 (MTP mode),6 (MTP mode),7 (MTP mode),U5 (MTP mode),D2 (MTP mode),D2+ FW 2.x (MTP mode),D2+ DAB FW 4.x (MTP mode),D2+ FW 3.x (MTP mode),D2+ DMB FW 1.x (MTP mode),S9 (MTP mode)
+# 9 (MTP mode),J3 (MTP mode)
+ATTR{idVendor}=="0e21", ATTR{idProduct}=="0701|0711|0751|0761|0801|0861|0871|0881|0891|0901|0911|0921", GOTO="juba_mtp_process"
+# Insignia NS-DV45,Sport Player,Pilot 4GB
+ATTR{idVendor}=="19ff", ATTR{idProduct}=="0303|0307|0309", GOTO="juba_mtp_process"
+# LG Electronics Inc. T54,UP3
+ATTR{idVendor}=="043e", ATTR{idProduct}=="7040|70b1", GOTO="juba_mtp_process"
+# LG Electronics Inc. VX8550 V CAST Mobile Phone,KC910 Renoir Mobile Phone,GR-500 Music Player,KM900
+ATTR{idVendor}=="1004", ATTR{idProduct}=="6010|608f|611b|6132", GOTO="juba_mtp_process"
+# Sony Walkman NWZ-A815/NWZ-A818,NWZ-S516,NWZ-S615F/NWZ-S616F/NWZ-S618F,NWZ-S716F,NWZ-A826/NWZ-A828/NWZ-A829,NWZ-A726/NWZ-A728/NWZ-A768,NWZ-B135,NWZ-E436F,NWZ-W202,NWZ-S739F,NWZ-S638F,NWZ-X1050B/NWZ-X1060B,
+# NWZ-X1051/NWZ-X1061,NWZ-B142F,NWZ-E344,NWZ-E445,NWZ-S545,DCR-SR75 [NWZ-A826 (pid=035b) handled in MS]
+ATTR{idVendor}=="054c", ATTR{idProduct}=="0325|0326|0327|035a|035c|036e|0385|0388|038c|038e|0397|0398|03d8|03fc|03fd|03fe|1294", GOTO="juba_mtp_process"
+# SonyEricsson K550i,K850i,W910,W890i,W760i,C902,C702,W980,C905,W595,W902,T700,W705/W715,W995,U5,W302
+ATTR{idVendor}=="0fce", ATTR{idProduct}=="e000|0075|0076|00b3|00c6|00d4|00d9|00da|00ef|00f3|00f5|00fb|0105|0112|0133|014f|10c8", GOTO="juba_mtp_process"
+# Motorola V3m/V750 verizon,Droid X,Milestone / Verizon Droid,K1,A1200,MTP Test Command Interface,RAZR2 V8/U9/Z6
+ATTR{idVendor}=="22b8", ATTR{idProduct}=="2a65|41d6|41dc|4811|60ca|6413|6415", GOTO="juba_mtp_process"
+# Google Nexus 4/7/10/S
+ATTR{idVendor}=="18d1", ATTR{idProduct}=="4ee1|4ee2|4e41|4e42|4e21", GOTO="juba_mtp_process"
+# Kenwood Media Keg HD10GB7 Sport Player
+ATTR{idVendor}=="0b28", ATTR{idProduct}=="100c", GOTO="juba_mtp_process"
+# Micro-Star International P610/Model MS-5557
+ATTR{idVendor}=="0db0", ATTR{idProduct}=="5572", GOTO="juba_mtp_process"
+# FOMA D905i
+ATTR{idVendor}=="06d3", ATTR{idProduct}=="21ba", GOTO="juba_mtp_process"
+# Haier Ibiza Rhapsody
+ATTR{idVendor}=="1302", ATTR{idProduct}=="1016|1017", GOTO="juba_mtp_process"
+# Panasonic P905i,P906i
+ATTR{idVendor}=="04da", ATTR{idProduct}=="2145|2158", GOTO="juba_mtp_process"
+# Polaroid Freescape/MPU-433158
+ATTR{idVendor}=="0546", ATTR{idProduct}=="2035", GOTO="juba_mtp_process"
+# Pioneer XMP3
+ATTR{idVendor}=="08e4", ATTR{idProduct}=="0148", GOTO="juba_mtp_process"
+# Slacker Inc. Slacker Portable Media Player
+ATTR{idVendor}=="1bdc", ATTR{idProduct}=="fabf", GOTO="juba_mtp_process"
+# O2 Sistemas ZoltarTV,Wyplay Wyplayer
+ATTR{idVendor}=="1e53", ATTR{idProduct}=="0006|0007", GOTO="juba_mtp_process"
+# Perception Digital, Ltd Gigaware GX400
+ATTR{idVendor}=="0aa6", ATTR{idProduct}=="9702", GOTO="juba_mtp_process"
+# RIM BlackBerry Storm/9650
+ATTR{idVendor}=="0fca", ATTR{idProduct}=="8007", GOTO="juba_mtp_process"
+# Nextar MA715A-8R
+ATTR{idVendor}=="0402", ATTR{idProduct}=="5668", GOTO="juba_mtp_process"
+# Coby COBY MP705
+ATTR{idVendor}=="1e74", ATTR{idProduct}=="6512", GOTO="juba_mtp_process"
+# Isabella Her Prototype
+ATTR{idVendor}=="0b20", ATTR{idProduct}=="ddee", GOTO="juba_mtp_process"
+# HUAWEI U8860/9200
+ATTR{idVendor}=="12d1", ATTR{idProduct}=="1051|1052", GOTO="juba_mtp_process"
+# Motorola Photon Q
+ATTR{idVendor}=="22b8", ATTR{idProduct}=="2e20", GOTO="juba_mtp_process"
+GOTO="juba_mtp_end"
+
+LABEL="juba_mtp_process"
+# mark device as MTP and create symlink
+ENV{JUBA_STR_DEV_TYPE}="mtp", TAG+="JUBA", SYMLINK+="mtp", IMPORT{program}="juba_usb"
+
+LABEL="juba_mtp_end"

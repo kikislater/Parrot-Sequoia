@@ -1,0 +1,5 @@
+# make symbolic link for mpu6050
+service lnk_mpu6050 /bin/ln -s /dev/i2c-1 /dev/i2c-mpu6050
+    class core
+    user root
+    oneshot

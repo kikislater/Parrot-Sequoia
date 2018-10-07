@@ -1,0 +1,3 @@
+# launch ftp server to watch data directory on port 21, log on ulogcat
+21 stream tcp nowait root /usr/bin/ulogwrapper /usr/bin/ulogwrapper /usr/sbin/ftpd -wS /data/medias/DCIM
+

@@ -1,0 +1,39 @@
+on boot
+    setprop ro.ulog_data.path /data/ulogcatd
+
+on post-fs-data
+      # create temp ulog directory
+      mkdir /var/run/ulog/ 0777
+
+# In release mode, we clean any ulogcatd present
+on property:rw.debuggable=0
+    statexec ${ro.ulog_data.path} /bin/rm -rf ${ro.ulog_data.path}
+    stop ulogcatd
+    start ulogcatd
+
+# restart ulogcatd on dir creation
+on property:init.svc.ulog_data=stopped
+    mkdir ${ro.ulog_data.path} 0755 root root
+    stop ulogcatd
+    start ulogcatd
+
+service ulog_data /usr/bin/ulogger -t ulog_data -p I "Creating ulogcatd directory"
+    oneshot
+    disabled
+
+# This service will flush and stop cleanly ulogcatd before parsing all logs
+service ulog_parse /bin/sh /usr/bin/ulog_parser.sh
+    oneshot
+    disabled
+
+# flush ulog persistent data storage
+service flush_ulog /usr/bin/killall -ALRM ulogcat
+    oneshot
+    disabled
+
+service ulog_session /usr/bin/ulogcat -F /var/run/ulog/ulogsession.conf
+    disabled
+
+service ulog_clear /usr/bin/ulogcat -c
+    oneshot
+    disabled

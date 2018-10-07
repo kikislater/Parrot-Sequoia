@@ -1,0 +1,8 @@
+
+service telnetd /usr/sbin/telnetd -F -l /usr/bin/shl
+    class main
+    disabled
+
+on property:rw.debuggable=1
+    start telnetd
+

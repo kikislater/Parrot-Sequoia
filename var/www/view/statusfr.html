@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Parrot Sequoia</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/style.css?version=1.5">
+    <link rel="shortcut icon" href="../myico.ico" type="image/x-icon" />
+    <meta content="text/html, text/plain" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="logo-container" href="../indexfr.html" style="float:left"><img id="logo" src="../img/LOGO_SEQUOIA.png" /></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="../indexfr.html"> Accueil </a></li>
+                    <li class="active"><a href="statusfr.html"> Statut <span class="sr-only">(current)</span> </a></li>
+                    <li><a href="galleryfr.html"> Galerie </a></li>
+                    <li><a target="_blank" href="../help/indexfr.html"> Aide </a></li>
+                    <li><a href="settingsfr.html"> Paramètres </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button id="unmount" style="display: none" class="btn btn-primary navbar-btn" href="index.html">Ejecter carte SD&nbsp;&nbsp;<span class="glyphicon glyphicon-open" aria-hidden="true"></span></button>
+                    </li>
+                    <li>
+                        <button id="powerOfffr" class="btn btn-primary navbar-btn" href="index.html">Eteindre&nbsp;&nbsp;<span class="glyphicon glyphicon-off" aria-hidden="true"></span></button>
+                    </li>
+                    <li class="dropdown" id="dropL">
+                        <a href="#" onclick="return false;" id="selectLanguage" class="dropdown-toggle noselect" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded=false> FR&nbsp;&nbsp;<img src="../img/traduction/france.svg" class="flag"/> <span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="language" href="status.html"> EN&nbsp;&nbsp;<img src="../img/traduction/usa.svg" class="flag"/> </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="panel-group" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div id="gpsp" class="panel-heading" role="tab">
+                <h4 class="panel-title">
+				<a href="#gps">
+				 	GPS
+				</a>
+		      </h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div id="nogps" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: none;text-align:center">
+                        <strong>Pas de signal GPS</strong>
+                    </div>
+                </div>
+                <div id="signalgps">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 border-right" style="padding-right:0px;padding-left:0px">
+                        <div class="row" style="text-align:center;margin-bottom:10px">
+                            <strong>Statut GPS</strong>
+                        </div>
+                        <div class="row" style="text-align:center">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:center">
+                                <div class="row">
+                                    Nombre de satellites
+                                </div>
+                                <div class="row" id="nb_sat">
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:center">
+                                <div class="row">
+                                    Précision
+                                </div>
+                                <div class="row" id="prec">
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:center">
+                                <div class="row">
+                                    Vitesse
+                                </div>
+                                <div class="row" id="speed">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right:0px;padding-left:0px">
+                        <hr id="instrument-divider">
+                        <div class="row" style="text-align:center;margin-bottom:10px">
+                            <strong>Coordonnées GPS</strong>
+                        </div>
+                        <div class="row" style="text-align:center">
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:center">
+                                <div class="row">
+                                    Latitude
+                                </div>
+                                <div class="row" id="lat">
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:center">
+                                <div class="row">
+                                    Longitude
+                                </div>
+                                <div class="row" id="long">
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:center">
+                                <div class="row">
+                                    Altitude
+                                </div>
+                                <div class="row" id="alt">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel panel-default">
+            <div id="instruments" class="panel-heading">
+                <h4 class="panel-title">
+				<a href="#instruments">
+				  	Instruments
+				</a>
+		      </h4>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right:0px;padding-left:0px">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center;margin-bottom:10px">
+                        <strong>Caméra</strong>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 yaw" style="text-align:center">
+                        <div class="row">
+                            YAW
+                        </div>
+                        <canvas id="body_compass" width="80" height="80"></canvas>
+                        <div class="row" id="body_yaw">
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pitch" style="text-align:center">
+                        <div class="row">
+                            PITCH
+                        </div>
+                        <canvas id="body_pitch_a" width="80" height="80"></canvas>
+                        <div class="row" id="body_pitch">
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 roll" style="text-align:center">
+                        <div class="row">
+                            ROLL
+                        </div>
+                        <canvas id="body_roll_a" width="80" height="80"></canvas>
+                        <div class="row" id="body_roll">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 border-left-a" id="sunshine_instruments" style="padding-right:0px;padding-left:0px">
+                    <hr id="instrument-divider">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center;margin-bottom:10px">
+                        <strong>Sunshine</strong>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 yaw" style="text-align:center">
+                        <div class="row">
+                            YAW
+                        </div>
+                        <canvas id="sunshine_compass" width="80" height="80"></canvas>
+                        <div class="row" id="sunshine_yaw">
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pitch" style="text-align:center">
+                        <div class="row">
+                            PITCH
+                        </div>
+                        <canvas id="sunshine_pitch_a" width="80" height="80"></canvas>
+                        <div class="row" id="sunshine_pitch">
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 roll" style="text-align:center">
+                        <div class="row">
+                            ROLL
+                        </div>
+                        <canvas id="sunshine_roll_a" width="80" height="80"></canvas>
+                        <div class="row" id="sunshine_roll">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="sunshine_panel">
+            <div id="sunshine" class="panel-heading">
+                <h4 class="panel-title">
+			<a href="#sunshine">
+						Sunshine Sensor
+			</a>
+		      </h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 border-right" style="padding-right:0px;padding-left:0px">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center;margin-bottom:10px">
+                        <strong>Channel 0</strong>
+                    </div>
+                    <div class="row" style="text-align:center;margin-bottom:5px">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            GREEN
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            RED
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            RED EDGE
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            NEAR IR
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_green" width="40" height="80"></canvas>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_red" width="40" height="80"></canvas>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_rededge" width="40" height="80"></canvas>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_nearinfrared" width="40" height="80"></canvas>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center">
+                        <div id="green" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                        <div id="red" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                        <div id="rededge" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                        <div id="nearir" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right:0px;padding-left:0px">
+                    <hr id="instrument-divider">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center;margin-bottom:10px">
+                        <strong>Channel 1</strong>
+                    </div>
+                    <div class="row" style="text-align:center;margin-bottom:5px">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            GREEN
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            RED
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            RED EDGE
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            NEAR IR
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_green_1" width="40" height="80"></canvas>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_red_1" width="40" height="80"></canvas>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_rededge_1" width="40" height="80"></canvas>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <canvas id="sunshine_nearinfrared_1" width="40" height="80"></canvas>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center">
+                        <div id="green_1" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                        <div id="red_1" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                        <div id="rededge_1" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                        <div id="nearir_1" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div id="temperature" class="panel-heading">
+                <h4 class="panel-title">
+			<a href="#temperature">
+			  	Température
+			</a>
+		      </h4>
+            </div>
+
+            <div class="panel-body" style="padding-right:0px;padding-left:0px">
+                <div class="row" style="margin-bottom:0px;padding-bottom:0px;padding-right:0px;padding-left:0px">
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="text-align:center;margin-bottom:0px;padding-bottom:5px">
+                        <strong>Camera</strong>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 border-left-a sunshine_temp" style="text-align:center;margin-bottom:0px;padding-bottom:5px;padding-right:1px;padding-left:1px">
+                        <strong>Sunshine Sensor</strong>
+                    </div>
+                </div>
+                <div class="row" style="text-align:center;margin-top:0px;padding-top:0px;padding-right:0px;padding-left:0px">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px">
+                        <canvas id="p7_a" width="40" height="80"></canvas>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px">
+                        <canvas id="p7mu_a" width="40" height="80"></canvas>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px">
+                        <canvas id="ddr3_a" width="40" height="80"></canvas>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px">
+                        <canvas id="wifi_a" width="40" height="80"></canvas>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px">
+                        <canvas id="imu_body_a" width="40" height="80"></canvas>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 border-left-a sunshine_temp" style="margin-top:0px;padding-top:5px">
+                        <canvas id="imu_sunshine_a" width="40" height="80"></canvas>
+                    </div>
+                </div>
+                <div class="row" style="text-align:center;margin-top:0px;padding-top:0px;padding-right:0px;padding-left:0px">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px;padding-right:0px;padding-left:0px">
+                        Processeur
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px;padding-right:0px;padding-left:0px">
+                        Alimentation
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px;padding-right:0px;padding-left:0px">
+                        RAM
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px;padding-right:0px;padding-left:0px">
+                        Wifi
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="margin-top:0px;padding-top:5px;padding-right:0px;padding-left:0px">
+                        Centrale inertielle
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 border-left-a sunshine_temp" style="margin-top:0px;padding-top:5px;padding-right:0px;padding-left:0px">
+                        Centrale inertielle
+                    </div>
+                </div>
+                <div class="row" style="text-align:center;padding-right:0px;padding-left:0px">
+                    <div id="p7" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div id="p7mu" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div id="ddr3" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div id="wifi" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div id="bodyimu" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div id="sunshineimu" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 border-left-a sunshine_temp">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="bugmodal" tabindex="-1" data-target="#bugmodal" role="dialog">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Crash report !</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Quelque chose à crashé dans votre Sequoia !</p>
+                    <p>Voulez-vous télécharger le rapport de crash '<strong id="bugfilename"></strong>' afin de l'envoyer au support technique Parrot ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="dlbugreport" name="" data-dismiss="modal">Télécharger</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer navbar-fixed-bottom">
+        <div class="row no-padding">
+            <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                Version: <span id="version">0.0.0</span>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                S/N: <span id="serialnumber"> </span>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-mg-4 col-lg-4 no-padding">
+                <a target="_blank" href="../license.html" id="termsofuse">Mentions légales</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Latest compiled and minified JQuery -->
+    <script src="../js/jquery-1.12.0.min.js"></script>
+    <script src="../js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../js/jquery.WebSocket.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../compass/compass.js?version=1.5"></script>
+    <script src="../sunshine/sunshine.js?version=1.5"></script>
+    <script src="../js/sd.js?version=1.5"></script>
+    <script src="../js/statusfr.js?version=1.5"></script>
+</body>
+
+</html>

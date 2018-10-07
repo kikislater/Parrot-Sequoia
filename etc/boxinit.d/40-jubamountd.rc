@@ -1,0 +1,6 @@
+service jubamountd /usr/bin/jubamountd
+    class core
+    user root
+    # [SYS_ADMIN] syscalls mount, umount2
+    # [SETGID] if ntfs-3g fuse driver is used, else mount OK but unusable: "Transport endpoint is not connected"
+    capability SYS_ADMIN SETGID

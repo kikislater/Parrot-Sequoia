@@ -1,0 +1,115 @@
+<!-- This file contains the default values to use if the camera_calibration.xml
+     file is not present in the /factory/fvt9 folder or if there are missing
+     values in the camera_calibration.xml file located in the /factory/fvt9
+     folder. -->
+<cameraModelDB>
+	<version>17</version>
+		<rigs>
+			<rig>
+				<camera rotX="0" rotY="0" rotZ="0">
+					<band name="Red"/>
+				</camera>
+				<camera rotX="0" rotY="0" rotZ="0">
+					<band name="Red edge"/>
+				</camera>
+				<camera rotX="0" rotY="0" rotZ="0">
+					<band name="NIR"/>
+				</camera>
+			</rig>
+		</rigs>
+		<cameras>
+			<camera>
+				<principalPointXmm>2.4</principalPointXmm>
+				<principalPointYmm>1.8</principalPointYmm>
+				<lensType>fisheye</lensType>
+				<npoly>3</npoly>
+				<poly0>0</poly0>
+				<poly1>1</poly1>
+				<poly2>0.0152646</poly2>
+				<poly3>-0.161096</poly3>
+				<poly4>0</poly4>
+				<symmetricAffine>true</symmetricAffine>
+				<c>1674.33</c>
+				<d>0</d>
+				<e>0</e>
+				<f>1674.33</f>
+				<bandConfig>
+					<band name="Green"/>
+				</bandConfig>
+			</camera>
+			<camera>
+				<principalPointXmm>2.4</principalPointXmm>
+				<principalPointYmm>1.8</principalPointYmm>
+				<lensType>fisheye</lensType>
+				<npoly>3</npoly>
+				<poly0>0</poly0>
+				<poly1>1</poly1>
+				<poly2>0.0152646</poly2>
+				<poly3>-0.161096</poly3>
+				<poly4>0</poly4>
+				<symmetricAffine>true</symmetricAffine>
+				<c>1674.33</c>
+				<d>0</d>
+				<e>0</e>
+				<f>1674.33</f>
+				<bandConfig>
+					<band name="NIR"/>
+				</bandConfig>
+			</camera>
+			<camera>
+				<principalPointXmm>2.4</principalPointXmm>
+				<principalPointYmm>1.8</principalPointYmm>
+				<lensType>fisheye</lensType>
+				<npoly>3</npoly>
+				<poly0>0</poly0>
+				<poly1>1</poly1>
+				<poly2>0.0152646</poly2>
+				<poly3>-0.161096</poly3>
+				<poly4>0</poly4>
+				<symmetricAffine>true</symmetricAffine>
+				<c>1674.33</c>
+				<d>0</d>
+				<e>0</e>
+				<f>1674.33</f>
+				<bandConfig>
+					<band name="Red edge"/>
+				</bandConfig>
+			</camera>
+			<camera>
+				<principalPointXmm>2.4</principalPointXmm>
+				<principalPointYmm>1.8</principalPointYmm>
+				<lensType>fisheye</lensType>
+				<npoly>3</npoly>
+				<poly0>0</poly0>
+				<poly1>1</poly1>
+				<poly2>0.0152646</poly2>
+				<poly3>-0.161096</poly3>
+				<poly4>0</poly4>
+				<symmetricAffine>true</symmetricAffine>
+				<c>1674.33</c>
+				<d>0</d>
+				<e>0</e>
+				<f>1674.33</f>
+				<bandConfig>
+					<band name="Red"/>
+				</bandConfig>
+			</camera>
+			<camera>
+				<principalPointXmm>3.1046</principalPointXmm>
+				<principalPointYmm>2.27029</principalPointYmm>
+				<lensType>perspective</lensType>
+				<focalLengthmm>4.84</focalLengthmm>
+				<radialK1>0.183277</radialK1>
+				<radialK2>-0.432997</radialK2>
+				<radialK3>0.328382</radialK3>
+				<tangentialT1>0.000304604</tangentialT1>
+				<tangentialT2>0.000110249</tangentialT2>
+				<bandConfig>
+					<band name="Red"/>
+					<band name="Green"/>
+					<band name="Blue"/>
+				</bandConfig>
+			</camera>
+		</cameras>
+	<mappings/>
+</cameraModelDB>

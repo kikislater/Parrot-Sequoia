@@ -1,0 +1,4 @@
+# Specific rules for leds
+ACTION=="add|remove", SUBSYSTEM=="leds", KERNEL=="*pca9633*red", RUN+="/bin/sh /usr/bin/led_init.sh $kernel 0x62"
+ACTION=="add|remove", SUBSYSTEM=="leds", KERNEL=="*ncp5623*red", RUN+="/bin/sh /usr/bin/led_init.sh $kernel 0x39"
+

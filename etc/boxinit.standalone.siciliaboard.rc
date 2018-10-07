@@ -1,0 +1,61 @@
+# -*- mode:sh -*-
+# This file should contain commands valid on ALL standalone platforms
+# (i.e. Linux-only, no Android/PC host OS)
+
+import boxinit.base.rc
+import boxinit.product.rc
+
+on early-fs
+    # data
+    mount ext4 /dev/mmcblk0p6 /data rw noatime nodiratime discard,data=writeback,nobarrier
+    # cache
+    mount ext4 /dev/mmcblk0p7 /update rw noatime nodiratime discard,data=writeback,nobarrier
+    # factory
+    mount ext4 /dev/mmcblk0p5 /factory rw noatime nodiratime data=writeback,nobarrier
+
+# Start console every time to allow UART debugging
+on property:rw.debuggable=*
+    start console
+
+on property:rw.debuggable=1
+    # mount debugfs to have kernel debugging infos
+    mount debugfs none /sys/kernel/debug
+
+on property:rw.debuggable=0
+    mount ext4 /dev/mmcblk0p5 /factory ro remount
+
+# Check some ext4 partitions for corruption
+service ext4_fs_checker /bin/sh /usr/bin/ext4_checker.sh
+    oneshot
+    disabled
+
+on early-boot
+    start ext4_fs_checker
+
+on property:init.status.ext4_fs_checker=0
+    setprop sicilia_all_services start
+
+# all services to launch at startup, some others need more triggers and so are in specific files
+on property:sicilia_all_services=start
+    start civet_interface
+    start macgyverd
+    start plf_updater
+    start siciliad
+    start telemetryd
+
+on property:sicilia_all_services=stop
+    stop civet_interface
+    stop dnsmasq_rndis0
+    stop dnsmasq_wlan0
+    stop macgyverd
+    stop mtp_ptp_srv
+    stop palermo
+    stop plf_updater
+    stop ptpip_server
+    stop sensors_ir
+    stop sensors_main
+    stop sensors_main_pv
+    stop siciliad
+    stop telemetryd
+    stop ulog_session
+    stop ulogcatd

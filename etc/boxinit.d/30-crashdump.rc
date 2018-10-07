@@ -1,0 +1,10 @@
+on post-fs-data
+    mkdir /var/lib/crashdump
+    chown system system /var/lib/crashdump
+
+service crashdumpd /usr/bin/crashdump -d
+    class main
+    user system
+    group system
+    # [SYS_PTRACE] ptrace(PTRACE_ATTACH,) error:Operation not permitted
+    capability SYS_PTRACE

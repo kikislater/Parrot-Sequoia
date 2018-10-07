@@ -1,0 +1,5 @@
+# turn on leds
+service heating-imu-pwm /bin/sh /etc/init.d/rcS_heating_imu
+    class core
+    user root
+    oneshot

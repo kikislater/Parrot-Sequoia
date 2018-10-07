@@ -1,0 +1,4 @@
+#Average Luma: 504.000000
+#Percentage Luma: 0.492669
+#ExposureTime: 1/273
+#ISOSpeedRatings: 100

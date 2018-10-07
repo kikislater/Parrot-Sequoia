@@ -1,0 +1,7 @@
+# load wl18xx modules
+
+# load wlcore_sdio module when a SDIO device using function 2 (wifi on the wl18xx) and matching vendor and device ids is detected
+ACTION=="add", KERNEL=="mmc*", SUBSYSTEM=="mmc", ATTRS{type}=="SDIO", ATTR{%k:2/vendor}=="0x0097", ATTR{%k:2/device}=="0x4076" RUN+="/sbin/modprobe wlcore_sdio"
+
+# load wl18xx when a wl18xx device (created by wlcore_sdio) is detected
+ACTION=="add", KERNEL=="wl18xx", SUBSYSTEM=="platform", DRIVER!="?*", RUN+="/sbin/modprobe wl18xx"

@@ -1,0 +1,36 @@
+# All others services apart the first are disabled because they are launched sequentially with the on property: below
+service dib0700_drv /sbin/modprobe dib0700_mfd i2c_param="(2:5),(3:5),(7:5)" firmware=dvb-usb-dib0700-1.23.fw
+    class main
+    oneshot
+
+service pca9633_drv /sbin/modprobe leds-pca9633
+    oneshot
+    disabled
+
+service ncp5623c_drv /sbin/modprobe leds-ncp5623c
+    oneshot
+    disabled
+
+service tsl2591_drv /sbin/modprobe tsl2591
+    oneshot
+    disabled
+
+service irradiance_drv /sbin/modprobe sicilia-irradiance
+     oneshot
+     disabled
+
+# Launch sequentially the drivers to make sure that the first three are correctly launched before instanciating sicilia-irradiance
+on property:init.svc.dib0700_drv=stopped
+    start tsl2591_drv
+
+on property:init.svc.tsl2591_drv=stopped
+    start ncp5623c_drv
+
+on property:init.svc.ncp5623c_drv=stopped
+    start pca9633_drv
+
+on property:init.svc.pca9633_drv=stopped
+    start irradiance_drv
+
+#on property:init.svc.irradiance_drv=stopped
+

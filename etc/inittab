@@ -1,0 +1,42 @@
+# /etc/inittab
+#
+# Copyright (C) 2001 Erik Andersen <andersen@codepoet.org>
+#
+# Note: BusyBox init doesn't support runlevels.  The runlevels field is
+# completely ignored by BusyBox init. If you want runlevels, use
+# sysvinit.
+#
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# id        == tty to run on, or empty for /dev/console
+# runlevels == ignored
+# action    == one of sysinit, respawn, askfirst, wait, and once
+# process   == program to run
+
+# Startup the system and run any rc scripts
+::sysinit:/bin/mount -t sysfs sys /sys
+::sysinit:/bin/mount -t debugfs debug /sys/kernel/debug
+::sysinit:/bin/mount -o remount,rw /
+::sysinit:/bin/mkdir /dev/pts
+::sysinit:/bin/mount -t devpts devpts /dev/pts
+::sysinit:/bin/mount -t tmpfs tmp /tmp
+::sysinit:/bin/echo 5 > /proc/cpu/alignment
+::sysinit:/bin/echo 1 > /proc/sys/kernel/sysrq
+::sysinit:/bin/echo "/tmp/%e.%p" > /proc/sys/kernel/core_pattern
+::sysinit:/bin/echo 2 > /proc/sys/vm/overcommit_memory
+::sysinit:/bin/echo 90 > /proc/sys/vm/overcommit_ratio
+
+::sysinit:/bin/mount -t proc proc /proc
+::sysinit:/bin/mount -t devtmpfs dev /dev
+#::sysinit:/etc/init.d/rcS
+
+# Put a an on-demand shell on first serial port with outputs redirected to
+# zprint. Note: force interactive shell since zprint is not a tty...
+ttyPA0::askfirst:-/bin/sh
+
+#null::sysinit:/bin/touch /var/log/messages
+#null::respawn:/sbin/syslogd -n
+#null::respawn:/sbin/klogd -n
+
+# Stuff to do for the 3-finger salute
+#::ctrlaltdel:/sbin/reboot

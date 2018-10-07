@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<properties>
+  <property name="FriendlyName" id="0xD402" valueType="STRING" defaultValue="Parrot Sequoia" writable="false">
+    <formDesc type="NONE"/>
+  </property>
+
+  <property name="FunctionalMode" id="0x5002" valueType="UINT16" defaultValue="0x0000" writable="false">
+    <formDesc type="ENUM">
+      <enumValue value="0x0000" name="standard" />
+    </formDesc>
+  </property>
+
+  <property name="ImageSize" id="0x5003" valueType="STRING" defaultValue="4608 x 3456" writable="true">
+     <formDesc type="ENUM">
+       <enumValue value="4608 x 3456" name="16 Mpix" />
+       <enumValue value="4000 x 3000" name="12 Mpix" />
+     </formDesc>
+  </property>
+  <property name="CompressionSetting" id="0x5004" valueType="UINT8" defaultValue="80" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="80"/>
+     </formDesc>
+  </property>
+  <property name="WhiteBalanceMode" id="0x5005" valueType="UINT16" defaultValue="0x0002" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="0x0002"/>
+     </formDesc>
+  </property>
+  <property name="FNumber" id="0x5007" valueType="UINT16" defaultValue="230" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="230"/>
+     </formDesc>
+  </property>
+  <property name="FocalLength" id="0x5008" valueType="UINT32" defaultValue="2800" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="2800"/>
+     </formDesc>
+  </property>
+  <property name="FocusDistance" id="0x5009" valueType="UINT16" defaultValue="0xffff" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="0xffff"/>
+     </formDesc>
+  </property>
+  <property name="FocusMode" id="0x500a" valueType="UINT16" defaultValue="0x0002" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="0x0002"/>
+     </formDesc>
+  </property>
+  <property name="FlashMode" id="0x500c" valueType="UINT16" defaultValue="0x0002" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="0x0002"/>
+     </formDesc>
+  </property>
+  <property name="DateTime" id="0x5011" valueType="STRING" defaultValue="" writable="true">
+     <formDesc type="NONE"/>
+  </property>
+
+  <property name="StillCaptureMode" id="0x5013" valueType="UINT16" defaultValue="1" writable="true">
+     <formDesc type="ENUM">
+       <enumValue value="0x0001" name="normal"/>
+       <enumValue value="0x0003" name="timelapse"/>
+       <enumValue value="0x8002" name="byGpsPosition"/>
+       <enumValue value="0x8003" name="autoOverlap"/>
+       <enumValue value="0x8004" name="radiometricCalibration"/>
+    </formDesc>
+  </property>
+
+  <property name="TimelapseNumber" id="0x501A" valueType="UINT16" defaultValue="0" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="0x0000" name="infinite"/>
+     </formDesc>
+  </property>
+
+  <property name="FocusMeteringMode" id="0x501C" valueType="UINT16" defaultValue="0x0001" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="0x0001" name="center-spot" />
+     </formDesc>
+  </property>
+
+  <property name="TimelapseInterval" id="0x501B" valueType="UINT32" defaultValue="1500" writable="true">
+     <formDesc type="RANGE" maxValue="30000" minValue="500" stepValue="1"/>
+  </property>
+
+  <property name="GpsInterval" id="0xD212" valueType="UINT32" defaultValue="2500" writable="true">
+     <formDesc type="RANGE" maxValue="100000" minValue="500" stepValue="1"/>
+  </property>
+
+  <property name="SensorsEnabledMask" id="0xD201" valueType="UINT32" defaultValue="31" writable="true">
+     <formDesc type="RANGE" maxValue="31" minValue="1" stepValue="1"/>
+  </property>
+
+  <property name="SensorsKeepOn" id="0xD202" valueType="UINT32" defaultValue="0" writable="true">
+     <formDesc type="ENUM">
+       <enumValue value="0" name="don't keep on"/>
+       <enumValue value="1" name="keep on"/>
+    </formDesc>
+  </property>
+
+  <property name="MultispectralImageSize" id="0xD203" valueType="STRING" defaultValue="1280 x 960" writable="true">
+     <formDesc type="ENUM">
+       <enumValue value="1280 x 960" name="1.2 Mpix"/>
+       <enumValue value="640 x 480" name="0.3 Mpix"/>
+    </formDesc>
+  </property>
+
+  <property name="MainBitDepth" id="0xD204" valueType="UINT32" defaultValue="10" writable="false">
+     <formDesc type="ENUM">
+       <enumValue value="10" name="10 bits"/>
+    </formDesc>
+  </property>
+
+  <property name="MultispectralBitDepth" id="0xD205" valueType="UINT32" defaultValue="10" writable="true">
+     <formDesc type="ENUM">
+       <enumValue value="8" name="8 bits"/>
+       <enumValue value="10" name="10 bits"/>
+    </formDesc>
+  </property>
+
+  <property name="HeatingEnabled" id="0xD206" valueType="UINT32" defaultValue="0" writable="true">
+     <formDesc type="ENUM">
+       <enumValue value="0" name="disabled"/>
+       <enumValue value="1" name="enabled Main only"/>
+       <enumValue value="2" name="enabled IR only"/>
+       <enumValue value="3" name="enabled both"/>
+    </formDesc>
+  </property>
+
+  <property name="WifiStatus" id="0xD207" valueType="STRING" defaultValue="ON" writable="true">
+     <formDesc type="ENUM">
+       <enumValue value="ON" name="wifi ON"/>
+       <enumValue value="OFF" name="wifi OFF"/>
+       <enumValue value="RESTART" name="wifi Restart"/>
+       <enumValue value="ERROR" name="wifi ERROR"/>
+    </formDesc>
+  </property>
+  <property name="WifiSSID" id="0xD208" valueType="STRING" defaultValue="prop:ro.product.ssid.default" writable="true">
+     <formDesc type="NONE"/>
+  </property>
+  <property name="WifiPassPhrase" id="0xD20A" valueType="STRING" defaultValue="prop:ro.product.passphrase.default" writable="true">
+     <formDesc type="NONE"/>
+  </property>
+  <property name="MultiSensorsExopsureProgramMode" id="0xD215" valueType="AUINT16" defaultValue="2,2,2,2,2" writable="true">
+    <formDesc type="ENUM">
+      <enumValue value="1,1,1,1,1"/>
+      <enumValue value="2,1,1,1,1"/>
+      <enumValue value="1,2,2,2,2"/>
+      <enumValue value="2,2,2,2,2"/>
+    </formDesc>
+  </property>
+  <property name="MultiSensorsExposureTime" id="0xD214" valueType="AUINT32" defaultValue="1500,800,1000,2000,700" writable="true">
+    <formDesc Type="RANGE" maxValue="40000,27000,27000,27000,27000" minValue="1,1,1,1,1" stepValue="1,1,1,1,1"/>
+  </property>
+  <property name="MultiSensorsExposureIndex" id="0xD216" valueType="AUINT16" defaultValue="100,100,100,100,100" writable="true">
+    <formDesc Type="RANGE" maxValue="1593,6375,6375,6375,6375" minValue="100,100,100,100,100" stepValue="1,1,1,1,1"/>
+  </property>
+  <property name="MultiIrradianceGain" id="0xD217" valueType="AUINT32" defaultValue="1,1,1,1" writable="true">
+    <formDesc Type="RANGE" maxValue="3,3,3,3" minValue="0,0,0,0" stepValue="1,1,1,1"/>
+  </property>
+  <property name="MultiIrradianceIntegrationTimeUS" id="0xD218" valueType="AUINT32" defaultValue="100000,100000,100000,100000" writable="true">
+    <formDesc Type="RANGE" maxValue="600000,600000,600000,600000" minValue="100000,100000,100000,100000" stepValue="100000,100000,100000,100000"/>
+  </property>
+  <property name="OverlapRate" id="0xD219" valueType="UINT8" defaultValue="80" writable="true">
+    <formDesc Type="RANGE" maxValue="90" minValue="0" stepValue="1"/>
+  </property>
+  <property name="GPSEnable" id="0xD221" valueType="UINT32" defaultValue="1" writable="true">
+    <formDesc type="ENUM">
+      <enumValue value="0" name="disable GPS"/>
+      <enumValue value="1" name="enable GPS"/>
+    </formDesc>
+  </property>
+  <property name="MediaFolderName" id="0xD223" valueType="STRING" defaultValue="" writable="true">
+    <formDesc type="NONE"/>
+  </property>
+
+  <property name="LedsEnabledMask" id="0xD220" valueType="UINT32" defaultValue="3" writable="true">
+     <formDesc type="RANGE" maxValue="3" minValue="0" stepValue="1"/>
+  </property>
+
+  <property name="SelectedStorage" id="0xD222" valueType="UINT32" defaultValue="0" writable="true">
+     <formDesc type="NONE"/>
+  </property>
+
+  <property name="XMPTag" id="0xD224" valueType="STRING" defaultValue="" writable="true">
+    <formDesc type="NONE"/>
+  </property>
+
+</properties>
+
+<configs>
+  <thumbnails path=".thumb" bgThread="true" threadsNumber="2"/>
+  <internalStorage name="Internal" path="/data/medias"/>
+  <removableStorage path="/tmp/mounts/usb"/>
+  <bridgeUnixSocket path="/tmp/ptp_bridge"/>
+  <updateFile path="/update/sequoia_update.plf"/>
+</configs>
+

@@ -1,0 +1,15 @@
+# generate dirs for mtp server
+on post-fs-data
+    mkdir /data/medias 0755 root root
+    mkdir /data/medias/.thumbs 0755 root root
+    mkdir /data/medias/DCIM 0755 root root
+
+service mtp_server /usr/bin/ulogwrapper /usr/bin/mtp-server /data/medias Sicilia /data/medias/.thumbs 0123456789ABCDEF
+    disabled
+
+service mtp_ptp_srv /usr/bin/ulogwrapper /usr/bin/mtp-server /data/medias Sicilia /data/medias/.thumbs 0123456789ABCDEF /tmp/ptp_bridge
+    disabled
+
+service ptpip_server /usr/bin/ptpip_server
+    disabled
+

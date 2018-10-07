@@ -1,0 +1,2 @@
+0: sumabs=0.0039, rmse=0.0049, psnr=94.4271dB max_error=0.0210
+ Center_mean=144.6740, TL_percent=0.8201, TR_percent=0.8201, BL_percent=0.8201, BR_percent=0.8201

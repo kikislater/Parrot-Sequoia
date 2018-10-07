@@ -1,0 +1,15 @@
+bogus-priv
+filterwin2k
+
+interface=rndis0
+except-interface=lo
+bind-interfaces
+dhcp-authoritative
+dhcp-leasefile=/var/lib/misc/dhcp_rndis0.leases
+
+dhcp-range=rndis0,10.1.1.3,10.1.1.100,12h
+dhcp-option=rndis0,1,255.255.255.0
+
+port=0
+dhcp-option=3
+dhcp-option=6

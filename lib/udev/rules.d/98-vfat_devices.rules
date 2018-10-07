@@ -1,0 +1,4 @@
+# This file contains the rules needed to handle storage devices. -*- mode:sh -*-
+
+ACTION=="add|change", ENV{DEVTYPE}=="juba", DEVPATH=="*juba-sd*", ENV{JUBA_STR_FS_TYPE}=="vfat", RUN+="/bin/sh /usr/bin/vfat_manager.sh"
+

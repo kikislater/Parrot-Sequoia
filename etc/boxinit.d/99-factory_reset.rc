@@ -1,0 +1,4 @@
+service factory_reset /bin/sh /usr/bin/factory_reset_or_shutdown.sh reset
+    oneshot
+    disabled
+

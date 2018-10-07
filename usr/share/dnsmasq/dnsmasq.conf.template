@@ -1,0 +1,12 @@
+bogus-priv
+filterwin2k
+
+interface=@@@DNSMASQ_INTERFACE@@@
+except-interface=lo
+bind-interfaces
+dhcp-authoritative
+dhcp-leasefile=/var/lib/misc/dhcp_@@@DNSMASQ_INTERFACE@@@.leases
+
+dhcp-range=@@@DNSMASQ_INTERFACE@@@,@@@DNSMASQ_IP_FIRST_BYTES@@@.3,@@@DNSMASQ_IP_FIRST_BYTES@@@.100,12h
+dhcp-option=@@@DNSMASQ_INTERFACE@@@,1,@@@DNSMASQ_NETMASK@@@
+

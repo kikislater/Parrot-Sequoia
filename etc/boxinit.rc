@@ -1,0 +1,68 @@
+# -*- mode:sh -*-
+# This file is the sicilia init entry
+
+import boxinit.dragonbase.rc
+import boxinit.${ro.mode}.${ro.hardware}.rc
+
+on init
+    sysclktz 0
+	# reduce log kernel to notice level
+	loglevel 5
+	# reduce log on kernel console once system is up 
+	# (avoid useless irq on uart)
+	write /proc/sys/kernel/printk 1
+
+	# allow overcommit (allocate more memory that the physical one)
+	write /proc/sys/vm/overcommit_memory 1
+	write /proc/sys/vm/overcommit_ratio 90
+
+	# in case of unaligned access print a message and send a SIGBUS
+	write /proc/cpu/alignment 5
+
+	# Do not panic when an oops or BUG is encountered
+	write /proc/sys/kernel/panic_on_oops 0
+	write /proc/sys/kernel/modprobe /sbin/modprobe
+
+	# allow real-time threads to use a maximum of 48 ms every 50 ms
+	write /proc/sys/kernel/sched_rt_period_us 50000
+	write /proc/sys/kernel/sched_rt_runtime_us 48000
+
+	# increase maximum amount for the send socket memory to 1MB
+	write /proc/sys/net/core/wmem_max 1048576
+
+	# increase min free memory (to fix issue with wl1271 driver and tcp stack)
+	write /proc/sys/vm/min_free_kbytes 8192
+
+on boot
+    class_start core
+
+on boot-main
+    class_start main
+
+service console /usr/bin/askfirst /bin/sh -l
+    class core
+    console
+    disabled
+    user root
+    group log
+
+on early-fs
+    # usbfs
+    mkdir /proc/bus/usb
+    mount usbfs none /proc/bus/usb
+    # mount control groups
+    mkdir /dev/cpuctl
+    mount cgroup none /dev/cpuctl cpu
+    chown system system /dev/cpuctl
+    chown system system /dev/cpuctl/tasks
+    chmod 0660 /dev/cpuctl/tasks
+
+on boot
+    # basic network init
+    ifup lo
+    hostname localhost
+    domainname localdomain
+
+# start console only if debug is enabled
+on property:rw.debuggable=1
+    start console

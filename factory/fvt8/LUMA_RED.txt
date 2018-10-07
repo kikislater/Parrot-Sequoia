@@ -1,0 +1,2 @@
+#Average Luma: 412.000000 
+#Percentage Luma: 0.402737 

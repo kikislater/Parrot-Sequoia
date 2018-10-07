@@ -1,0 +1,5 @@
+# load config for camera
+service config_cgroups /bin/sh /etc/init.d/rcS_cgroups
+    class core
+    user root
+    oneshot

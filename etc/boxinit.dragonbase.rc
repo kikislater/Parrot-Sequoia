@@ -1,0 +1,34 @@
+# -*- mode:sh -*-
+
+# import all scripts in alphanum order (but parse them after this script)
+import boxinit.d
+
+on early-init
+    # setup the global environment
+    export PATH /sbin:/bin:/usr/bin:/usr/sbin
+    export BOXINIT_DATA /data
+    export TERM xterm-256color
+    # theses vars are used by glib
+    export TMPDIR /tmp
+    export TMP /tmp
+    export TEMP /tmp
+    export HOME /data/home/root
+
+on post-fs-data
+    mkdir /data/property 0700 root root
+    mkdir /data/lib 0755 system system
+    mkdir /data/home 0755 system system
+    mkdir /data/home/root 0755 root root
+
+on early-fs
+    mkdir /dev/shm
+    mount tmpfs shm /dev/shm
+    mount tmpfs tmp /tmp
+    mkdir /tmp/cache 0755
+    mkdir /tmp/lock 1777
+    mkdir /tmp/run 0777
+    mkdir /tmp/tmp 1777
+    mkdir /tmp/log 0777
+    mkdir /tmp/etc 0777
+    # create resolv.conf in tmp fs (symlink from /etc/resolv.conf done in skel)
+    write /tmp/etc/resolv.conf ""

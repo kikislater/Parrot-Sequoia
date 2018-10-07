@@ -1,0 +1,23 @@
+
+7[r[999;999H[6n8root@siciliaboard:/ # iperf3 -u -c 192.168.1.112 -b 100m -i 1 -f m -t 10
+
+Connecting to host 192.168.1.112, port 5201
+[  4] local 192.168.1.110 port 52935 connected to 192.168.1.112 port 5201
+[ ID] Interval           Transfer     Bandwidth       Total Datagrams
+[  4]   0.00-1.00   sec  5.82 MBytes  48.8 Mbits/sec  745  
+[  4]   1.00-2.00   sec  7.27 MBytes  61.1 Mbits/sec  931  
+[  4]   2.00-3.00   sec  7.27 MBytes  60.9 Mbits/sec  930  
+[  4]   3.00-4.00   sec  7.30 MBytes  61.3 Mbits/sec  935  
+[  4]   4.00-5.00   sec  7.30 MBytes  61.2 Mbits/sec  934  
+[  4]   5.00-6.00   sec  7.29 MBytes  61.1 Mbits/sec  933  
+[  4]   6.00-7.00   sec  7.34 MBytes  61.6 Mbits/sec  940  
+[  4]   7.00-8.00   sec  7.28 MBytes  61.1 Mbits/sec  932  
+[  4]   8.00-9.00   sec  7.32 MBytes  61.4 Mbits/sec  937  
+[  4]   9.00-10.00  sec  7.30 MBytes  61.3 Mbits/sec  935  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Jitter    Lost/Total Datagrams
+[  4]   0.00-10.00  sec  71.5 MBytes  60.0 Mbits/sec  2.396 ms  0/9151 (0%)  
+[  4] Sent 9151 datagrams
+
+iperf Done.
+7[r[999;999H[6n8root@siciliaboard:/ # 

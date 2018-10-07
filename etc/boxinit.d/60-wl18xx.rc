@@ -1,0 +1,74 @@
+# load wl18xx modules
+service wl18xx_init /bin/sh /etc/init.d/rcS_wifi
+    disabled
+    oneshot
+
+service hostapd_cfg /bin/sh /etc/init.d/rcS_wifi_config
+    disabled
+    oneshot
+
+# Shall always be stopped with pterm and not pstop
+# We put it in oneshot to recover its status value
+service hostapd_mgr /usr/sbin/hostapd /tmp/hostapd_2G4.conf
+    oneshot
+    disabled
+
+service kill_hostapd /bin/sh -c "/usr/bin/pterm hostapd_mgr && ifconfig wlan0 down"
+    oneshot
+    disabled
+
+service wifi_led_on /usr/bin/led-cli change body_wifi_on
+    oneshot
+    disabled
+
+service wifi_led_off /usr/bin/led-cli change body_wifi_off
+    oneshot
+    disabled
+
+service wifi_timeout /bin/sleep 10
+    oneshot
+    disabled
+
+service probe_wifi /sbin/modprobe -a compat cfg80211 mac80211 wlcore_sdio wlcore wl18xx
+    class main
+    oneshot
+
+# set interface up after timeout
+on property:init.svc.probe_wifi=stopped
+    setprop -z rw.wifi.disabled 0
+    start wifi_timeout
+
+# Reload config in case of change in wifi infos
+on property:persist.product.ssid=*
+    start hostapd_cfg
+
+on property:persist.product.passphrase=*
+    start hostapd_cfg
+
+#Override value of rw with the persistent one
+on property:persist.wifi.disabled=*
+    setprop rw.wifi.disabled ${persist.wifi.disabled}
+
+# In case of issue with the Launch of hostapd manager, we reset to its default value
+on property:init.status.hostapd_mgr=256
+    setprop persist.product.ssid ${ro.product.ssid.default}
+    setprop persist.product.passphrase none
+    start hostapd_mgr
+
+### Wifi Management
+# wifi leds
+on property:rw.wifi.disabled=0:sicilia_all_services=start:init.svc.wifi_timeout=stopped
+    start wifi_led_on
+    start wl18xx_init
+
+on property:rw.wifi.disabled=1
+    start wifi_led_off
+    start wl18xx_init
+
+# if wifi is disabled
+on property:init.status.wl18xx_init=512
+    start kill_hostapd
+
+on property:init.status.wl18xx_init=0:init.svc.dnsmasq_wlan0=running
+    start hostapd_mgr
+

@@ -1,0 +1,4 @@
+
+ACTION=="add|change", SUBSYSTEM=="usb-serial", RUN+="/usr/bin/pstart sicilia_epic"
+ACTION=="remove", SUBSYSTEM=="usb-serial", RUN+="/usr/bin/pterm sicilia_epic"
+

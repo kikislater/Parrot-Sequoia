@@ -1,0 +1,81 @@
+kernel/fs/exportfs/exportfs.ko:
+kernel/fs/nfsd/nfsd.ko: kernel/fs/exportfs/exportfs.ko
+kernel/crypto/seqiv.ko:
+kernel/crypto/md4.ko:
+kernel/crypto/ctr.ko:
+kernel/crypto/ccm.ko:
+kernel/crypto/aes_generic.ko:
+kernel/crypto/michael_mic.ko:
+kernel/crypto/ansi_cprng.ko:
+kernel/drivers/video/sysfillrect.ko:
+kernel/drivers/video/syscopyarea.ko:
+kernel/drivers/video/sysimgblt.ko:
+kernel/drivers/video/fb_sys_fops.ko:
+kernel/drivers/video/vfb.ko: kernel/drivers/video/syscopyarea.ko kernel/drivers/video/sysfillrect.ko kernel/drivers/video/sysimgblt.ko kernel/drivers/video/fb_sys_fops.ko
+kernel/drivers/misc/ti-st/st_drv.ko:
+kernel/drivers/misc/ti-st/gps_drv.ko: kernel/drivers/misc/ti-st/st_drv.ko
+kernel/drivers/misc/ti-st/tty_hci.ko: kernel/drivers/misc/ti-st/st_drv.ko
+kernel/drivers/scsi/scsi_wait_scan.ko:
+kernel/drivers/mtd/devices/m25p80.ko:
+kernel/drivers/mtd/mtdchar.ko:
+kernel/drivers/mtd/mtd_blkdevs.ko:
+kernel/drivers/mtd/mtdblock.ko: kernel/drivers/mtd/mtd_blkdevs.ko
+kernel/drivers/mtd/mtdblock_ro.ko: kernel/drivers/mtd/mtd_blkdevs.ko
+kernel/drivers/net/phy/marvell.ko:
+kernel/drivers/net/ppp/ppp_async.ko: kernel/lib/crc-ccitt.ko
+kernel/drivers/net/ppp/ppp_synctty.ko:
+kernel/drivers/net/wireless/hostap/hostap.ko: kernel/net/wireless/lib80211.ko
+kernel/drivers/net/usb/hso.ko: kernel/net/rfkill/rfkill.ko
+kernel/drivers/net/usb/asix.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/cdc_ether.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/smsc95xx.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/net1080.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/rndis_host.ko: kernel/drivers/net/usb/cdc_ether.ko kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/cdc_subset.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/usbnet.ko:
+kernel/drivers/net/usb/cdc_ncm.ko: kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/usb/serial/option.ko: kernel/drivers/usb/serial/usb_wwan.ko
+kernel/drivers/usb/serial/pl2303.ko:
+kernel/drivers/usb/serial/sierra.ko:
+kernel/drivers/usb/serial/usb_wwan.ko:
+kernel/drivers/usb/class/cdc-acm.ko:
+kernel/drivers/input/touchscreen/usbtouchscreen.ko:
+kernel/drivers/i2c/i2c-mux.ko:
+kernel/drivers/media/video/gspca/gspca_main.ko:
+kernel/drivers/cpufreq/cpufreq_powersave.ko:
+kernel/drivers/cpufreq/cpufreq_userspace.ko:
+kernel/drivers/cpufreq/cpufreq_ondemand.ko:
+kernel/drivers/leds/leds-pca9633.ko:
+kernel/drivers/leds/leds-ncp5623c.ko:
+kernel/drivers/staging/iio/light/tsl2591.ko:
+kernel/sound/core/snd-rawmidi.ko:
+kernel/sound/usb/snd-usb-audio.ko: kernel/sound/usb/snd-usbmidi-lib.ko kernel/sound/core/snd-rawmidi.ko
+kernel/sound/usb/snd-usbmidi-lib.ko: kernel/sound/core/snd-rawmidi.ko
+kernel/drivers/parrot/usb/serial/blackberry/blackberry.ko:
+kernel/drivers/parrot/i2c/muxes/p7-i2cmux.ko: kernel/drivers/i2c/i2c-mux.ko
+kernel/drivers/parrot/i2c/plds_i2cs.ko:
+kernel/drivers/parrot/video/avi_vsync_gen.ko:
+kernel/drivers/parrot/media/p7-mpegts.ko:
+kernel/drivers/parrot/mfd/dib0700_mfd.ko:
+kernel/drivers/parrot/mfd/sicilia-irradiance.ko: kernel/drivers/parrot/mfd/dib0700_mfd.ko
+kernel/drivers/parrot/input/touchscreen/atmel_mxt_ts.ko:
+kernel/arch/arm/oprofile/oprofile.ko:
+kernel/net/802/p8022.ko: kernel/net/llc/llc.ko
+kernel/net/802/psnap.ko: kernel/net/llc/llc.ko
+kernel/net/802/stp.ko: kernel/net/llc/llc.ko
+kernel/net/wireless/lib80211.ko:
+kernel/net/wireless/lib80211_crypt_wep.ko: kernel/net/wireless/lib80211.ko
+kernel/net/wireless/lib80211_crypt_ccmp.ko: kernel/net/wireless/lib80211.ko
+kernel/net/wireless/lib80211_crypt_tkip.ko: kernel/net/wireless/lib80211.ko
+kernel/net/llc/llc.ko:
+kernel/net/bridge/bridge.ko: kernel/net/802/stp.ko kernel/net/llc/llc.ko
+kernel/net/rfkill/rfkill.ko:
+kernel/lib/crc-ccitt.ko:
+kernel/lib/crc-itu-t.ko:
+extra/drivers/net/wireless/ti/wlcore/wlcore_sdio.ko: extra/compat/compat.ko
+extra/drivers/net/wireless/ti/wl18xx/wl18xx.ko: extra/drivers/net/wireless/ti/wlcore/wlcore.ko extra/net/mac80211/mac80211.ko extra/net/wireless/cfg80211.ko extra/compat/compat.ko kernel/net/rfkill/rfkill.ko
+extra/drivers/net/wireless/ti/wlcore/wlcore.ko: extra/net/mac80211/mac80211.ko extra/net/wireless/cfg80211.ko extra/compat/compat.ko kernel/net/rfkill/rfkill.ko
+extra/drivers/net/wireless/ti/wl12xx/wl12xx.ko: extra/drivers/net/wireless/ti/wlcore/wlcore.ko extra/net/mac80211/mac80211.ko extra/net/wireless/cfg80211.ko extra/compat/compat.ko kernel/net/rfkill/rfkill.ko
+extra/net/wireless/cfg80211.ko: extra/compat/compat.ko kernel/net/rfkill/rfkill.ko
+extra/net/mac80211/mac80211.ko: extra/net/wireless/cfg80211.ko extra/compat/compat.ko kernel/net/rfkill/rfkill.ko
+extra/compat/compat.ko:

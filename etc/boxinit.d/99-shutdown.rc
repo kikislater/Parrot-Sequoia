@@ -1,0 +1,7 @@
+service shutdown /bin/sh /usr/bin/factory_reset_or_shutdown.sh shutdown
+    oneshot
+    disabled
+
+on property:sys.poweroff=1
+    powerctl poweroff
+

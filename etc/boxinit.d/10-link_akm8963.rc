@@ -1,0 +1,5 @@
+# make symbolic link for akm8963
+service lnk_akm8963 /bin/ln -s /dev/i2c-2 /dev/i2c-akm8963
+    class core
+    user root
+    oneshot

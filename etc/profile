@@ -1,0 +1,13 @@
+alias ll='busybox ls -lsa'
+alias vim='vi'
+ro_hardware=$(gprop ro.hardware)
+export PS1='$(resize>/dev/null)\u@${ro_hardware}:\w # '
+
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi

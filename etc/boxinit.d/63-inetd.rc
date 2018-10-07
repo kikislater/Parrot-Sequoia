@@ -1,0 +1,14 @@
+service inetd_dev /usr/bin/ulogwrapper /usr/sbin/inetd /etc/inetd.conf.dev
+    oneshot
+    disabled
+
+service inetd_rel /usr/bin/ulogwrapper /usr/sbin/inetd /etc/inetd.conf.rel
+    oneshot
+    disabled
+
+on property:rw.debuggable=0
+    start inetd_rel
+
+on property:rw.debuggable=1
+    start inetd_dev
+

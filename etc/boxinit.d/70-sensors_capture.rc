@@ -1,0 +1,26 @@
+
+service sensors_main_pv /usr/bin/sensors_main -S --freq 1000 --imu-name Main --heat-hard 6 --rt --ready-use 1 --colibry --srv-addr inet:127.0.0.1:1010 --rotation-mpu "(1,0,0),(0,-1,0),(0,0,-1)" --akm-addr 0x0F --rotation-akm "(0,-1,0),(-1,0,0),(0,0,-1)"
+    disabled
+
+service sensors_main /usr/bin/sensors_main -S --freq 1000 --imu-name Main --heat-hard 6 --rt --ready-use 1 --colibry --srv-addr inet:127.0.0.1:1010 --rotation-mpu "(1,0,0),(0,-1,0),(0,0,-1)" --rotation-akm "(0,1,0),(-1,0,0),(0,0,1)"
+    disabled
+
+on property:ro.revision=0:sicilia_all_services=start
+    start sensors_main
+
+on property:ro.revision=1:sicilia_all_services=start
+    start sensors_main
+
+on property:ro.revision=2:sicilia_all_services=start
+    start sensors_main
+
+on property:ro.revision=3:sicilia_all_services=start
+    start sensors_main_pv
+
+on property:ro.revision=4:sicilia_all_services=start
+    start sensors_main_pv
+
+# irradiance part
+service sensors_ir /usr/bin/sensors_ir --gm -S --freq 40 --freq-iio 5 --imu-name IR --ir --heat-soft 270 --rt --akm-dev /dev/i2c-3 --mpu-dev /dev/i2c-4 --colibry --srv-addr inet:127.0.0.1:1020 --rotation-mpu "(0,-1,0),(1,0,0),(0,0,1)" --rotation-akm "(1,0,0),(0,1,0),(0,0,1)"
+    disabled
+

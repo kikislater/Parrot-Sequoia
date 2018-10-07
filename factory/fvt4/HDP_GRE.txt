@@ -1,0 +1,14 @@
+#total : 5
+#total clusters: 0
+#HOT: 2
+#VERY HOT: 3
+#BRIGHT: 0
+#VERY BRIGHT: 0
+#-----------------------------
+#col   row  code type
+  970   207 0 HOT
+  422   450 0 HOT
+ 1023   535 0 VERY_HOT
+ 1198   631 0 VERY_HOT
+   52   803 0 VERY_HOT
+#-----------------------------

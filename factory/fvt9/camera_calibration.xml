@@ -1,0 +1,157 @@
+
+<cameraModelDB>
+	<version>17</version>
+	<precalib version="0.1.6"/>
+	<rigs>
+		<rig name="Sequoia" exifString="Sequoia">
+			<serialNumber value="PI040378AA6H000906"/>
+			<processing mode="optRotRel" adjustRefCamera="true"/>
+			<cameraDetection>imgPage</cameraDetection>
+			<referenceCamera index="0" exifString="" name="" detectionString="">
+				<band name="Green" centralWaveLength="550" width="40" weight="1"/>
+			</referenceCamera>
+			<camera rotX="-0.393899520550747" rotY="-0.176146407403925" rotZ="-0.126896304634343" translX="0" translY="-15" translZ="0" tolRotX="0.0336878799072077" tolRotY="0.0225625412345495" tolRotZ="0.0175379302746922" tolTranslX="5" tolTranslY="5" tolTranslZ="5" exifString="" name="" detectionString="">
+				<band name="Red" centralWaveLength="660" width="0" weight="1"/>
+			</camera>
+			<camera rotX="-0.173137185220023" rotY="-0.140053370261845" rotZ="0.0589709202628212" translX="15" translY="0" translZ="0" tolRotX="0.00735157832274744" tolRotY="0.013161744264105" tolRotZ="0.00488918620073267" tolTranslX="5" tolTranslY="5" tolTranslZ="5" exifString="" name="" detectionString="">
+				<band name="Red edge" centralWaveLength="735" width="0" weight="1"/>
+			</camera>
+			<camera rotX="-0.624101214842832" rotY="0.00429699658764397" rotZ="0.0942099174917201" translX="15" translY="-15" translZ="0" tolRotX="0.0213521302121971" tolRotY="0.0172175579784414" tolRotZ="0.0140994290528466" tolTranslX="5" tolTranslY="5" tolTranslZ="5" exifString="" name="" detectionString="">
+				<band name="NIR" centralWaveLength="790" width="0" weight="1"/>
+			</camera>
+			<camera rotX="-0.140806167284397" rotY="0.205217889390617" rotZ="-0.995817338628053" translX="26.9" translY="-7.5" translZ="-2" tolRotX="0.0233519355872759" tolRotY="0.00931426941194437" tolRotZ="0.00771838228762831" tolTranslX="5" tolTranslY="5" tolTranslZ="5" exifString="" name="" detectionString="">
+				<band name="Red" centralWaveLength="660" width="0" weight="0.2126"/>
+				<band name="Green" centralWaveLength="550" width="0" weight="0.7152"/>
+				<band name="Blue" centralWaveLength="470" width="0" weight="0.0722"/>
+			</camera>
+		</rig>
+	</rigs>
+	<cameras>
+		<camera name="Sequoia_4.0_1280x960 (Green)">
+			<imageWidth>1280</imageWidth>
+			<imageHeight>960</imageHeight>
+			<pixelSize>3.75</pixelSize>
+			<principalPointXmm>2.464993</principalPointXmm>
+			<principalPointYmm>1.724693</principalPointYmm>
+			<lensType>fisheye</lensType>
+			<npoly>3</npoly>
+			<poly0>0</poly0>
+			<poly1>1</poly1>
+			<poly2>0.01837299</poly2>
+			<poly3>-0.159811419</poly3>
+			<poly4>0</poly4>
+			<p0zero>true</p0zero>
+			<symmetricAffine>true</symmetricAffine>
+			<c>1658.367559837</c>
+			<d>0</d>
+			<e>0</e>
+			<f>1658.367559837</f>
+			<pixelValue pixelType="uint16" min="0" max="65472"/>
+			<vignettingPoly fNumber="2.2" sizeY="5" value="0.724974,1.02537,-1.75994,1.56915,-0.762744,0.382813,-0.826828,0.816141,0.0280911,0,-0.452792,0.849341,-0.886679,0,0,0.0825958,0.0140455,0,0,0,-0.0622203,0,0,0,0"/>
+			<cameraModelSource>user</cameraModelSource>
+			<bandConfig>
+				<band name="Green" centralWaveLength="550" width="40" weight="1"/>
+			</bandConfig>
+		</camera>
+		<camera name="Sequoia_4.0_1280x960 (NIR)">
+			<imageWidth>1280</imageWidth>
+			<imageHeight>960</imageHeight>
+			<pixelSize>3.75</pixelSize>
+			<principalPointXmm>2.481798</principalPointXmm>
+			<principalPointYmm>1.76424</principalPointYmm>
+			<lensType>fisheye</lensType>
+			<npoly>3</npoly>
+			<poly0>0</poly0>
+			<poly1>1</poly1>
+			<poly2>0.016002025</poly2>
+			<poly3>-0.154777089</poly3>
+			<poly4>0</poly4>
+			<p0zero>true</p0zero>
+			<symmetricAffine>true</symmetricAffine>
+			<c>1659.154614827</c>
+			<d>0</d>
+			<e>0</e>
+			<f>1659.154614827</f>
+			<pixelValue pixelType="uint16" min="0" max="65472"/>
+			<vignettingPoly fNumber="2.2" sizeY="5" value="0.739859,1.10236,-2.17526,2.16621,-1.00376,0.392533,-1.01468,1.0456,0.00481887,0,-0.542103,0.998423,-1.09159,0,0,0.278464,0.0418982,0,0,0,-0.167001,0,0,0,0"/>
+			<cameraModelSource>user</cameraModelSource>
+			<bandConfig>
+				<band name="NIR" centralWaveLength="790" width="0" weight="1"/>
+			</bandConfig>
+		</camera>
+		<camera name="Sequoia_4.0_1280x960 (Red edge)">
+			<imageWidth>1280</imageWidth>
+			<imageHeight>960</imageHeight>
+			<pixelSize>3.75</pixelSize>
+			<principalPointXmm>2.448845</principalPointXmm>
+			<principalPointYmm>1.721528</principalPointYmm>
+			<lensType>fisheye</lensType>
+			<npoly>3</npoly>
+			<poly0>0</poly0>
+			<poly1>1</poly1>
+			<poly2>0.018368548</poly2>
+			<poly3>-0.15833547</poly3>
+			<poly4>0</poly4>
+			<p0zero>true</p0zero>
+			<symmetricAffine>true</symmetricAffine>
+			<c>1660.557205258</c>
+			<d>0</d>
+			<e>0</e>
+			<f>1660.557205258</f>
+			<pixelValue pixelType="uint16" min="0" max="65472"/>
+			<vignettingPoly fNumber="2.2" sizeY="5" value="0.708783,1.40646,-2.73211,2.56323,-1.12573,0.423539,-1.25112,1.13718,0.0204112,0,-0.60271,1.26971,-1.18603,0,0,0.275786,0.00559388,0,0,0,-0.161374,0,0,0,0"/>
+			<cameraModelSource>user</cameraModelSource>
+			<bandConfig>
+				<band name="Red edge" centralWaveLength="735" width="0" weight="1"/>
+			</bandConfig>
+		</camera>
+		<camera name="Sequoia_4.0_1280x960 (Red)">
+			<imageWidth>1280</imageWidth>
+			<imageHeight>960</imageHeight>
+			<pixelSize>3.75</pixelSize>
+			<principalPointXmm>2.452504</principalPointXmm>
+			<principalPointYmm>1.720647</principalPointYmm>
+			<lensType>fisheye</lensType>
+			<npoly>3</npoly>
+			<poly0>0</poly0>
+			<poly1>1</poly1>
+			<poly2>0.014703766</poly2>
+			<poly3>-0.150973286</poly3>
+			<poly4>0</poly4>
+			<p0zero>true</p0zero>
+			<symmetricAffine>true</symmetricAffine>
+			<c>1653.383488939</c>
+			<d>0</d>
+			<e>0</e>
+			<f>1653.383488939</f>
+			<pixelValue pixelType="uint16" min="0" max="65472"/>
+			<vignettingPoly fNumber="2.2" sizeY="5" value="0.741333,1.01017,-1.90932,1.85386,-0.866829,0.408133,-0.915801,0.965503,-0.0534082,0,-0.555926,0.870533,-0.889256,0,0,0.249793,-0.00306696,0,0,0,-0.138791,0,0,0,0"/>
+			<cameraModelSource>user</cameraModelSource>
+			<bandConfig>
+				<band name="Red" centralWaveLength="660" width="0" weight="1"/>
+			</bandConfig>
+		</camera>
+		<camera name="Sequoia_4.9_4608x3456 (RGB)">
+			<imageWidth>4608</imageWidth>
+			<imageHeight>3456</imageHeight>
+			<pixelSize>1.32378</pixelSize>
+			<principalPointXmm>3.027939</principalPointXmm>
+			<principalPointYmm>2.280888</principalPointYmm>
+			<lensType>perspective</lensType>
+			<focalLengthmm>4.8135587</focalLengthmm>
+			<distortion>5</distortion>
+			<radialK1>0.175113352</radialK1>
+			<radialK2>-0.457424125</radialK2>
+			<radialK3>0.378712651</radialK3>
+			<tangentialT1>-0.000740914</tangentialT1>
+			<tangentialT2>0.000287075</tangentialT2>
+			<cameraModelSource>user</cameraModelSource>
+			<bandConfig>
+				<band name="Red" centralWaveLength="660" width="0" weight="0.2126"/>
+				<band name="Green" centralWaveLength="550" width="0" weight="0.7152"/>
+				<band name="Blue" centralWaveLength="470" width="0" weight="0.0722"/>
+			</bandConfig>
+		</camera>
+	</cameras>
+	<mappings/>
+</cameraModelDB>

@@ -1,0 +1,16 @@
+service calib_check /usr/bin/calibration_check --body
+    class main
+    oneshot
+
+service eeprom_ov16825 /usr/bin/eeprom_ov16825 -d /dev/i2c-2 -o /data/EEPROM.txt
+    class main
+    oneshot
+
+service palermo /usr/bin/palermo
+    disabled
+
+# Start palermo after saving eeprom content
+# palermo will auto restart if it chrashes
+on property:init.svc.eeprom_ov16825=stopped:sicilia_all_services=start
+    start palermo
+

@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html><head>
+   <title>Sequoia</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />   
+   <meta name=viewport content="width=device-width, initial-scale=1">
+   <meta name="robots" content="noindex,follow" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ 
+   <!-- This line includes the general project style sheet (not required) -->
+    <style type="text/css">
+   @font-face {
+         font-family: 'Avenir LT Std 45 Book';
+         src: url('Avenir.LTStd-Book.otf') format('truetype');
+         font-weight: normal;
+         font-style: normal;
+         }
+   </style>
+   <link type="text/css" href="default.css" rel="stylesheet" />
+
+   <!-- This block defines the styles of the TOC headings, change them as needed -->
+   <style type="text/css">
+       body { font-size: 1em }
+       .heading1 { color: #000; text-decoration: none; }
+       .heading2 { color: #000; text-decoration: none; }
+       .heading3 { color: #000; text-decoration: none; }
+       .heading4 { color: #000; text-decoration: none; }
+       .heading5 { color: #000; text-decoration: none; }
+       .heading6 { color: #000; text-decoration: none; }
+
+       .hilight1 { color: #FFFFFF; background: #808080; text-decoration: none; }
+       .hilight2 { color: #FFFFFF; background: #808080; text-decoration: none; }
+       .hilight3 { color: #FFFFFF; background: #808080; text-decoration: none; }
+       .hilight4 { color: #FFFFFF; background: #808080; text-decoration: none; }
+       .hilight5 { color: #FFFFFF; background: #808080; text-decoration: none; }
+       .hilight6 { color: #FFFFFF; background: #808080; text-decoration: none; }
+
+       /* TOC LIST CSS */
+       #toc    { padding:0; margin:0 }
+       #toc li { margin-top:2px; margin-left:0; padding:1px }
+       #toc ul { padding-left:0; margin-left:0px }       
+       /* TOC LIST CSS */
+       
+       @media (pointer: coarse) {
+         body    { transform-origin: 0 0;
+		   transform:scale(1.25); 
+		   max-width: 80%;
+       }       
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript">
+   $(document).ready(function(){
+   	   var hiTest = /^hilight/im,
+			parentScope = (parent.hmNavigationFrame);
+		if (parentScope) parent.currentNav("toc");
+		$("a[class^='heading']").on("click",function(event){
+			var doSwipe = (hiTest.test($(this).children("span").first().attr("class")) || false || (parentScope && !parent.hmBrowser.nonDeskTouch));
+			if (doSwipe && parentScope) {
+			window.parent.showNav("toggle");
+			}
+			});
+     });
+   </script>
+      <script type="text/javascript">
+     var parentScope = (parent.hmNavigationFrame);
+     if (!parentScope) {
+		      var s = document.createElement("script");
+		      s.setAttribute("type","text/javascript");
+		      s.setAttribute("src", "helpman_navigation.js");
+		      document.getElementsByTagName("head")[0].appendChild(s);
+	    }
+     else {
+       if (initialtocstate != "expandall") parent.hmAddCss(document, "#toc li ul { display: none }");
+     }
+     function loadicons() { var icons = new Array(); for (i=0; i<arguments.length; i++) { icons[i] = new Image(); icons[i].src = arguments[i]; } }
+     function loadtoc() { if (parentScope) parent.loadstate(document.getElementById("toc")); else loadstate(document.getElementById("toc")); }
+     function savetoc() { if (parentScope) parent.savestate(document.getElementById("toc")); else savestate(document.getElementById("toc")); }
+     function clicked(node, event) { deselect(); if (parentScope) parent.hmNodeClicked(node, event); else hmNodeClicked(node, event); }
+     function dblclicked(node) { if (parentScope) parent.hmNodeDblclicked(node); else hmNodeDblclicked(node); }
+     function deselect() { if (window.getSelection) window.getSelection().removeAllRanges(); else if (document.selection) document.selection.empty(); }
+     $(document).ready(function(){
+       loadtoc();
+       $(window).onunload = savetoc;
+     });
+   </script>
+</head>
+<body>
+<ul id="toc" style="list-style-type:none;display:block;padding-left:0">
+<li class="heading1" id="i1" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading1" id="a1" href="francais.htm" target="hmcontent"><span class="heading1" id="s1" ondblclick="return dblclicked(this)">Français</span></a>
+<ul id="ul1" style="list-style-type:none">
+<li class="heading2" id="i1.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.1" href="introduction_fr.htm" target="hmcontent"><span class="heading2" id="s1.1">Introduction</span></a>
+</li>
+<li class="heading2" id="i1.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.2" href="contenu-de-lemballage_fr.htm" target="hmcontent"><span class="heading2" id="s1.2">Contenu de l'emballage</span></a>
+</li>
+<li class="heading2" id="i1.3" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.3" href="presentationdesequoia_fr.htm" target="hmcontent"><span class="heading2" id="s1.3" ondblclick="return dblclicked(this)">Présentation de Sequoia</span></a>
+<ul id="ul1.3" style="list-style-type:none">
+<li class="heading3" id="i1.3.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.3.1" href="le-capteur-multispectral_fr.htm" target="hmcontent"><span class="heading3" id="s1.3.1">Le capteur multispectral</span></a>
+</li>
+<li class="heading3" id="i1.3.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.3.2" href="le_sunshine_sensor_fr.htm" target="hmcontent"><span class="heading3" id="s1.3.2">Le sunshine sensor</span></a>
+</li>
+<li class="heading3" id="i1.3.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.3.3" href="les_supports_du_sunshine_sensor_fr.htm" target="hmcontent"><span class="heading3" id="s1.3.3">Les supports du sunshine sensor</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.4" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.4" href="configurer_sequoia_fr.htm" target="hmcontent"><span class="heading2" id="s1.4" ondblclick="return dblclicked(this)">Configurer Sequoia</span></a>
+<ul id="ul1.4" style="list-style-type:none">
+<li class="heading3" id="i1.4.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.4.1" href="configurer_sequoia_via_wi-fi_fr.htm" target="hmcontent"><span class="heading3" id="s1.4.1">Configurer Sequoia via Wi-Fi</span></a>
+</li>
+<li class="heading3" id="i1.4.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.4.2" href="interface_html_de_configuration_de_sequoia_fr.htm" target="hmcontent"><span class="heading3" id="s1.4.2">Interface HTML de configuration de Sequoia</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.5" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.5" href="verifications_avant_utilisation_fr.htm" target="hmcontent"><span class="heading2" id="s1.5">Vérifications avant utilisation</span></a>
+</li>
+<li class="heading2" id="i1.6" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.6" href="utiliser_sequoia_fr.htm" target="hmcontent"><span class="heading2" id="s1.6" ondblclick="return dblclicked(this)">Utiliser Sequoia</span></a>
+<ul id="ul1.6" style="list-style-type:none">
+<li class="heading3" id="i1.6.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.6.1" href="installer_la_lentille_de_protection_fr.htm" target="hmcontent"><span class="heading3" id="s1.6.1">Installer la lentille de protection</span></a>
+</li>
+<li class="heading3" id="i1.6.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.6.2" href="fixer_sequoia_sur_un_drone_fr.htm" target="hmcontent"><span class="heading3" id="s1.6.2">Fixer Sequoia sur un drone</span></a>
+</li>
+<li class="heading3" id="i1.6.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.6.3" href="brancher_sequoia_a_une_batterie_fr.htm" target="hmcontent"><span class="heading3" id="s1.6.3">Brancher Sequoia à une batterie USB</span></a>
+</li>
+<li class="heading3" id="i1.6.4" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.6.4" href="calibrer_sequoia_fr.htm" target="hmcontent"><span class="heading3" id="s1.6.4">Calibrer Sequoia</span></a>
+</li>
+<li class="heading3" id="i1.6.5" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.6.5" href="fonctions_du_bouton_du_capteur_multispectral_fr.htm" target="hmcontent"><span class="heading3" id="s1.6.5">Fonctions du bouton du capteur multispectral</span></a>
+</li>
+<li class="heading3" id="i1.6.6" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.6.6" href="debrancher_le_capteur_multispectral_fr.htm" target="hmcontent"><span class="heading3" id="s1.6.6">Débrancher le capteur multispectral</span></a>
+</li>
+<li class="heading3" id="i1.6.7" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.6.7" href="comportement_de_la_led_fr.htm" target="hmcontent"><span class="heading3" id="s1.6.7">Comportement de la LED</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.7" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.7" href="mettre_a_jour_sequoia_fr.htm" target="hmcontent"><span class="heading2" id="s1.7" ondblclick="return dblclicked(this)">Mettre à jour Sequoia</span></a>
+<ul id="ul1.7" style="list-style-type:none">
+<li class="heading3" id="i1.7.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.7.1" href="via_usb_fr.htm" target="hmcontent"><span class="heading3" id="s1.7.1">Via USB</span></a>
+</li>
+<li class="heading3" id="i1.7.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.7.2" href="via_une_carte_sd_fr.htm" target="hmcontent"><span class="heading3" id="s1.7.2">Via une carte SD</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.8" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.8" href="recuperer_les_donnees_fr.htm" target="hmcontent"><span class="heading2" id="s1.8" ondblclick="return dblclicked(this)">Récupérer les données</span></a>
+<ul id="ul1.8" style="list-style-type:none">
+<li class="heading3" id="i1.8.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.8.1" href="via_usb_2_fr.htm" target="hmcontent"><span class="heading3" id="s1.8.1">Via USB</span></a>
+</li>
+<li class="heading3" id="i1.8.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.8.2" href="via_wi-fi_2_fr.htm" target="hmcontent"><span class="heading3" id="s1.8.2">Via Wi-Fi</span></a>
+</li>
+<li class="heading3" id="i1.8.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.8.3" href="via_une_carte_sd_2_fr.htm" target="hmcontent"><span class="heading3" id="s1.8.3">Via une carte SD</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.9" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.9" href="entretien_de_sequoia_fr.htm" target="hmcontent"><span class="heading2" id="s1.9" ondblclick="return dblclicked(this)">Entretien de Sequoia</span></a>
+<ul id="ul1.9" style="list-style-type:none">
+<li class="heading3" id="i1.9.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.9.1" href="nettoyer_les_capteurs_fr.htm" target="hmcontent"><span class="heading3" id="s1.9.1">Nettoyer les capteurs</span></a>
+</li>
+<li class="heading3" id="i1.9.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.9.2" href="obtenir_des_pieces_detachees_fr.htm" target="hmcontent"><span class="heading3" id="s1.9.2">Obtenir des pièces détachées</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.10" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.10" href="traiter_les_donnees_fr.htm" target="hmcontent"><span class="heading2" id="s1.10" ondblclick="return dblclicked(this)">Traiter les données</span></a>
+<ul id="ul1.10" style="list-style-type:none">
+<li class="heading3" id="i1.10.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.10.1" href="avec_le_logiciel_de_gestion_de_donnees_micasense_atlas_fr.htm" target="hmcontent"><span class="heading3" id="s1.10.1">Avec le logiciel de gestion de données MicaSense ATLAS</span></a>
+</li>
+<li class="heading3" id="i1.10.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.10.2" href="avec_le_logiciel_de_cartographie_pix4dmapper_fr.htm" target="hmcontent"><span class="heading3" id="s1.10.2">Avec le logiciel de cartographie Pix4Dmapper</span></a>
+</li>
+<li class="heading3" id="i1.10.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.10.3" href="les_prescriptions_agronomiques_de_airinov_fr.htm" target="hmcontent"><span class="heading3" id="s1.10.3">Les prescriptions agronomiques de AIRINOV</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.11" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.11" href="integrer_sequoia_via_ptp_ou_pt_fr.htm" target="hmcontent"><span class="heading2" id="s1.11">Intégrer Sequoia via PTP ou PTP/IP</span></a>
+</li>
+<li class="heading2" id="i1.12" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.12" href="specifications_techniques_fr.htm" target="hmcontent"><span class="heading2" id="s1.12" ondblclick="return dblclicked(this)">Spécifications Techniques</span></a>
+<ul id="ul1.12" style="list-style-type:none">
+<li class="heading3" id="i1.12.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.12.1" href="resolution_des_captures_fr.htm" target="hmcontent"><span class="heading3" id="s1.12.1">Résolution des captures</span></a>
+</li>
+<li class="heading3" id="i1.12.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.12.2" href="declenchement_des_capteurs_fr.htm" target="hmcontent"><span class="heading3" id="s1.12.2">Déclenchement des capteurs</span></a>
+</li>
+<li class="heading3" id="i1.12.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.12.3" href="distance_entre_deux_lignes_de_vol_fr.htm" target="hmcontent"><span class="heading3" id="s1.12.3">Distance entre deux lignes de vol</span></a>
+</li>
+<li class="heading3" id="i1.12.4" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.12.4" href="memoire_utilisee_par_hectare_fr.htm" target="hmcontent"><span class="heading3" id="s1.12.4">Mémoire utilisée par hectare</span></a>
+</li>
+<li class="heading3" id="i1.12.5" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a1.12.5" href="autres_specifications_techniques_fr.htm" target="hmcontent"><span class="heading3" id="s1.12.5">Autres spécifications techniques</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i1.13" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a1.13" href="informations_generales_fr.htm" target="hmcontent"><span class="heading2" id="s1.13">Informations générales</span></a>
+</li>
+</ul>
+</li>
+<li class="heading1" id="i2" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading1" id="a2" href="english.htm" target="hmcontent"><span class="heading1" id="s2" ondblclick="return dblclicked(this)">English</span></a>
+<ul id="ul2" style="list-style-type:none">
+<li class="heading2" id="i2.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.1" href="introduction_uk.htm" target="hmcontent"><span class="heading2" id="s2.1">Introduction</span></a>
+</li>
+<li class="heading2" id="i2.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.2" href="contenu-de-lemballage_uk.htm" target="hmcontent"><span class="heading2" id="s2.2">Package contents</span></a>
+</li>
+<li class="heading2" id="i2.3" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.3" href="presentationdesequoia_uk.htm" target="hmcontent"><span class="heading2" id="s2.3" ondblclick="return dblclicked(this)">Sequoia presentation</span></a>
+<ul id="ul2.3" style="list-style-type:none">
+<li class="heading3" id="i2.3.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.3.1" href="le-capteur-multispectral_uk.htm" target="hmcontent"><span class="heading3" id="s2.3.1">Multispectral sensor</span></a>
+</li>
+<li class="heading3" id="i2.3.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.3.2" href="le_sunshine_sensor_uk.htm" target="hmcontent"><span class="heading3" id="s2.3.2">Sunshine sensor&nbsp;</span></a>
+</li>
+<li class="heading3" id="i2.3.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.3.3" href="les_supports_du_sunshine_sensor_uk.htm" target="hmcontent"><span class="heading3" id="s2.3.3">Sunshine sensor holders</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.4" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.4" href="configurer_sequoia_uk.htm" target="hmcontent"><span class="heading2" id="s2.4" ondblclick="return dblclicked(this)">Configuring Sequoia</span></a>
+<ul id="ul2.4" style="list-style-type:none">
+<li class="heading3" id="i2.4.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.4.1" href="configurer_sequoia_via_wi-fi_uk.htm" target="hmcontent"><span class="heading3" id="s2.4.1">Setting up Sequoia via Wi-Fi</span></a>
+</li>
+<li class="heading3" id="i2.4.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.4.2" href="interface_html_de_configuration_de_sequoia_uk.htm" target="hmcontent"><span class="heading3" id="s2.4.2">HTML interface for setting up Sequoia</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.5" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.5" href="verifications_avant_utilisation_uk.htm" target="hmcontent"><span class="heading2" id="s2.5">Checks to be made before use</span></a>
+</li>
+<li class="heading2" id="i2.6" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.6" href="utiliser_sequoia_uk.htm" target="hmcontent"><span class="heading2" id="s2.6" ondblclick="return dblclicked(this)">Using Sequoia</span></a>
+<ul id="ul2.6" style="list-style-type:none">
+<li class="heading3" id="i2.6.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.6.1" href="installer_la_lentille_de_protection_uk.htm" target="hmcontent"><span class="heading3" id="s2.6.1">Fitting the protective lens</span></a>
+</li>
+<li class="heading3" id="i2.6.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.6.2" href="fixer_sequoia_sur_un_drone_uk.htm" target="hmcontent"><span class="heading3" id="s2.6.2">Attaching Sequoia to a drone</span></a>
+</li>
+<li class="heading3" id="i2.6.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.6.3" href="brancher_sequoia_a_une_batterie_uk.htm" target="hmcontent"><span class="heading3" id="s2.6.3">Connecting Sequoia to a USB battery</span></a>
+</li>
+<li class="heading3" id="i2.6.4" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.6.4" href="calibrer_sequoia_uk.htm" target="hmcontent"><span class="heading3" id="s2.6.4">Calibrating Sequoia</span></a>
+</li>
+<li class="heading3" id="i2.6.5" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.6.5" href="fonctions_du_bouton_du_capteur_multispectral_uk.htm" target="hmcontent"><span class="heading3" id="s2.6.5">Functions of the multispectral sensor button</span></a>
+</li>
+<li class="heading3" id="i2.6.6" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.6.6" href="debrancher_le_capteur_multispectral_uk.htm" target="hmcontent"><span class="heading3" id="s2.6.6">Débrancher le capteur multispectral_2</span></a>
+</li>
+<li class="heading3" id="i2.6.7" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.6.7" href="comportement_de_la_led_uk.htm" target="hmcontent"><span class="heading3" id="s2.6.7">LED properties</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.7" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.7" href="mettre_a_jour_sequoia_uk.htm" target="hmcontent"><span class="heading2" id="s2.7" ondblclick="return dblclicked(this)">Updating Sequoia</span></a>
+<ul id="ul2.7" style="list-style-type:none">
+<li class="heading3" id="i2.7.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.7.1" href="via_usb_2_uk.htm" target="hmcontent"><span class="heading3" id="s2.7.1">Via USB_2</span></a>
+</li>
+<li class="heading3" id="i2.7.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.7.2" href="via_une_carte_sd_uk.htm" target="hmcontent"><span class="heading3" id="s2.7.2">Via an SD</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.8" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.8" href="recuperer_les_donnees_uk.htm" target="hmcontent"><span class="heading2" id="s2.8" ondblclick="return dblclicked(this)">Retreiving data</span></a>
+<ul id="ul2.8" style="list-style-type:none">
+<li class="heading3" id="i2.8.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.8.1" href="via_usb_3_uk.htm" target="hmcontent"><span class="heading3" id="s2.8.1">Via USB_3</span></a>
+</li>
+<li class="heading3" id="i2.8.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.8.2" href="via_wi-fi_uk.htm" target="hmcontent"><span class="heading3" id="s2.8.2">Via Wi-Fi_2</span></a>
+</li>
+<li class="heading3" id="i2.8.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.8.3" href="via_une_carte_sd_2_uk.htm" target="hmcontent"><span class="heading3" id="s2.8.3">Via an SD Card</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.9" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.9" href="entretien_de_sequoia_uk.htm" target="hmcontent"><span class="heading2" id="s2.9" ondblclick="return dblclicked(this)">Sequoia maintenance</span></a>
+<ul id="ul2.9" style="list-style-type:none">
+<li class="heading3" id="i2.9.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.9.1" href="nettoyer_les_capteurs_uk.htm" target="hmcontent"><span class="heading3" id="s2.9.1">Cleaning the sensors</span></a>
+</li>
+<li class="heading3" id="i2.9.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.9.2" href="obtenir_des_pieces_detachees_uk.htm" target="hmcontent"><span class="heading3" id="s2.9.2">Obtaining spare parts</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.10" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.10" href="traiter_les_donnees_uk.htm" target="hmcontent"><span class="heading2" id="s2.10" ondblclick="return dblclicked(this)">Processing data</span></a>
+<ul id="ul2.10" style="list-style-type:none">
+<li class="heading3" id="i2.10.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.10.1" href="avec_le_logiciel_de_gestion_de_donnees_micasense_atlas_uk.htm" target="hmcontent"><span class="heading3" id="s2.10.1">With the MicaSense ATLAS data management software</span></a>
+</li>
+<li class="heading3" id="i2.10.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.10.2" href="avec_le_logiciel_de_cartographie_pix4dmapper_uk.htm" target="hmcontent"><span class="heading3" id="s2.10.2">With the PIX4Dmapper mapping software</span></a>
+</li>
+<li class="heading3" id="i2.10.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.10.3" href="les_prescriptions_agronomiques_de_airinov_uk.htm" target="hmcontent"><span class="heading3" id="s2.10.3">Agronomic recommendations from AIRINOV</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.11" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.11" href="integrer_sequoia_via_ptp_ou_pt_uk.htm" target="hmcontent"><span class="heading2" id="s2.11">Integrating Sequoia via PTP or PTP/IP</span></a>
+</li>
+<li class="heading2" id="i2.12" data-bg="cicon1.png;cicon2.png" style="background:url(cicon2.png) no-repeat;cursor:pointer;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.12" href="specifications_techniques_uk.htm" target="hmcontent"><span class="heading2" id="s2.12" ondblclick="return dblclicked(this)">Technical specifications</span></a>
+<ul id="ul2.12" style="list-style-type:none">
+<li class="heading3" id="i2.12.1" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.12.1" href="resolution_des_captures_uk.htm" target="hmcontent"><span class="heading3" id="s2.12.1">Sensor resolution</span></a>
+</li>
+<li class="heading3" id="i2.12.2" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.12.2" href="declenchement_des_capteurs_uk.htm" target="hmcontent"><span class="heading3" id="s2.12.2">Activating the sensors</span></a>
+</li>
+<li class="heading3" id="i2.12.3" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.12.3" href="distance_entre_deux_lignes_de_vol_uk.htm" target="hmcontent"><span class="heading3" id="s2.12.3">Distance between two flight lines</span></a>
+</li>
+<li class="heading3" id="i2.12.4" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.12.4" href="memoire_utilisee_par_hectare_uk.htm" target="hmcontent"><span class="heading3" id="s2.12.4">Memory used per hectare</span></a>
+</li>
+<li class="heading3" id="i2.12.5" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading3" id="a2.12.5" href="autres_specifications_techniques_uk.htm" target="hmcontent"><span class="heading3" id="s2.12.5">Other technical specifications</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i2.13" style="background:url(cicon9.png) no-repeat;padding-left:20px" onclick="return clicked(this,event)"><a class="heading2" id="a2.13" href="informations_generales_uk.htm" target="hmcontent"><span class="heading2" id="s2.13">General information</span></a>
+</li>
+</ul>
+</li>
+</ul>
+<script type="text/javascript">loadicons('cicon2.png','cicon1.png','cicon9.png');</script>
+</body>
+</html>

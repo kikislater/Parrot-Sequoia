@@ -1,0 +1,16 @@
+# This file contains the rules needed to handle storage devices. -*- mode:sh -*-
+
+# skip rules on already handled devices
+ENV{JUBA_STR_DEV_TYPE}=="sdcard|usbmass", GOTO="ujuba_storage_start"
+ENV{JUBA_STR_DEV_TYPE}=="?*", GOTO="ujuba_storage_end"
+LABEL="ujuba_storage_start"
+
+# JUBA disk
+# USB mass storage
+ACTION=="add|change", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_interface", ENV{INTERFACE}=="8/*", ENV{JUBA_STR_DEV_TYPE}="usbmass", TAG+="JUBA", IMPORT{program}="juba_usb"
+# mmc/sdcard
+ACTION=="add|change", SUBSYSTEM=="mmc", ENV{MMC_TYPE}=="?*", ENV{MMC_TYPE}!="SDIO", ENV{JUBA_STR_DEV_TYPE}="sdcard", TAG+="JUBA", IMPORT{program}="juba_mmc"
+
+# Note: JUBA volumes are now handled by daemon jubamountd
+
+LABEL="ujuba_storage_end"

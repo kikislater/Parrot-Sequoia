@@ -1,0 +1,4 @@
+service dropbear /usr/sbin/dropbear -F -B -a
+    class main
+
+# FIXME: initial automatic key creation is not handled!

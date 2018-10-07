@@ -1,0 +1,4 @@
+
+# Only trigger on the last i2c to avoid doing this 4 times
+ACTION=="add|remove", SUBSYSTEM=="usb", ENV{JUBA_STR_NAME}=="Parrot SA Irradiance", RUN+="/bin/sh /usr/bin/irradiance_init.sh"
+ACTION=="add|remove", SUBSYSTEM=="usb", ENV{JUBA_STR_NAME}=="Parrot SA Sunshine", RUN+="/bin/sh /usr/bin/irradiance_init.sh"

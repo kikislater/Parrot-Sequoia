@@ -1,0 +1,3 @@
+
+service siciliad /usr/bin/siciliad
+    disabled

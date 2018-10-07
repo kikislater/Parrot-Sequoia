@@ -1,0 +1,85 @@
+SPI040378AA6H000906
+CPARROT
+PFVT11
+pChicony
+NFVT11_1
+BSicilia
+nSicilia
+r
+L
+RV1.10
+W
+f1
+TP
+[2016-08-24 16:43:11
+]2016-08-24 16:44:16
+MINIT TESTBENCH SOFTWARE
+>RESULT_OK
+>module : SICILIA
+> 0 : Version         : DLL Build Date (Nov 10 2015, 11:31:17)
+> 1 : Version         : Script Version v1.10
+> 2 : Check PI        : Checking PI Number: PI040378AA6H000906 OK
+> 3 : Network         : Network m:\ and DATAFILES_COPY/ are available
+>duration : 0.016
+>end_time : 0.016
+
+MCLEANING
+>RESULT_OK
+>module : SICILIA
+> 0 : Cleaning        : Deleting file: SICILIA/TRACEFILE/MAIN_THERMAL_CALIBRATION.txt OK
+> 1 : Cleaning        : Deleting file: SICILIA/TRACEFILE/Main_Thermal_IMU_bias.user.csv OK
+>duration : 0
+>end_time : 0.031
+
+MINIT RELAY BOARD
+>RESULT_OK
+>module : SICILIA
+> 0 : Relay           : Init port COM12 9600, address 1
+> 1 : Relay           : Close 1, address 1
+>duration : 0.109
+>end_time : 0.156
+
+MBOOT PRODUCT
+>RESULT_OK
+>module : SICILIA
+> 0 : Communication   : Open USB port (Vendor 0x19cf, product 0x1000)
+> 1 : Communication   : Select USB port
+> 2 : Wait            : 5000 ms
+>duration : 11.295
+>end_time : 11.451
+
+MCHECK SOFTWARE VERSION
+>RESULT_OK
+>module : SICILIA
+> 0 : ETS Version     : v1.3 (Mar 31 2016, 12:42:25) OK
+>duration : 0.124
+>end_time : 11.575
+
+MERASE PREVIOUS THERMAL CALIBRATION
+>RESULT_OK
+>module : SICILIA
+> 0 : Console         : Sending: rm -fr /data/Main_Thermal_IMU_bias.user.csv (timeout 20000)
+> 1 : Console         : Sending: rm -fr /factory/Main_Thermal_IMU_ortho.fact.csv (timeout 20000)
+> 2 : Console         : Sending: rm -fr /factory/Main_Thermal_IMU_bias.fact.csv (timeout 20000)
+> 3 : Console         : Sending: sync   (timeout 20000)
+>duration : 0.515
+>end_time : 12.09
+
+MPROCESSING THERMAL CALIBRATION
+>RESULT_OK
+>module : SICILIA
+> 0 : Console         : Sending: sensors_main -I 6 -N Main -T (timeout 300000)
+> 1 : Console         : Sending: killall sensors_main (timeout 20000)
+> 2 : Console         : Sending: sync   (timeout 20000)
+>duration : 52.182
+>end_time : 64.288
+
+MCHECK THERMAL CALIBRATION
+>RESULT_OK
+>module : SICILIA
+> 0 : File exchange   : Checking embedded file existence /data/Main_Thermal_IMU_bias.user.csv
+> 1 : File exchange   : File exists OK
+> 2 : File exchange   : Download embedded file /data/Main_Thermal_IMU_bias.user.csv to PC SICILIA/TRACEFILE/Main_Thermal_IMU_bias.user.csv
+>duration : 0.468
+>end_time : 64.756
+

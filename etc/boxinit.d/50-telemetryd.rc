@@ -1,0 +1,20 @@
+service telemetryd /usr/bin/telemetryd
+    user root
+    disabled
+
+# Stop logging
+service clean_bbx bin/rm /var/lib/libshsettings/tlm-blackbox.cfg
+    oneshot
+    disabled
+
+# In dev mode, start telemetry
+service activ_bbx /usr/bin/shs-cli -s tlm-blackbox.enabled true
+    oneshot
+    disabled
+
+on boot
+    start clean_bbx
+
+on property:rw.debuggable=1
+    start activ_bbx
+

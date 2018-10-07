@@ -1,0 +1,7 @@
+#! /bin/sh
+
+echo 6 > /sys/class/pwm/export
+cd /sys/class/pwm/pwm_6
+echo 125000 > period_ns
+echo      0 > duty_ns
+echo      1 > run

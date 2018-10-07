@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Clean previous dnsmasq conf
+
+if [ "$(gprop persist.wifi.disabled)" = "1" ] || [ "$(gprop rw.wifi.disabled)" = "1" ]; then
+    /usr/bin/pterm dnsmasq_wlan0
+    exit 2
+fi
+
+if [ "$(gprop init.svc.hostapd_mgr)" == "running" ]; then
+    ulogger -p W "Hostapd is already running"
+    exit 0
+fi
+/usr/bin/pterm dnsmasq_wlan0
+
+timeout=50
+wifi_itf=wlan0
+# Display wlan interface
+while [ -z "$(ip -family inet -o link show dev ${wifi_itf})" ] && [ ${timeout} -ne 0 ] ; do
+    sleep 1
+    let timeout--
+done
+if [ ${timeout} -eq 0 ]; then
+    ulogger -p E -t "wifi_cfg" "Interface ${wifi_itf} did not spawn in time. Cannot continue wifi configuration."
+    exit 1
+fi
+# configure interface accordingly, once
+ifconfig ${wifi_itf} 192.168.47.1 netmask 255.255.255.0 up
+hostname $(gprop ro.product.model)
+pstart dnsmasq_wlan0
+pstart hostapd_cfg
+sleep 1
+#END

@@ -1,0 +1,49 @@
+#!/bin/sh
+
+hostapd_src=/etc/hostapd_2G4.conf
+if [ ! -e "${hostapd_src}" ]; then
+    ulogger -p E -t "wifi_cfg" "Could not find ${hostapd_src}. Cannot continue wifi configuration."
+    exit 1
+fi
+
+# Put this script in tmp to be easily read/write-able. All its content is stored either on persistent properties
+# or in etc so there is no real loss. It is just to make it more dynamic to change data if needed.
+hostapd_conf=/tmp/hostapd_2G4.conf
+rm ${hostapd_conf}
+
+update_field_with_property(){
+    field=$1
+    prop_name=$2
+    sed -i -e '/^'${field}'=/d' ${hostapd_conf}
+    echo -n "${field}=" >> ${hostapd_conf}
+    /usr/bin/gprop ${prop_name} >> ${hostapd_conf}
+}
+update_field_with_value(){
+    field=$1
+    value=$2
+    sed -i -e '/^'${field}'=/d' ${hostapd_conf}
+    echo "${field}=${value}" >> ${hostapd_conf}
+}
+
+# Create the file to use
+cp ${hostapd_src} ${hostapd_conf}
+
+# Update ssid
+# To be compliant with special chars (like quotes or spaces) we simply use gprop instead of passing by sed
+update_field_with_property ssid persist.product.ssid
+
+# If a passphrase is given, use it
+# Note that gprop will return a \n counted as another character
+# The real range is 8..63
+if [ $(/usr/bin/gprop persist.product.passphrase|wc -c) -ge 9 ] && [ $(/usr/bin/gprop persist.product.passphrase|wc -c) -le 64 ]; then
+    # Update security to WPA
+    # Note that an empty passphrase is not tolerated, we need one of a minimal length of 8 characters
+    update_field_with_value wpa 2
+    update_field_with_property wpa_passphrase persist.product.passphrase
+else
+    # Reinit security to still be hostapd compliant
+    update_field_with_value wpa 0
+    update_field_with_value wpa_passphrase 12345678
+fi
+
+#END

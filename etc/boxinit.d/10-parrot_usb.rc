@@ -1,0 +1,42 @@
+# Generic infos about usb
+# Configure usb for adb and mtp
+on post-fs-data
+    chown root root /sys/class/android_usb/android0/f_mass_storage/lun/file
+    chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
+    chown root root /sys/class/android_usb/android0/f_rndis/ethaddr
+    chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
+
+on init
+    write /sys/class/android_usb/android0/f_rndis/manufacturer Parrot
+    write /sys/class/android_usb/android0/f_rndis/vendorID 19cf
+    write /sys/class/android_usb/android0/f_rndis/wceis 1
+
+on boot
+    write /sys/class/android_usb/android0/iManufacturer Parrot
+    write /sys/class/android_usb/android0/iSerial ${ro.factory.serial}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.usb.product}
+
+# Set and save current config
+on property:sys.usb.config=*
+    write /sys/class/android_usb/android0/idVendor 19cf
+    write /sys/class/android_usb/android0/idProduct ${ro.product.usb.pid}
+    setprop sys.usb.state ${sys.usb.config}
+    setprop persist.sys.usb.config ${sys.usb.config}
+    start switch_usb_prop
+
+service rndis_up /sbin/ifconfig rndis0 10.1.1.2
+    oneshot
+    disabled
+
+# set usb prop to persist if present, else default to mtp,rndis
+service switch_usb_prop /bin/sh /usr/bin/switch_usb_prop.sh
+    oneshot
+    disabled
+
+# set usb prop to persist if present, else default to mtp,rndis
+service usb_prop_set /bin/sh /usr/bin/persist_usb_prop.sh
+    oneshot
+    disabled
+
+on property:sicilia_all_services=start
+    start usb_prop_set
